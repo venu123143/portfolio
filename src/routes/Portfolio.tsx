@@ -7,6 +7,11 @@ const Portfolio = () => {
         <div>
             <Header />
             <Home />
+            <Home />
+            <Home />
+            <Home />
+            <Home />
+            <Home />
         </div>
     )
 }

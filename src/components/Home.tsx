@@ -16,19 +16,19 @@ const Home: React.FC = () => {
                 <motion.img
                     src={bgImage}
                     alt="Venu gopal"
-                    className="w-36 h-36 rounded-full border-2 border-[#286F6B] mb-6 md:mb-0 object-cover"
+                    className="w-48 h-48 rounded-full border-2 border-[#286F6B] mb-6 md:mb-0 object-cover"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.6 }}
                 />
-                
+
                 {/* Text Content */}
                 <div className="md:ml-8 text-center md:text-left">
-                    <h2 className="text-3xl font-sans font-bold text-textPrimary">
-                        Hey There, <br /> I'm <span className="text-accent">Your Name</span>
+                    <h2 className="text-4xl font-sans font-bold text-textPrimary">
+                        Hey There, <br /> I'm <span className="text-accent">Full Stack Developer...</span>
                     </h2>
-                    <p className="mt-2 text-textSecondary">
-                        I design beautifully simple things, and I love what I do.
+                    <p className="mt-2 font-rubik">
+                        Having more than 2 years of experience in web development.
                     </p>
                     <p className="mt-4 font-bold">10 Years Experience</p>
 

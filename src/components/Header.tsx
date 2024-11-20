@@ -28,7 +28,7 @@ const Header: React.FC = () => {
 
     return (
         <header
-            className={`sticky top-0 bg-[#F8F7F3] z-50 transition-shadow duration-300 ${hasShadow ? "shadow-md" : ""
+            className={`sticky top-0 bg-[#F8F7F3] z-50 transition-shadow duration-300 ${hasShadow ? "shadow-md dshadow-card" : ""
                 }`}
         >
             <div className="flex justify-between items-center max-w-7xl mx-auto px-4 py-3">
