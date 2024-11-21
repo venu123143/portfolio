@@ -28,12 +28,12 @@ const Header: React.FC = () => {
 
     return (
         <header
-            className={`sticky top-0 bg-[#F8F7F3] z-50 transition-shadow duration-300 ${hasShadow ? "shadow-md dshadow-card" : ""
+            className={`sticky top-0  z-50 transition-all duration-300 ${hasShadow ? "shadow-md dshadow-card bg-[#F8F7F3] " : "bg-[#FDC435]"
                 }`}
         >
             <div className="flex justify-between items-center max-w-7xl mx-auto px-4 py-3">
                 {/* Logo */}
-                <h1 className="text-2xl font-dancing font-[700] text-accent">Venu Gopal</h1>
+                <h1 className="text-2xl relative font-dancing font-[700] text-black">Venu Gopal</h1>
 
                 {/* Navigation Links */}
                 <nav className="flex font-edu space-x-8 text-textPrimary font-medium">

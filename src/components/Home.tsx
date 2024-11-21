@@ -1,104 +1,146 @@
 import React from "react";
 import { motion } from "framer-motion";
-import bgImage from "../assets/Passport.jpg";
+import profile2 from "../assets/profile2.png";
+import { ReactTyped } from "react-typed";
 
 const Home: React.FC = () => {
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="bg-[#F8F7F3] min-h-screen shadow-card rounded-xl p-8 flex flex-col items-center md:flex-row"
-        >
+        <div className="bg-[#F8F7F3] min-h-screen shadow-card rounded-xl p-8 flex flex-col items-center md:flex-row">
             {/* Left Section */}
             <div className="flex flex-col md:flex-row items-center w-full md:w-3/4">
-                {/* Profile Image */}
-                <motion.img
-                    src={bgImage}
-                    alt="Venu gopal"
-                    className="w-48 h-48 rounded-full border-2 border-[#286F6B] mb-6 md:mb-0 object-cover"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 0.7 }}
-                />
 
                 {/* Text Content */}
-                <div className="md:ml-8 text-center md:text-left">
+                <motion.div
+                    className="md:ml-8 text-center space-y-4 md:text-left mt-6 md:mt-0"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                >
                     <h2 className="text-4xl font-sans font-bold text-textPrimary">
-                        Hey There, <br /> I'm <span className="text-accent">Full Stack Developer...</span>
+                        Hey There, <br /> I'm {" "}
+                        <span className="text-accent">
+                            <ReactTyped
+                                strings={[
+                                    "Full Stack Developer..."
+                                ]}
+                                typeSpeed={50}
+                                backSpeed={30}
+                                loop
+                            />
+                        </span>
                     </h2>
                     <p className="mt-2 font-rubik">
                         Having more than 2 years of experience in web development.
                     </p>
-                    <p className="mt-4 font-bold">10 Years Experience</p>
 
-                    {/* Button */}
-                    <div className="mt-6">
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="px-6 py-2 text-white bg-[#286F6B] shadow-md rounded-full font-semibold transition duration-300 ease-in-out hover:bg-[#1F5A56] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#286F6B] focus:ring-opacity-50"
-                        >
-                            Hire Me
-                        </motion.button>
-                    </div>
-                </div>
+                    <a target="_blank" href="https://www.canva.com/design/DAFj-JlZs_I/lYKRtoro-a54diJcflWvuA/view?utm_content=DAFj-JlZs_I&utm_campaign=designshare&utm_medium=link&utm_source=editor"
+                        className="px-8 py-3 block w-fit bg-gradient-to-r from-[#4A90E2] to-[#007AFF] text-white font-medium text-lg rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300"
+                    >
+                        Hire Me
+                    </a>
+
+                </motion.div>
+
+                {/* Animated Profile Image */}
+                <motion.div
+                    className="relative w-full md:w-[500px] md:h-[500px]"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 800 800"
+                        width="1200"
+                        height="1200"
+                        className="absolute top-0 left-0 w-full h-full z-10"
+                    >
+                        <path
+                            d="M100 400c50-150 300-300 500-200s200 300 100 500-400 100-500-100-150-50-100-200z"
+                            fill="#286F6B"
+                        />
+                    </svg>
+
+                    {/* Animated Image */}
+                    <motion.img
+                        src={profile2}
+                        alt="Profile"
+                        className="absolute rounded-full top-0 left-0 w-full h-full object-cover z-20"
+                        transition={{
+                            duration: 3,
+                            ease: "easeInOut",
+                        }}
+                    />
+                </motion.div>
             </div>
 
             {/* Right Section */}
-            <div className="mt-10 md:mt-0 md:ml-10 flex flex-col items-center md:items-start w-full md:w-1/4">
-                {/* <h3 className="text-xl font-semibold mb-4 text-textPrimary">Connect with Me</h3> */}
-                <motion.div
-                    className="flex flex-col space-y-4"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.6 }}
-                >
-                    {/* Social Media Links */}
-                    <a
-                        href="https://www.linkedin.com/in/your-profile"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow hover:shadow-lg transition duration-300 ease-in-out"
-                    >
-                        <img
-                            src="https://cdn-icons-png.flaticon.com/512/145/145807.png"
-                            alt="LinkedIn"
-                            className="w-6 h-6"
-                        />
-                        <span className="text-[#286F6B] font-edu font-medium">LinkedIn</span>
-                    </a>
 
-                    <a
-                        href="https://github.com/your-profile"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow hover:shadow-lg transition duration-300 ease-in-out"
+            <motion.div
+                initial={{ x: "100vw" }}
+                animate={{ x: 0 }}
+                transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
+            >
+                <div className="mt-10 md:mt-0 md:ml-10 flex flex-col items-center md:items-start w-full">
+                    <div
+                        className="flex flex-col space-y-4"
                     >
-                        <img
-                            src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
-                            alt="GitHub"
-                            className="w-6 h-6"
-                        />
-                        <span className="text-[#286F6B] font-edu font-medium">GitHub</span>
-                    </a>
+                        {/* Social Media Links */}
+                        <a
+                            href="https://www.linkedin.com/in/venu-reddy-a226881b6/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="relative flex items-center space-x-3 p-3 bg-white rounded-lg shadow hover:shadow-lg transition duration-300 ease-in-out overflow-hidden group"
+                        >
+                            {/* Gradient Background */}
+                            <span
+                                className="absolute inset-0 bg-gradient-to-tr from-yellow-500 to-yellow-300 w-0 group-hover:w-full transition-all duration-500 ease-in-out"
+                                style={{
+                                    height: "100%",
+                                    left: "0",
+                                    top: "0",
+                                }}
+                            />
+                            <img
+                                src="https://cdn-icons-png.flaticon.com/512/145/145807.png"
+                                alt="LinkedIn"
+                                className="w-6 h-6 z-10"
+                            />
+                            <span className="text-[#286F6B] font-edu font-medium z-10">LinkedIn</span>
+                        </a>
 
-                    <a
-                        href="https://twitter.com/your-profile"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow hover:shadow-lg transition duration-300 ease-in-out"
-                    >
-                        <img
-                            src="https://cdn-icons-png.flaticon.com/512/733/733579.png"
-                            alt="Twitter"
-                            className="w-6 h-6"
-                        />
-                        <span className="text-[#286F6B] font-edu font-medium">Twitter</span>
-                    </a>
-                </motion.div>
-            </div>
-        </motion.div>
+                        <a
+                            href="https://github.com/venu123143"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow hover:shadow-lg transition duration-300 ease-in-out"
+                        >
+                            <img
+                                src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+                                alt="GitHub"
+                                className="w-6 h-6"
+                            />
+                            <span className="text-[#286F6B] font-edu font-medium">GitHub</span>
+                        </a>
+
+                        <a
+                            href="https://x.com/venu_reddy_9493"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow hover:shadow-lg transition duration-300 ease-in-out"
+                        >
+                            <img
+                                src="https://cdn-icons-png.flaticon.com/512/733/733579.png"
+                                alt="Twitter"
+                                className="w-6 h-6"
+                            />
+                            <span className="text-[#286F6B] font-edu font-medium">Twitter</span>
+                        </a>
+                    </div>
+                </div>
+                {/* Your content here */}
+            </motion.div>
+        </div>
     );
 };
 
