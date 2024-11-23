@@ -16,9 +16,9 @@ const Portfolio = () => {
             <WaveHeader />
             <Header />
             <Home />
+            <Projects />
             <Cards />
             <Experience />
-            <Projects />
         </div>
     )
 }

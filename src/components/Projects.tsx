@@ -1,39 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Slider from "react-slick";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaGithub } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import profile2 from "../assets/profile2.png";
+import ClipLoader from "react-spinners/ClipLoader"; // Install: npm install react-spinners
+
+import whatsapp from "../assets/whatsapp.png";
+import amazon from "../assets/amazon.png";
 
 const CarouselCard: React.FC = () => {
+    const [loading, setLoading] = useState(true);
+
     const carouselData = [
         {
-            heading: "Project Heading 1",
-            description: `Ensure that the parent container has a defined height (h-[80%] or similar) to make the overflow-y-auto effective. 
-            The sticky property requires a parent container with overflow: auto or overflow: hidden for it to work as expected. In this case, the parent card already supports it.
-This approach ensures the content scrolls independently while keeping the "View Case Study" button always visible at the bottom of the right side.
-            Content Scrollable Section:
-
-Added flex-grow and overflow-y-auto to the parent container of the heading, description, and client. This allows the content to scroll within its parent while keeping the overall layout intact.
-            `,
-            client: "Google",
+            heading: "Title: WhatsApp Clone - Real-Time Messaging App with Modern Features",
+            description: `This WhatsApp Clone is a feature-rich messaging application designed with 
+            a modern technology stack. It mirrors WhatsApp's core functionalities, offering secure user
+            authentication, real-time chat, and media-sharing capabilities. With both one-on-one and
+            group video call functionality powered by WebRTC, it delivers a seamless communication 
+            experience. The app's design is responsive and user-friendly, utilizing Tailwind CSS for
+            styling and React for dynamic front-end interaction.`,
+            link: "https://github.com/venu123143/whatsapp/",
+            image: whatsapp,
         },
         {
-            heading: "Project Heading 2",
-            description:
-                "An innovative product that transforms how users interact with digital platforms for productivity.",
-            client: "Microsoft",
-        },
-        {
-            heading: "Project Heading 3",
-            description:
-                "Bringing modern solutions to e-commerce with scalable designs and intuitive interfaces.",
-            client: "Amazon",
+            heading: "Title: Amazon Clone - Your Ultimate E-Commerce Platform",
+            description: `This Amazon Clone is a full-stack e-commerce platform that replicates 
+            Amazon's core functionalities. Designed with React, Vite, and TypeScript, this e-commerce 
+            platform offers a seamless online shopping experience.`,
+            link: "https://github.com/venu123143/amazon_front",
+            image: amazon,
         },
     ];
 
-    // Custom Previous Button
     const PrevArrow = (props: any) => {
         const { onClick } = props;
         return (
@@ -46,7 +46,6 @@ Added flex-grow and overflow-y-auto to the parent container of the heading, desc
         );
     };
 
-    // Custom Next Button
     const NextArrow = (props: any) => {
         const { onClick } = props;
         return (
@@ -72,79 +71,85 @@ Added flex-grow and overflow-y-auto to the parent container of the heading, desc
         nextArrow: <NextArrow />,
     };
 
+    // Simulate loading completion after assets are "loaded"
+    useEffect(() => {
+        const timer = setTimeout(() => setLoading(false), 1500); // Simulate loading time
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
-        <div className="w-full bg-[#F8F7F3]  flex justify-center items-center py-10 font-inter">
-            <div className="w-11/12 shadow-retro rounded-lg">
-                <Slider {...settings}>
-                    {carouselData.map((item, index) => (
-                        <Card
-                            key={index}
-                            heading={item.heading}
-                            description={item.description}
-                            client={item.client}
-                        />
-                    ))}
-                </Slider>
-            </div>
+        <div className="w-full bg-[#F8F7F3] flex justify-center items-center py-10 font-inter">
+            {loading ? (
+                <div className="flex items-center justify-center h-screen">
+                    <ClipLoader size={50} color="#4A90E2" />
+                </div>
+            ) : (
+                <div className="w-11/12 shadow-retro rounded-lg">
+                    <Slider {...settings}>
+                        {carouselData.map((item, index) => (
+                            <Card
+                                key={index}
+                                heading={item.heading}
+                                description={item.description}
+                                link={item.link}
+                                image={item.image}
+                            />
+                        ))}
+                    </Slider>
+                </div>
+            )}
         </div>
     );
 };
 
-
-
-
 interface CardProps {
     heading: string;
     description: string;
-    client: string;
+    link: string;
+    image: any | null;
 }
 
-const Card: React.FC<CardProps> = ({ heading, description, client }) => {
+const Card: React.FC<CardProps> = ({ heading, description, link, image }) => {
     return (
         <motion.div
-            className="relative rounded-lg h-screen bg-white shadow-lg hover:shadow-2xl overflow-hidden transform transition duration-300"
+            className="relative rounded-lg h-screen bg-[#F8F7F3] shadow-lg hover:shadow-2xl overflow-hidden transform transition duration-300"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
         >
             <div className="flex flex-col md:flex-row h-full">
                 {/* Left Side: Image */}
-                <div
-                    className="w-full md:w-2/5 flex-shrink-0"
-                >
+                <div className=" md:w-2/5 flex-shrink-0 flex justify-center items-center">
                     <img
-                        src={profile2}
+                        src={image}
                         alt="Project Image"
-                        className="object-cover h-64 w-full md:h-full"
+                        className="h-full rounded-md object-cover"
                     />
                 </div>
 
                 {/* Right Side: Content */}
                 <div className="">
-                    {/* Content Section with Scroll */}
                     <div className="p-3 h-[90%] overflow-y-auto no-scrollbar">
                         <h2 className="text-xl font-bold text-gray-800 mb-3 font-rubik">
                             {heading}
                         </h2>
-                        <p className="text-gray-600 mb-4 font-rubik text-justify">{description}</p>
-                        <p className="text-gray-500 text-sm mb-6">
-                            <span className="font-bold text-gray-700">Client:</span> {client}
+                        <p className="text-black mb-4 font-rubik text-justify">
+                            {description}
                         </p>
                     </div>
-                    {/* Fixed Button */}
                     <motion.div
-                        className="self-start ml-5 w-fit bg-gray-900 text-white px-6 py-3 rounded-lg cursor-pointer font-ubuntu hover:bg-gray-700"
+                        onClick={() => window.open(link, "_blank")}
+                        className="self-start ml-5 w-fit space-x-3 flex items-center justify-center bg-gray-900 text-white px-6 py-3 rounded-lg cursor-pointer font-ubuntu hover:bg-gray-700"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        View Case Study
+                        <FaGithub size={25} className="inline" />
+                        <span> GitHub Link</span>
                     </motion.div>
                 </div>
             </div>
         </motion.div>
     );
 };
-
-
 
 export default CarouselCard;
