@@ -52,8 +52,8 @@ const App: React.FC = () => {
 
   return (
     <div
-      ref={componentRef}
-      className="min-h-screen relative overflow-hidden py-12"
+      ref={componentRef} id="experience"
+      className="min-h-screen  bg-[#F8F7F3] relative overflow-hidden"
     >
       <ExperienceCard />
     </div>

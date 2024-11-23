@@ -32,7 +32,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
     return (
         <VerticalTimelineElement
             contentStyle={{
-                background: isLightMode ? "#F8F7F3" : "#232631", // Updated to match the background color from the header
+                background: isLightMode ? "#fff" : "#232631", // Updated to match the background color from the header
                 color: isLightMode ? "#333" : "#fff",
             }}
             contentArrowStyle={{
@@ -113,7 +113,7 @@ const Experience = () => {
 
     return (
         <>
-            <VerticalTimeline lineColor="red">
+            <VerticalTimeline lineColor="green">
                 {experiences.map((experience, index) => (
                     <ExperienceCard
                         key={`experience-${index}`}

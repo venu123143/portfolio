@@ -2,6 +2,7 @@ import React from 'react'
 import Home from '../components/Home'
 import Header from '../components/Header'
 import Experience from '../components/Experience'
+import Projects from '../components/Projects'
 import Cards from '../components/Cards'
 import WaveHeader from '../ui/WaveHeader';
 
@@ -17,6 +18,7 @@ const Portfolio = () => {
             <Home />
             <Cards />
             <Experience />
+            <Projects />
         </div>
     )
 }

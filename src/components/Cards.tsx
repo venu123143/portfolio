@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaUserGraduate, FaUserCog, FaUserTie } from 'react-icons/fa';
+import { FaNode, FaReact, FaCubes } from 'react-icons/fa';
+import { SiMongodb, SiMysql, SiPostgresql, SiTypescript } from 'react-icons/si';
 
 interface PortfolioItem {
   title: string;
@@ -11,43 +12,46 @@ interface PortfolioItem {
 
 const portfolioData: PortfolioItem[] = [
   {
-    title: 'Visual Designer',
-    subtitle: 'A visual designer designs for a variety of platforms, which may include internet and internet sites, games, movies.',
-    icon: <FaUserGraduate size={24} />,
-    color: 'bg-yellow-500',
-  },
-  {
-    title: 'UI/UX Designer',
-    subtitle: 'User interface design is about engineering the design of user interfaces for software and devices such as mobile.',
-    icon: <FaUserCog size={24} />,
+    title: 'Node.js Developer',
+    subtitle: 'Expert in building scalable backend solutions using Node.js with RESTful APIs, WebSocket, and Express.',
+    icon: <FaNode size={30} />,
     color: 'bg-green-500',
-
   },
   {
-    title: 'Sr. Product Designer',
-    subtitle: 'Prod Product Photography Canada. Large Selection. Always Sale. Prices, Full Offer. Save Online.',
-    icon: <FaUserTie size={24} />,
+    title: 'React.js Developer',
+    subtitle: 'Specialized in creating dynamic, responsive web applications with React.js and hooks, ensuring optimal user experience.',
+    icon: <FaReact size={24} />,
     color: 'bg-blue-500',
   },
   {
-    title: 'Graphic Designer',
-    subtitle: 'Responsible for creating visual concepts, by hand or using computer software, to communicate ideas that inspire, inform, and captivate consumers.',
-    icon: <FaUserGraduate size={24} />,
-    color: 'bg-blue-500',
-
+    title: 'TypeScript Enthusiast',
+    subtitle: 'Proficient in using TypeScript to build robust, type-safe applications, improving maintainability and reducing runtime errors.',
+    icon: <SiTypescript size={24} />,
+    color: 'bg-yellow-400',
+  },
+  // {
+  //   title: 'Microservices Architect',
+  //   subtitle: 'Skilled in designing and implementing distributed systems with Node.js, Docker, and Kubernetes for high scalability.',
+  //   icon: <FaCubes size={24} />,
+  //   color: 'bg-yellow-500',
+  // },
+  {
+    title: 'MongoDB Specialist',
+    subtitle: 'Experienced in designing and managing NoSQL databases, optimizing queries, and scaling applications with MongoDB.',
+    icon: <SiMongodb size={24} />,
+    color: 'bg-black',
   },
   {
-    title: 'UX Researcher',
-    subtitle: 'Conduct user research to understand user needs, behaviors, and pain points, and use that information to inform the design process.',
-    icon: <FaUserCog size={24} />,
-    color: 'bg-purple-500',
-
-  },
-  {
-    title: 'Art Director',
-    subtitle: 'Oversee the creative direction and visual style of a project, ensuring that the overall aesthetic is cohesive and on-brand.',
-    icon: <FaUserTie size={24} />,
+    title: 'MySQL Developer',
+    subtitle: 'Expert in relational database management, schema design, and query optimization using MySQL.',
+    icon: <SiMysql size={24} />,
     color: 'bg-red-500',
+  },
+  {
+    title: 'PostgreSQL Developer',
+    subtitle: 'Proficient in building and managing advanced database systems with PostgreSQL, including complex query writing and performance tuning.',
+    icon: <SiPostgresql size={24} />,
+    color: 'bg-indigo-600',
   },
 ];
 
@@ -64,15 +68,15 @@ const PortfolioItem = ({ title, subtitle, icon, color }: PortfolioItem) => {
         className={`absolute top-0 bottom-0 left-0 w-2 rounded-l-lg ${color}`}
       ></div>
       <div className="bg-gray-100 rounded-full p-4 mb-4">{icon}</div>
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-gray-600 text-center">{subtitle}</p>
+      <h3 className="text-xl font-rubik font-bold mb-2">{title}</h3>
+      <p className="text-black/60 font-ubuntu text-center">{subtitle}</p>
     </motion.div>
   );
 };
 
 const Portfolio = () => {
   return (
-    <div className="bg-[#F8F7F3] py-16">
+    <div id="skills" className="bg-[#F8F7F3] py-16">
       <div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {portfolioData.map((item, index) => (
           <PortfolioItem key={index} {...item} />

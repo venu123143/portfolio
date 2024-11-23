@@ -4,8 +4,28 @@ import profile2 from "../assets/profile2.png";
 import { ReactTyped } from "react-typed";
 
 const Home: React.FC = () => {
+    const socialLinks = [
+        {
+            href: "https://github.com/venu123143",
+            imgSrc: "https://cdn-icons-png.flaticon.com/512/25/25231.png",
+            alt: "GitHub",
+            label: "GitHub",
+        },
+        {
+            href: "https://x.com/venu_reddy_9493",
+            imgSrc: "https://cdn-icons-png.flaticon.com/512/733/733579.png",
+            alt: "Twitter",
+            label: "Twitter",
+        },
+        {
+            href: "https://www.linkedin.com/in/venu-reddy-a226881b6/",
+            imgSrc: "https://cdn-icons-png.flaticon.com/512/145/145807.png",
+            alt: "LinkedIn",
+            label: "LinkedIn",
+        },
+    ];
     return (
-        <div className="bg-[#F8F7F3] min-h-screen shadow-card rounded-xl p-8 flex flex-col items-center md:flex-row">
+        <div id="home" className="bg-[#F8F7F3] min-h-screen shadow-card rounded-xl p-8 flex flex-col items-center md:flex-row">
             {/* Left Section */}
             <div className="flex flex-col md:flex-row items-center w-full md:w-3/4">
 
@@ -29,12 +49,12 @@ const Home: React.FC = () => {
                             />
                         </span>
                     </h2>
-                    <p className="mt-2 font-rubik">
+                    <p className="mt-2 font-edu font-medium">
                         Having more than 2 years of experience in web development.
                     </p>
 
                     <a target="_blank" href="https://www.canva.com/design/DAFj-JlZs_I/lYKRtoro-a54diJcflWvuA/view?utm_content=DAFj-JlZs_I&utm_campaign=designshare&utm_medium=link&utm_source=editor"
-                        className="px-8 py-3 block w-fit bg-gradient-to-r from-[#4A90E2] to-[#007AFF] text-white font-medium text-lg rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300"
+                        className="px-8 py-3 block w-fit bg-gradient-to-r from-[#4A90E2] to-[#007AFF] text-white font-rubik font-medium text-lg rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300"
                     >
                         Hire Me
                     </a>
@@ -86,56 +106,18 @@ const Home: React.FC = () => {
                         className="flex flex-col space-y-4"
                     >
                         {/* Social Media Links */}
-                        <a
-                            href="https://www.linkedin.com/in/venu-reddy-a226881b6/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="relative flex items-center space-x-3 p-3 bg-white rounded-lg shadow hover:shadow-lg transition duration-300 ease-in-out overflow-hidden group"
-                        >
-                            {/* Gradient Background */}
-                            <span
-                                className="absolute inset-0 bg-gradient-to-tr from-yellow-500 to-yellow-300 w-0 group-hover:w-full transition-all duration-500 ease-in-out"
-                                style={{
-                                    height: "100%",
-                                    left: "0",
-                                    top: "0",
-                                }}
-                            />
-                            <img
-                                src="https://cdn-icons-png.flaticon.com/512/145/145807.png"
-                                alt="LinkedIn"
-                                className="w-6 h-6 z-10"
-                            />
-                            <span className="text-[#286F6B] font-edu font-medium z-10">LinkedIn</span>
-                        </a>
-
-                        <a
-                            href="https://github.com/venu123143"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow hover:shadow-lg transition duration-300 ease-in-out"
-                        >
-                            <img
-                                src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
-                                alt="GitHub"
-                                className="w-6 h-6"
-                            />
-                            <span className="text-[#286F6B] font-edu font-medium">GitHub</span>
-                        </a>
-
-                        <a
-                            href="https://x.com/venu_reddy_9493"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow hover:shadow-lg transition duration-300 ease-in-out"
-                        >
-                            <img
-                                src="https://cdn-icons-png.flaticon.com/512/733/733579.png"
-                                alt="Twitter"
-                                className="w-6 h-6"
-                            />
-                            <span className="text-[#286F6B] font-edu font-medium">Twitter</span>
-                        </a>
+                        {socialLinks.map((link, index) => (
+                            <a
+                                key={index}
+                                href={link.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow hover:shadow-lg transition duration-300 ease-in-out"
+                            >
+                                <img src={link.imgSrc} alt={link.alt} className="w-6 h-6" />
+                                <span className="text-[#286F6B] font-edu font-medium">{link.label}</span>
+                            </a>
+                        ))}
                     </div>
                 </div>
                 {/* Your content here */}

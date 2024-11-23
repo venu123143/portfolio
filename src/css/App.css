@@ -1,0 +1,19 @@
+
+.slick-prev:before,
+.slick-next:before {
+    color: black;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+	height: 8px;
+	width: 8px;
+}
+
+/* / Track / */
+.custom-scrollbar::-webkit-scrollbar-track {
+	background: #131c21;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+	background-color: #394045;
+}
