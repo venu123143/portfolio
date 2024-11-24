@@ -1,8 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaNode, FaReact, FaCubes } from 'react-icons/fa';
-import { SiMongodb, SiMysql, SiPostgresql, SiTypescript } from 'react-icons/si';
-
+import { SiMongodb, SiSocketdotio, SiMysql, SiWebrtc, SiPostgresql, SiTypescript } from 'react-icons/si';
 interface PortfolioItem {
   title: string;
   subtitle: string;
@@ -20,38 +19,50 @@ const portfolioData: PortfolioItem[] = [
   {
     title: 'React.js Developer',
     subtitle: 'Specialized in creating dynamic, responsive web applications with React.js and hooks, ensuring optimal user experience.',
-    icon: <FaReact size={24} />,
+    icon: <FaReact size={30} />,
     color: 'bg-blue-500',
   },
   {
     title: 'TypeScript Enthusiast',
     subtitle: 'Proficient in using TypeScript to build robust, type-safe applications, improving maintainability and reducing runtime errors.',
-    icon: <SiTypescript size={24} />,
+    icon: <SiTypescript size={30} />,
     color: 'bg-yellow-400',
   },
-  // {
-  //   title: 'Microservices Architect',
-  //   subtitle: 'Skilled in designing and implementing distributed systems with Node.js, Docker, and Kubernetes for high scalability.',
-  //   icon: <FaCubes size={24} />,
-  //   color: 'bg-yellow-500',
-  // },
   {
     title: 'MongoDB Specialist',
     subtitle: 'Experienced in designing and managing NoSQL databases, optimizing queries, and scaling applications with MongoDB.',
-    icon: <SiMongodb size={24} />,
+    icon: <SiMongodb size={30} />,
     color: 'bg-black',
   },
   {
     title: 'MySQL Developer',
     subtitle: 'Expert in relational database management, schema design, and query optimization using MySQL.',
-    icon: <SiMysql size={24} />,
+    icon: <SiMysql size={30} />,
     color: 'bg-red-500',
   },
   {
     title: 'PostgreSQL Developer',
     subtitle: 'Proficient in building and managing advanced database systems with PostgreSQL, including complex query writing and performance tuning.',
-    icon: <SiPostgresql size={24} />,
+    icon: <SiPostgresql size={30} />,
     color: 'bg-indigo-600',
+  },
+  {
+    title: 'Sequilize Expert',
+    subtitle: 'Skilled in designing and implementing distributed systems with Node.js, Docker, and Kubernetes for high scalability.',
+    icon: <FaCubes size={30} />,
+    color: 'bg-slate-500',
+  },
+  {
+    title: 'Sockets Specialist',
+    subtitle: 'Skilled in designing and implementing distributed systems with Node.js, Docker, and Kubernetes for high scalability.',
+    icon: <SiSocketdotio size={30} />,
+    color: 'bg-green-600',
+  },
+  {
+    title: 'WebRtc Expert',
+    subtitle: 'Skilled in designing and implementing distributed systems with Node.js, Docker, and Kubernetes for high scalability.',
+    icon: <SiWebrtc size={30} />,
+    color: 'bg-red-600',
   },
 ];
 

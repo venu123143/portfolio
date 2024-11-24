@@ -111,7 +111,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ heading, description, link, image }) => {
     return (
-        <motion.div
+        <motion.div id="projects"
             className="relative rounded-lg h-screen bg-[#F8F7F3] shadow-lg hover:shadow-2xl overflow-hidden transform transition duration-300"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}

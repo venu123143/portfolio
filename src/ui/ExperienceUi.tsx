@@ -4,8 +4,7 @@ import {
     VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { CiLocationArrow1, CiMail, CiHeadphones, CiGps } from "react-icons/ci";
-import { motion } from "framer-motion";
+import { CiLocationArrow1, CiGps } from "react-icons/ci";
 
 // Define the type for an experience object
 interface Experience {
@@ -51,7 +50,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
             <div>
                 <h3
                     className={`${isLightMode ? "text-gray-800" : "text-white"
-                        } text-[24px] font-noto font-[700]`}
+                        } text-[24px] font-rubik font-[700]`}
                 >
                     {experience.title}
                 </h3>
@@ -64,7 +63,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
                 </p>
             </div>
 
-            <ul className="mt-5 list-disc ml-5 space-y-2">
+            <ul className="mt-5 list-disc text-justify ml-5 space-y-2">
                 {experience.points.map((point, index) => (
                     <li
                         key={`experience-point-${index}`}

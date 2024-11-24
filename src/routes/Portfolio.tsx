@@ -1,9 +1,9 @@
-import React from 'react'
 import Home from '../components/Home'
 import Header from '../components/Header'
 import Experience from '../components/Experience'
 import Projects from '../components/Projects'
 import Cards from '../components/Cards'
+import Contact from '../components/Contact'
 import WaveHeader from '../ui/WaveHeader';
 
 
@@ -19,6 +19,7 @@ const Portfolio = () => {
             <Projects />
             <Cards />
             <Experience />
+            <Contact />
         </div>
     )
 }
