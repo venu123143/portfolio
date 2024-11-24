@@ -73,7 +73,7 @@ const ContactSection: React.FC = () => {
     ];
 
     return (
-        <div className="bg-[#F8F7F3] p-8 w-full">
+        <div id='contactme' className="bg-[#F8F7F3] p-8 w-full">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-12">
                     <h1 className="text-4xl font-semibold mb-4">Contact Information</h1>

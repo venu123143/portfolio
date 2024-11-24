@@ -5,9 +5,11 @@ import { FaArrowLeft, FaArrowRight, FaGithub } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ClipLoader from "react-spinners/ClipLoader"; // Install: npm install react-spinners
-
+import { Link } from "react-router-dom";
 import whatsapp from "../assets/whatsapp.png";
 import amazon from "../assets/amazon.png";
+import { LuExternalLink } from "react-icons/lu";
+
 
 const CarouselCard: React.FC = () => {
     const [loading, setLoading] = useState(true);
@@ -22,6 +24,7 @@ const CarouselCard: React.FC = () => {
             experience. The app's design is responsive and user-friendly, utilizing Tailwind CSS for
             styling and React for dynamic front-end interaction.`,
             link: "https://github.com/venu123143/whatsapp/",
+            url: "https://whatsapp-mongo.onrender.com/",
             image: whatsapp,
         },
         {
@@ -30,6 +33,7 @@ const CarouselCard: React.FC = () => {
             Amazon's core functionalities. Designed with React, Vite, and TypeScript, this e-commerce 
             platform offers a seamless online shopping experience.`,
             link: "https://github.com/venu123143/amazon_front",
+            url: "https://amazon-clone-wtj7.onrender.com/",
             image: amazon,
         },
     ];
@@ -93,6 +97,7 @@ const CarouselCard: React.FC = () => {
                                 description={item.description}
                                 link={item.link}
                                 image={item.image}
+                                url={item.url}
                             />
                         ))}
                     </Slider>
@@ -107,9 +112,10 @@ interface CardProps {
     description: string;
     link: string;
     image: any | null;
+    url: string | null;
 }
 
-const Card: React.FC<CardProps> = ({ heading, description, link, image }) => {
+const Card: React.FC<CardProps> = ({ heading, description, link, image, url }) => {
     return (
         <motion.div id="projects"
             className="relative rounded-lg h-screen bg-[#F8F7F3] shadow-lg hover:shadow-2xl overflow-hidden transform transition duration-300"
@@ -137,15 +143,21 @@ const Card: React.FC<CardProps> = ({ heading, description, link, image }) => {
                             {description}
                         </p>
                     </div>
-                    <motion.div
-                        onClick={() => window.open(link, "_blank")}
-                        className="self-start ml-5 w-fit space-x-3 flex items-center justify-center bg-gray-900 text-white px-6 py-3 rounded-lg cursor-pointer font-ubuntu hover:bg-gray-700"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        <FaGithub size={25} className="inline" />
-                        <span> GitHub Link</span>
-                    </motion.div>
+                    <div className="flex ">
+                        <Link to={link} target="_blank" rel="noopener noreferrer"
+                            className="self-start ml-5 w-fit space-x-3 flex items-center justify-center bg-gray-900 text-white px-6 py-3 rounded-lg cursor-pointer font-ubuntu hover:bg-zinc-950">
+                            <FaGithub size={25} className="inline" />
+                            <span> GitHub Link</span>
+                        </Link>
+                        {
+                            url &&
+                            <Link to={url} target="_blank" rel="noopener noreferrer"
+                                className="self-start ml-5 w-fit space-x-3 flex items-center justify-center bg-zinc-900 shadow-lg hover:bg-gray-900 text-white px-6 py-3 rounded-lg cursor-pointer font-ubuntu">
+                                <LuExternalLink size={22} className="inline" />
+                                <span> Live url </span>
+                            </Link>
+                        }
+                    </div>
                 </div>
             </div>
         </motion.div>

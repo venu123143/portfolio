@@ -12,7 +12,7 @@ import WaveHeader from '../ui/WaveHeader';
             </svg> */}
 const Portfolio = () => {
     return (
-        <div className='relative'>
+        <div className='relative '>
             <WaveHeader />
             <Header />
             <Home />
