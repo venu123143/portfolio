@@ -16,13 +16,18 @@ const CarouselCard: React.FC = () => {
 
     const carouselData = [
         {
-            heading: "Title: WhatsApp Clone - Real-Time Messaging App with Modern Features",
+            heading: "Title: WhatsApp Clone - Real Time Messaging App with Modern Features",
             description: `This WhatsApp Clone is a feature-rich messaging application designed with 
             a modern technology stack. It mirrors WhatsApp's core functionalities, offering secure user
-            authentication, real-time chat, and media-sharing capabilities. With both one-on-one and
-            group video call functionality powered by WebRTC, it delivers a seamless communication 
-            experience. The app's design is responsive and user-friendly, utilizing Tailwind CSS for
-            styling and React for dynamic front-end interaction.`,
+            authentication, real-time chat, and media-sharing capabilities.`,
+            bulletPoints: [
+                "Full-stack implementation with modern tech stack like React, Nodejs, Express, MongoDB.",
+                "Secure user authentication using OTP.",
+                "Real-time chat functionality with Sockets using socket.io.",
+                "One-on-one video calls with WebRTC.",
+                "Responsive design using Tailwind CSS.",
+                "Chat functionalities including user profile, group chats, individual chats, media sharing (photos, voice recordings), message replies, editing, and deletion.",
+            ],
             link: "https://github.com/venu123143/whatsapp/",
             url: "https://whatsapp-mongo.onrender.com/",
             image: whatsapp,
@@ -32,11 +37,27 @@ const CarouselCard: React.FC = () => {
             description: `This Amazon Clone is a full-stack e-commerce platform that replicates 
             Amazon's core functionalities. Designed with React, Vite, and TypeScript, this e-commerce 
             platform offers a seamless online shopping experience.`,
+            bulletPoints: [
+                "Full-stack implementation with modern tech stack like React, Nodejs, Express, MongoDB.",
+                "User-friendly UI with advanced filtering and sorting.",
+                "User authentication with options for login, register, Google login, and OTP login.",
+                "Secure payment integration.",
+                "Add items to your shopping cart.",
+                "Place and manage orders.",
+                "Enjoy a responsive and user-friendly design.",
+                "Switch between Dark Mode, Light Mode, or System Default.",
+                "Search for products with an intuitive search functionality.",
+                "Filter products based on various criteria for a personalized shopping experience.",
+                "Ensure a responsive design that works seamlessly on all devices.",
+                "Streamlined checkout process with Razorpay integration for secure payments.",
+                "Engage with insightful blogs to stay updated on the latest trends and product information.",
+            ],
             link: "https://github.com/venu123143/amazon_front",
             url: "https://amazon-clone-wtj7.onrender.com/",
             image: amazon,
         },
     ];
+
 
     const PrevArrow = (props: any) => {
         const { onClick } = props;
@@ -98,6 +119,7 @@ const CarouselCard: React.FC = () => {
                                 link={item.link}
                                 image={item.image}
                                 url={item.url}
+                                bulletPoints={item.bulletPoints}
                             />
                         ))}
                     </Slider>
@@ -113,9 +135,11 @@ interface CardProps {
     link: string;
     image: any | null;
     url: string | null;
+    bulletPoints?: string[]; // Optional array of bullet points
 }
 
-const Card: React.FC<CardProps> = ({ heading, description, link, image, url }) => {
+
+const Card: React.FC<CardProps> = ({ heading, description, link, image, url, bulletPoints }) => {
     return (
         <motion.div id="projects"
             className="relative rounded-lg h-screen bg-[#F8F7F3] shadow-lg hover:shadow-2xl overflow-hidden transform transition duration-300"
@@ -129,12 +153,12 @@ const Card: React.FC<CardProps> = ({ heading, description, link, image, url }) =
                     <img
                         src={image}
                         alt="Project Image"
-                        className="h-full rounded-md object-cover"
+                        className="h-full object-cover"
                     />
                 </div>
 
                 {/* Right Side: Content */}
-                <div className="">
+                <div className="h-full">
                     <div className="p-3 h-[90%] overflow-y-auto no-scrollbar">
                         <h2 className="text-xl font-bold text-gray-800 mb-3 font-rubik">
                             {heading}
@@ -142,6 +166,13 @@ const Card: React.FC<CardProps> = ({ heading, description, link, image, url }) =
                         <p className="text-black mb-4 font-rubik text-justify">
                             {description}
                         </p>
+                        {bulletPoints && bulletPoints.length > 0 && (
+                            <ul className="list-disc pl-6 mb-4 space-y-2 font-rubik text-black">
+                                {bulletPoints.map((point, index) => (
+                                    <li key={index}>{point}</li>
+                                ))}
+                            </ul>
+                        )}
                     </div>
                     <div className="flex ">
                         <Link to={link} target="_blank" rel="noopener noreferrer"

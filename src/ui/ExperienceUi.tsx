@@ -83,22 +83,23 @@ const Experience = () => {
 
     const experiences = [
         {
-            date: "Jan 2022 - Present",
-            title: "Software Engineer",
-            company_name: "Tech Solutions Ltd.",
+            date: "Jul 2023 - Present",
+            title: "Associate Software Engineer",
+            company_name: "Ahex Technologies.",
             icon: <CiLocationArrow1 />,
             iconBg: "#FDC435", // Background color for the icon (can be customized)
             points: [
-                "Developed and maintained web applications using React and Node.js.",
-                "Collaborated with cross-functional teams to implement new features.",
+                "Expertise in Node.js and React.js. Worked with REST APIs, GraphQL , Sockets etc.",
                 "Optimized application performance by refactoring code and improving algorithms.",
-                "Led the migration of legacy systems to microservices architecture."
+                "Worked with multiple databases like MySql, Postgres, Mongodb and Redis.",
+                "Worked with Sequelize ORM in multiple projects.",
+                "Used TypeScript in every project.",
             ],
         },
         {
-            date: "Sep 2019 - Dec 2021",
-            title: "Frontend Developer",
-            company_name: "Creative Tech Studios",
+            date: "Sep 2017 - Mar 2022",
+            title: "Bachelor of Engineering (B.E)",
+            company_name:  "Saveetha School of Engineering",
             icon: <CiGps />,
             iconBg: "#4CAF50", // Background color for the icon (can be customized)
             points: [
