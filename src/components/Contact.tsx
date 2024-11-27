@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Mail, Globe, Twitter, Linkedin, MapPin, Phone, ChevronRight } from 'lucide-react';
+import { Mail, Globe, Twitter, Linkedin, MapPin, Phone, ChevronRight, ChevronLeft } from 'lucide-react';
 import { motion } from "framer-motion";
 
 const ContactSection: React.FC = () => {
@@ -57,12 +57,14 @@ const ContactSection: React.FC = () => {
 
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     const [showRightArrow, setShowRightArrow] = useState(false);
+    const [showLeftArrow, setShowLeftArrow] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
             if (scrollContainerRef.current) {
                 const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-                setShowRightArrow(scrollLeft + clientWidth < scrollWidth - 10); // Show arrow if not fully scrolled
+                setShowRightArrow(scrollLeft + clientWidth < scrollWidth - 10); // Show right arrow if not fully scrolled
+                setShowLeftArrow(scrollLeft > 10); // Show left arrow if scrolled past the start
             }
         };
 
@@ -86,15 +88,41 @@ const ContactSection: React.FC = () => {
         }
     };
 
+    const scrollLeft = () => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollBy({
+                left: -600, // Adjust the scroll amount
+                behavior: 'smooth',
+            });
+        }
+    };
+
     return (
         <div id="contactme" className="bg-[#F8F7F3] p-8 w-full relative">
-            <div className="max-w-6xl mx-auto">
+            <div className=" mx-auto">
                 <div className="text-center mb-12">
                     <h1 className="text-4xl font-semibold mb-4">Contact Information</h1>
                     <p className="text-gray-600">Here's how you can reach us.</p>
                 </div>
 
                 <div className="relative">
+                    {showLeftArrow && (
+                        <motion.div
+                            initial={{ opacity: 0, x: -100 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -100 }}
+                            transition={{ duration: 0.3 }}
+                            className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10"
+                        >
+                            <button
+                                onClick={scrollLeft}
+                                className="bg-blue-500 text-white rounded-full p-3 shadow-lg hover:bg-blue-600 transition duration-300"
+                            >
+                                <ChevronLeft className="w-6 h-6" />
+                            </button>
+                        </motion.div>
+                    )}
+
                     <div
                         ref={scrollContainerRef}
                         className="flex overflow-x-auto pb-6 gap-6 snap-x snap-mandatory no-scrollbar"
@@ -131,30 +159,23 @@ const ContactSection: React.FC = () => {
                             </div>
                         ))}
                     </div>
-                    <motion.div
-                        initial={{ opacity: 0, x: 100 }}
-                        animate={{ opacity: 1, x: [0, 20, 0] }} // Animates left and right
-                        exit={{ opacity: 0, x: 100 }}
-                        transition={{
-                            duration: 0.5, // Duration for fade-in
-                            x: {
-                                duration: 1.5, // Duration for the left-right animation
-                                repeat: Infinity, // Loops indefinitely
-                                repeatType: "loop", // Restarts the animation after each cycle
-                                ease: "easeInOut", // Smooth easing
-                            },
-                        }}
-                    >
-                        {showRightArrow && (
+
+                    {showRightArrow && (
+                        <motion.div
+                            initial={{ opacity: 0, x: 100 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 100 }}
+                            transition={{ duration: 0.3 }}
+                            className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10"
+                        >
                             <button
                                 onClick={scrollRight}
-                                className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-blue-500 text-white rounded-full p-3 shadow-lg hover:bg-blue-600 transition duration-300"
+                                className="bg-blue-500 text-white rounded-full p-3 shadow-lg hover:bg-blue-600 transition duration-300"
                             >
                                 <ChevronRight className="w-6 h-6" />
                             </button>
-                        )}
-                    </motion.div>
-
+                        </motion.div>
+                    )}
                 </div>
             </div>
         </div>
