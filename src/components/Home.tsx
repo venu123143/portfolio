@@ -49,7 +49,7 @@ const Home: React.FC = () => {
                             />
                         </span>
                     </h2>
-                    <p className="mt-2 font-edu font-medium">
+                    <p className="mt-2 font-edu  text-lg font-medium">
                         Having more than 2 years of experience in web development.
                     </p>
 
