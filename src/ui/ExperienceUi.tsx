@@ -97,9 +97,9 @@ const Experience = () => {
             ],
         },
         {
-            date: "Sep 2017 - Mar 2022",
-            title: "Bachelor of Engineering (B.E)",
-            company_name:  "Saveetha School of Engineering",
+            date: "Sep 2022 - Mar 2023",
+            title: "Software Developer Intern",
+            company_name:  "Jspiders bangalore",
             icon: <CiGps />,
             iconBg: "#4CAF50", // Background color for the icon (can be customized)
             points: [
