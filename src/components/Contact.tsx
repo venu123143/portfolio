@@ -1,5 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Mail, Globe, Twitter, Linkedin, MapPin, Phone, ChevronRight, ChevronLeft } from 'lucide-react';
+import { FaXTwitter } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa";
+
+import { Mail, Globe, MapPin, Phone, ChevronRight, ChevronLeft } from 'lucide-react';
 import { motion } from "framer-motion";
 
 const ContactSection: React.FC = () => {
@@ -28,14 +31,14 @@ const ContactSection: React.FC = () => {
             link: `https://${contactInfo.website}`,
         },
         {
-            icon: <Twitter className="w-8 h-8" />,
+            icon: <FaXTwitter className="w-8 h-8" />,
             title: "Twitter",
             subtitle: "Follow us on Twitter",
             linkText: contactInfo.twitter,
             link: `https://twitter.com/${contactInfo.twitter.replace('@', '')}`,
         },
         {
-            icon: <Linkedin className="w-8 h-8" />,
+            icon: <FaLinkedin className="w-8 h-8" />,
             title: "LinkedIn",
             subtitle: "Connect with us on LinkedIn",
             linkText: contactInfo.linkedin,

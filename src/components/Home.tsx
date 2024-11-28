@@ -36,7 +36,7 @@ const Home: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeInOut" }}
                 >
-                    <h2 className="text-4xl font-sans font-bold text-textPrimary">
+                    <h2 className="text-3xl font-sans font-bold text-textPrimary">
                         Hey There, <br /> I'm {" "}
                         <span className="text-accent">
                             <ReactTyped
@@ -49,7 +49,7 @@ const Home: React.FC = () => {
                             />
                         </span>
                     </h2>
-                    <p className="mt-2 font-edu  text-lg font-medium">
+                    <p className="mt-2 font-edu  text-md font-medium">
                         Having more than 2 years of experience in web development.
                     </p>
 
@@ -95,13 +95,12 @@ const Home: React.FC = () => {
             </div>
 
             {/* Right Section */}
-
             <motion.div
                 initial={{ x: "100vw" }}
                 animate={{ x: 0 }}
                 transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
             >
-                <div className="mt-10 md:mt-0 md:ml-10 flex flex-col items-center md:items-start w-full">
+                <div className="mt-10 md:mt-0 md:ml-10 flex flex-col items-center md:items-end w-full">
                     <div
                         className="flex flex-col space-y-4"
                     >

@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { IoCallOutline } from "react-icons/io5";
+import { motion } from "framer-motion";
+import { IoCallOutline, IoCopy } from "react-icons/io5";
 
 const Header: React.FC = () => {
     const [hasShadow, setHasShadow] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
+    const phoneNumber = "+91 80089 52100";
+    const handleCopy = () => {
+        navigator.clipboard.writeText(phoneNumber);
+        alert("Phone number copied to clipboard!");
+    };
+
     const [activeLink, setActiveLink] = useState<string>("services"); // State to track active link
 
     useEffect(() => {
@@ -64,11 +72,25 @@ const Header: React.FC = () => {
 
                 {/* Contact Section */}
                 <div className="flex items-center space-x-3">
-                    <p className="font-edu font-medium">+91 80089 52100</p>
-                    <button className="p-2 bg-gradient-to-br from-orange-500 via-white/30 to-green-600 rounded-full">
-                        {/* 📞 */}
-                        <IoCallOutline />
-                    </button>
+                    <p className="font-edu font-medium">{phoneNumber}</p>
+                    <motion.div
+                        className="relative"
+                        onHoverStart={() => setIsHovered(true)}
+                        onHoverEnd={() => setIsHovered(false)}
+                    >
+                        <motion.button
+                            // initial={{ rotateY: 0 }}
+                            onClick={handleCopy}
+                            animate={{ rotateY: isHovered ? 180 : 0 }}
+                            transition={{ duration: 0.5, ease: "easeInOut" }} // Slower flip
+                            className={`p-2 rounded-full flex justify-center items-center ${isHovered
+                                ? "bg-white text-black"
+                                : "bg-gradient-to-br from-orange-500 via-white/30 to-green-600"
+                                }`}
+                        >
+                            {!isHovered ? <IoCallOutline /> : <IoCopy />}
+                        </motion.button>
+                    </motion.div>
                 </div>
             </div>
         </header>
