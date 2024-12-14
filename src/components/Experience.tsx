@@ -34,6 +34,8 @@ const Experience: React.FC = () => {
       ref={componentRef} id="experience"
       className="min-h-screen  bg-[#F8F7F3] relative overflow-hidden"
     >
+      <h2 className="page_title">Experience</h2>
+
       <ExperienceCard />
     </div>
   );

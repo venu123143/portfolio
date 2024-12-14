@@ -8,6 +8,8 @@ import ClipLoader from "react-spinners/ClipLoader"; // Install: npm install reac
 import { Link } from "react-router-dom";
 import whatsapp from "../assets/whatsapp.png";
 import amazon from "../assets/amazon.png";
+import thapala from "../assets/thapala.png";
+import taso from "../assets/taso.png";
 import { LuExternalLink } from "react-icons/lu";
 
 
@@ -31,6 +33,7 @@ const CarouselCard: React.FC = () => {
             link: "https://github.com/venu123143/whatsapp/",
             url: "https://whatsapp-mongo.onrender.com/",
             image: whatsapp,
+            className: "h-full object-cover"
         },
         {
             heading: "Title: Amazon Clone - Your Ultimate E-Commerce Platform",
@@ -55,6 +58,50 @@ const CarouselCard: React.FC = () => {
             link: "https://github.com/venu123143/amazon_front",
             url: "https://amazon-clone-wtj7.onrender.com/",
             image: amazon,
+            className: "h-full object-cover"
+        },
+        {
+            heading: "Title: Thapala - Your Internal Email Communication Solution",
+            description: `Thapala is a streamlined email application designed for internal communication. 
+            It allows users to send, receive, and draft emails seamlessly within the application using a unique 
+            10-digit tCode as the email address. Built on a robust Node.js backend with MySQL database support.`,
+            bulletPoints: [
+                "Robust backend powered by Node.js and MySQL for reliability and scalability.",
+                "Used the sockets to send the email in real time.",
+                "Implemented funcnality like Send, receive, Schedule and draft email securely.",
+                "Save images and files in the secure vault for easy access and management.",
+                "Create labels like Gmail to organize emails into categories such as study, office, and personal.",
+                "Design and use templates to draft or send emails efficiently.",
+                "Customizable user settings, including dark mode, light mode, and system default themes.",
+                "Advanced search and filtering for finding specific emails quickly.",
+                "Real-time notifications for new emails and updates.",
+            ],
+            link: "https://github.com/shivam-ahex/Thapala_backend/tree/development",
+            url: "https://tapp.ahexlab.com/#/",
+            image: thapala,
+            className: "h-full object-fit h-auto"
+        },
+        {
+            heading: "Title: Taso - A Social Media Platform for Traders",
+            description: `Taso is a robust and collaborative social media application designed specifically for traders. 
+            It empowers users to connect, share, and learn within a thriving community of like-minded individuals. 
+            With Taso, you can engage in meaningful discussions, create focused groups, and access valuable mentorship 
+            programs tailored to your trading journey.`,
+            bulletPoints: [
+                "Individual Messaging: Connect with other traders directly through private one-on-one messages to exchange ideas and insights.",
+                "Group Messaging: Join or create group chats for collective discussions, sharing updates, and brainstorming strategies.",
+                "Clubs: Central hubs for sharing thoughts and ideas. Admins can post updates, share data, and communicate effectively with members.",
+                "Linked Clubs: Unique feature allowing admins to create sub-clubs within a club for specialized discussions.",
+                "Mentorship Programs: Integrated with clubs to enable experienced traders to guide others with videos, educational resources, and strategies.",
+                "Interactive Sessions: Initiate one-on-one video calls or go live to engage followers and other users in real-time discussions.",
+                "Advanced Notifications: Stay updated with real-time alerts for group activities, mentorship updates, and messages.",
+                "Enhanced Search and Filters: Quickly find groups, messages, or posts tailored to your trading interests.",
+                "User Customization: Personalize your experience with dark mode, light mode, and custom notification settings.",
+                "Secure Communication: Built with privacy in mind, ensuring all chats and data are encrypted.",
+            ],
+            url: "https://tasosolutions.in",
+            image: taso,
+            className: "h-full object-cover"
         },
     ];
 
@@ -103,16 +150,17 @@ const CarouselCard: React.FC = () => {
     }, []);
 
     return (
-        <div className="w-full bg-[#F8F7F3] flex justify-center items-center py-10 font-inter">
+        <div className="w-full bg-[#F8F7F3] flex flex-col justify-center items-center py-10 font-inter">
+            <h2 className="page_title">My Projects</h2>
             {loading ? (
                 <div className="flex items-center justify-center h-screen">
                     <ClipLoader size={50} color="#4A90E2" />
                 </div>
             ) : (
-                <div className="w-11/12 shadow-retro rounded-lg">
+                <div className="w-11/12 border-t-2 border-l-2 shadow-retro rounded-lg">
                     <Slider {...settings}>
                         {carouselData.map((item, index) => (
-                            <Card
+                            <ProjectCard
                                 key={index}
                                 heading={item.heading}
                                 description={item.description}
@@ -120,6 +168,7 @@ const CarouselCard: React.FC = () => {
                                 image={item.image}
                                 url={item.url}
                                 bulletPoints={item.bulletPoints}
+                                className={item.className}
                             />
                         ))}
                     </Slider>
@@ -132,14 +181,15 @@ const CarouselCard: React.FC = () => {
 interface CardProps {
     heading: string;
     description: string;
-    link: string;
+    link?: string;
     image: any | null;
     url: string | null;
-    bulletPoints?: string[]; // Optional array of bullet points
+    bulletPoints?: string[];
+    className: string;
 }
 
 
-const Card: React.FC<CardProps> = ({ heading, description, link, image, url, bulletPoints }) => {
+const ProjectCard: React.FC<CardProps> = ({ heading, description, link, image, url, bulletPoints, className }) => {
     return (
         <motion.div id="projects"
             className="relative rounded-lg h-screen bg-[#F8F7F3] shadow-lg hover:shadow-2xl overflow-hidden transform transition duration-300"
@@ -153,7 +203,7 @@ const Card: React.FC<CardProps> = ({ heading, description, link, image, url, bul
                     <img
                         src={image}
                         alt="Project Image"
-                        className="h-full object-cover"
+                        className={className}
                     />
                 </div>
 
@@ -175,11 +225,14 @@ const Card: React.FC<CardProps> = ({ heading, description, link, image, url, bul
                         )}
                     </div>
                     <div className="flex ">
-                        <Link to={link} target="_blank" rel="noopener noreferrer"
-                            className="self-start ml-5 w-fit space-x-3 flex items-center justify-center bg-gray-900 text-white px-6 py-3 rounded-lg cursor-pointer font-ubuntu hover:bg-zinc-950">
-                            <FaGithub size={25} className="inline" />
-                            <span> GitHub Link</span>
-                        </Link>
+                        {
+                            link &&
+                            <Link to={link} target="_blank" rel="noopener noreferrer"
+                                className="self-start ml-5 w-fit space-x-3 flex items-center justify-center bg-gray-900 text-white px-6 py-3 rounded-lg cursor-pointer font-ubuntu hover:bg-zinc-950">
+                                <FaGithub size={25} className="inline" />
+                                <span> GitHub Link</span>
+                            </Link>
+                        }
                         {
                             url &&
                             <Link to={url} target="_blank" rel="noopener noreferrer"

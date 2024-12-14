@@ -22,3 +22,9 @@
 .shadowcss {
 	filter: drop-shadow(8px 8px 15px #f5efd5);
 }
+
+
+
+.page_title {
+    @apply text-3xl font-semibold mb-8 text-center font-rubik
+}

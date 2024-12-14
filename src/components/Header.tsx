@@ -79,7 +79,7 @@ const Header: React.FC = () => {
                         onHoverEnd={() => setIsHovered(false)}
                     >
                         <motion.button
-                            // initial={{ rotateY: 0 }}
+                            initial={{ rotateY: 0 }}
                             onClick={handleCopy}
                             animate={{ rotateY: isHovered ? 180 : 0 }}
                             transition={{ duration: 0.5, ease: "easeInOut" }} // Slower flip

@@ -5,6 +5,7 @@ import Projects from '../components/Projects'
 import Cards from '../components/Cards'
 import Contact from '../components/Contact'
 import WaveHeader from '../ui/WaveHeader';
+import PaperCutEffect from '../ui/PaperCut'
 
 
 {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
@@ -20,6 +21,7 @@ const Portfolio = () => {
             <Cards />
             <Experience />
             <Contact />
+            <PaperCutEffect />
         </div>
     )
 }

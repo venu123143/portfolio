@@ -87,7 +87,7 @@ const Experience = () => {
             title: "Associate Software Engineer",
             company_name: "Ahex Technologies.",
             icon: <CiLocationArrow1 />,
-            iconBg: "#FDC435", // Background color for the icon (can be customized)
+            iconBg: "#FDC435",
             points: [
                 "Expertise in Node.js and React.js. Worked with REST APIs, GraphQL , Sockets etc.",
                 "Optimized application performance by refactoring code and improving algorithms.",
@@ -98,17 +98,15 @@ const Experience = () => {
         },
         {
             date: "Sep 2022 - Mar 2023",
-            title: "Software Developer Intern",
-            company_name:  "Jspiders bangalore",
+            title: "Jspiders Training",
+            company_name: "Jspiders (BTM layout) Bangalore",
             icon: <CiGps />,
-            iconBg: "#4CAF50", // Background color for the icon (can be customized)
+            iconBg: "#4CAF50",
             points: [
-                "Designed responsive and user-friendly web interfaces using HTML, CSS, and JavaScript.",
-                "Worked with product managers to ensure a seamless user experience.",
-                "Implemented testing strategies to ensure high code quality.",
-                "Contributed to the development of a major project that led to a 30% increase in user engagement."
-            ]
-        }
+                "Took comprehensive training in SQL, React.js, JavaScript, HTML, and CSS.",
+                "Focused on mastering foundational and advanced concepts over 8 months.",
+            ],
+        },
     ];
 
     return (

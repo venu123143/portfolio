@@ -102,10 +102,10 @@ const ContactSection: React.FC = () => {
 
     return (
         <div id="contactme" className="bg-[#F8F7F3] p-8 w-full relative">
-            <div className=" mx-auto">
-                <div className="text-center mb-12">
-                    <h1 className="text-4xl font-semibold mb-4">Contact Information</h1>
-                    <p className="text-gray-600">Here's how you can reach us.</p>
+            <div className="">
+                <div className="">
+                    <h1 className="page_title">Contact Information</h1>
+                    {/* <p className="text-gray-600">Here's how you can reach us.</p> */}
                 </div>
 
                 <div className="relative">
