@@ -191,15 +191,16 @@ interface CardProps {
 
 const ProjectCard: React.FC<CardProps> = ({ heading, description, link, image, url, bulletPoints, className }) => {
     return (
-        <motion.div id="projects"
-            className="relative rounded-lg h-screen bg-[#F8F7F3] shadow-lg hover:shadow-2xl overflow-hidden transform transition duration-300"
+        <motion.div
+            id="projects"
+            className={"relative h-screen rounded-lg bg-[#F8F7F3] shadow-lg hover:shadow-2xl overflow-hidden transform transition duration-300"}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
         >
             <div className="flex flex-col md:flex-row h-full">
                 {/* Left Side: Image */}
-                <div className=" md:w-2/5 flex-shrink-0 flex justify-center items-center">
+                <div className="hidden md:flex md:w-2/5 flex-shrink-0 justify-center items-center">
                     <img
                         src={image}
                         alt="Project Image"
@@ -208,8 +209,8 @@ const ProjectCard: React.FC<CardProps> = ({ heading, description, link, image, u
                 </div>
 
                 {/* Right Side: Content */}
-                <div className="h-full">
-                    <div className="p-3 h-[90%] overflow-y-auto no-scrollbar">
+                <div className="p-3">
+                    <div className="h-[90%] overflow-y-auto no-scrollbar">
                         <h2 className="text-xl font-bold text-gray-800 mb-3 font-rubik">
                             {heading}
                         </h2>
@@ -224,23 +225,29 @@ const ProjectCard: React.FC<CardProps> = ({ heading, description, link, image, u
                             </ul>
                         )}
                     </div>
-                    <div className="flex ">
-                        {
-                            link &&
-                            <Link to={link} target="_blank" rel="noopener noreferrer"
-                                className="self-start ml-5 w-fit space-x-3 flex items-center justify-center bg-gray-900 text-white px-6 py-3 rounded-lg cursor-pointer font-ubuntu hover:bg-zinc-950">
+                    <div className="flex">
+                        {link && (
+                            <Link
+                                to={link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="self-start ml-5 w-fit space-x-3 flex items-center justify-center bg-gray-900 text-white px-6 py-3 rounded-lg cursor-pointer font-ubuntu hover:bg-zinc-950"
+                            >
                                 <FaGithub size={25} className="inline" />
                                 <span> GitHub Link</span>
                             </Link>
-                        }
-                        {
-                            url &&
-                            <Link to={url} target="_blank" rel="noopener noreferrer"
-                                className="self-start ml-5 w-fit space-x-3 flex items-center justify-center bg-zinc-900 shadow-lg hover:bg-gray-900 text-white px-6 py-3 rounded-lg cursor-pointer font-ubuntu">
+                        )}
+                        {url && (
+                            <Link
+                                to={url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="self-start ml-5 w-fit space-x-3 flex items-center justify-center bg-zinc-900 shadow-lg hover:bg-gray-900 text-white px-6 py-3 rounded-lg cursor-pointer font-ubuntu"
+                            >
                                 <LuExternalLink size={22} className="inline" />
                                 <span> Live url </span>
                             </Link>
-                        }
+                        )}
                     </div>
                 </div>
             </div>

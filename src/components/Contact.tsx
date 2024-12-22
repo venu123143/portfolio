@@ -24,11 +24,11 @@ const ContactSection: React.FC = () => {
             link: `mailto:${contactInfo.email}`,
         },
         {
-            icon: <Globe className="w-8 h-8" />,
-            title: "Website",
-            subtitle: "Visit our website",
-            linkText: contactInfo.website,
-            link: `https://${contactInfo.website}`,
+            icon: <Phone className="w-8 h-8" />,
+            title: "Phone",
+            subtitle: "Give us a call",
+            linkText: contactInfo.phone,
+            link: `tel:${contactInfo.phone}`,
         },
         {
             icon: <FaXTwitter className="w-8 h-8" />,
@@ -50,11 +50,11 @@ const ContactSection: React.FC = () => {
             subtitle: contactInfo.address,
         },
         {
-            icon: <Phone className="w-8 h-8" />,
-            title: "Phone",
-            subtitle: "Give us a call",
-            linkText: contactInfo.phone,
-            link: `tel:${contactInfo.phone}`,
+            icon: <Globe className="w-8 h-8" />,
+            title: "Website",
+            subtitle: "Visit our website",
+            linkText: contactInfo.website,
+            link: `https://${contactInfo.website}`,
         },
     ];
 
@@ -148,12 +148,13 @@ const ContactSection: React.FC = () => {
                                         {option.subtitle}
                                     </p>
 
+
                                     {option.link && (
                                         <a
                                             href={option.link}
                                             target={option.link.startsWith('http') ? '_blank' : undefined}
                                             rel={option.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                                            className="text-gray-900 font-medium hover:text-blue-600 transition-colors duration-300"
+                                            className="text-blue-600 font-medium hover:underline"
                                         >
                                             {option.linkText}
                                         </a>
@@ -184,5 +185,6 @@ const ContactSection: React.FC = () => {
         </div>
     );
 };
+
 
 export default ContactSection;

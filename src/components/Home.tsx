@@ -54,9 +54,9 @@ const Home: React.FC = () => {
                     </p>
 
                     <a target="_blank" href="https://www.canva.com/design/DAFj-JlZs_I/lYKRtoro-a54diJcflWvuA/view?utm_content=DAFj-JlZs_I&utm_campaign=designshare&utm_medium=link&utm_source=editor"
-                        className="px-8 py-3 block w-fit bg-gradient-to-r from-[#4A90E2] to-[#007AFF] text-white font-rubik font-medium text-lg rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300"
+                        className="px-8 py-3 block  font-edu w-fit bg-gradient-to-r from-[#4A90E2] to-[#007AFF] text-white font-medium text-lg rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300 mx-auto md:mx-0"
                     >
-                        Hire Me
+                        Hire me
                     </a>
 
                 </motion.div>

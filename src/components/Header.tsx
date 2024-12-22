@@ -72,7 +72,7 @@ const Header: React.FC = () => {
 
                 {/* Menu Icon for Mobile */}
                 <button
-                    className="md:hidden text-2xl"
+                    className="md:hidden text-2xl p-3 hover:bg-yellow-200 rounded-full"
                     onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                 >
                     {isSidebarOpen ? <IoClose /> : <IoMenu />}
@@ -121,7 +121,7 @@ const Header: React.FC = () => {
                                 key={link.id}
                                 href={`#${link.id}`}
                                 onClick={() => handleSetActiveLink(link.id)}
-                                className={`text-lg font-medium transition duration-300 ease-in-out hover:text-accent ${activeLink === link.id ? "text-accent" : "text-textPrimary"}`}
+                                className={`text-lg font-edu font-medium transition duration-300 ease-in-out hover:text-accent ${activeLink === link.id ? "text-accent" : "text-textPrimary"}`}
                             >
                                 {link.label}
                             </a>
