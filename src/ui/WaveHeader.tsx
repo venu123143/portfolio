@@ -1,6 +1,6 @@
 const WaveHeader = () => {
     return (
-        <div className="absolute top-0 left-0 w-full h-64 overflow-hidden">
+        <div className="md:block hidden absolute top-0 left-0 w-full h-64 overflow-hidden">
             <svg
                 viewBox="0 0 1440 320"
                 className="absolute top-0 left-0 w-full h-full"

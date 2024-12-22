@@ -79,7 +79,7 @@ const CarouselCard: React.FC = () => {
             link: "https://github.com/shivam-ahex/Thapala_backend/tree/development",
             url: "https://tapp.ahexlab.com/#/",
             image: thapala,
-            className: "h-full object-fit h-auto"
+            className: "h-fit object-fit"
         },
         {
             heading: "Title: Taso - A Social Media Platform for Traders",
@@ -153,7 +153,7 @@ const CarouselCard: React.FC = () => {
         <div className="w-full bg-[#F8F7F3] flex flex-col justify-center items-center py-10 font-inter">
             <h2 className="page_title">My Projects</h2>
             {loading ? (
-                <div className="flex items-center justify-center h-screen">
+                <div className="flex items-center justify-center">
                     <ClipLoader size={50} color="#4A90E2" />
                 </div>
             ) : (

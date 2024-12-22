@@ -169,7 +169,7 @@ const ContactSection: React.FC = () => {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: 100 }}
                             transition={{ duration: 0.3 }}
-                            className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10"
+                            className="absolute  top-1/2 right-0 transform -translate-y-1/2 z-10"
                         >
                             <button
                                 onClick={scrollRight}

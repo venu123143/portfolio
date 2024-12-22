@@ -25,7 +25,7 @@ const Home: React.FC = () => {
         },
     ];
     return (
-        <div id="home" className="bg-[#F8F7F3] min-h-screen rounded-xl p-8 flex flex-col items-center md:flex-row">
+        <div id="home" className="bg-[#F8F7F3] rounded-xl p-8 flex flex-col items-center md:flex-row">
             {/* Left Section */}
             <div className="flex flex-col md:flex-row items-center w-full md:w-3/4">
 

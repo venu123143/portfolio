@@ -32,7 +32,7 @@ const Experience: React.FC = () => {
   return (
     <div
       ref={componentRef} id="experience"
-      className="min-h-screen  bg-[#F8F7F3] relative overflow-hidden"
+      className=" bg-[#F8F7F3] relative overflow-hidden"
     >
       <h2 className="page_title">Experience</h2>
 
