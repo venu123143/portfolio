@@ -40,26 +40,36 @@ const Home: React.FC = () => {
                     Hey There, <br /> I'm {" "}
                     <span className="text-accent">
                         <ReactTyped
-                            strings={[
-                                "Full Stack Developer..."
-                            ]}
+                            strings={["Full Stack Developer..."]}
                             typeSpeed={50}
                             backSpeed={30}
                             loop
                         />
                     </span>
                 </h2>
-                <p className="mt-2 font-edu  text-md font-medium">
+                <p className="mt-2 font-edu text-md font-medium">
                     Having more than 2 years of experience in web development.
                 </p>
 
-                <a target="_blank" href="https://www.canva.com/design/DAFj-JlZs_I/lYKRtoro-a54diJcflWvuA/view?utm_content=DAFj-JlZs_I&utm_campaign=designshare&utm_medium=link&utm_source=editor"
-                    className="px-8 py-3 block  font-edu w-fit bg-gradient-to-r from-[#4A90E2] to-[#007AFF] text-white font-medium text-lg rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300 mx-auto md:mx-0"
-                >
-                    Resume
-                </a>
+                <div className="flex justify-center md:justify-start space-x-4 mt-6">
+                    <a
+                        target="_blank"
+                        href="https://www.canva.com/design/DAFj-JlZs_I/lYKRtoro-a54diJcflWvuA/view?utm_content=DAFj-JlZs_I&utm_campaign=designshare&utm_medium=link&utm_source=editor"
+                        className="px-8 py-3 block font-edu w-fit bg-gradient-to-r from-[#4A90E2] to-[#007AFF] text-white font-medium text-lg rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300"
+                    >
+                        Resume
+                    </a>
 
+                    <a
+                        target="_blank"
+                        href="https://github.com/venu123143"  // Replace with your actual GitHub profile link
+                        className="px-8 py-3 block font-edu w-fit bg-gray-800 text-white font-medium text-lg rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-gray-600"
+                    >
+                        GitHub
+                    </a>
+                </div>
             </motion.div>
+
 
 
             {/* Animated Profile Image */}

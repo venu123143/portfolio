@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { FaGithub, FaLinkedin } from "react-icons/fa"; // Import the GitHub icon
 import { FaXTwitter } from "react-icons/fa6";
-import { FaLinkedin } from "react-icons/fa";
-
 import { Mail, Globe, MapPin, Phone, ChevronRight, ChevronLeft } from 'lucide-react';
 import { motion } from "framer-motion";
 
@@ -13,6 +12,7 @@ const ContactSection: React.FC = () => {
         linkedin: "linkedin.com/in/venu-reddy-a226881b6/",
         address: "Kavali, Andhra Pradesh, India",
         phone: "+91 80089 52100",
+        github: "https://github.com/venu123143" // Add the GitHub URL here
     };
 
     const contactOptions = [
@@ -31,11 +31,11 @@ const ContactSection: React.FC = () => {
             link: `tel:${contactInfo.phone}`,
         },
         {
-            icon: <FaXTwitter className="w-8 h-8" />,
-            title: "Twitter",
-            subtitle: "Follow us on Twitter",
-            linkText: contactInfo.twitter,
-            link: `https://twitter.com/${contactInfo.twitter.replace('@', '')}`,
+            icon: <FaGithub className="w-8 h-8" />, // Correct icon for GitHub
+            title: "GitHub",
+            subtitle: "Check out our projects on GitHub",
+            linkText: "@venu123143",
+            link: contactInfo.github,
         },
         {
             icon: <FaLinkedin className="w-8 h-8" />,
@@ -43,6 +43,13 @@ const ContactSection: React.FC = () => {
             subtitle: "Connect with us on LinkedIn",
             linkText: contactInfo.linkedin,
             link: `https://${contactInfo.linkedin}`,
+        },
+        {
+            icon: <FaXTwitter className="w-8 h-8" />,
+            title: "Twitter",
+            subtitle: "Follow us on Twitter",
+            linkText: contactInfo.twitter,
+            link: `https://twitter.com/${contactInfo.twitter.replace('@', '')}`,
         },
         {
             icon: <MapPin className="w-8 h-8" />,
@@ -148,7 +155,6 @@ const ContactSection: React.FC = () => {
                                         {option.subtitle}
                                     </p>
 
-
                                     {option.link && (
                                         <a
                                             href={option.link}
@@ -170,7 +176,7 @@ const ContactSection: React.FC = () => {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: 100 }}
                             transition={{ duration: 0.3 }}
-                            className="absolute  top-1/2 right-0 transform -translate-y-1/2 z-10"
+                            className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10"
                         >
                             <button
                                 onClick={scrollRight}
@@ -185,6 +191,5 @@ const ContactSection: React.FC = () => {
         </div>
     );
 };
-
 
 export default ContactSection;
