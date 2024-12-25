@@ -18,10 +18,10 @@ const Default = () => {
 
           {/* Text Content */}
           <h1 className="text-2xl font-bold text-gray-800 mb-2">
-            Ready to go back?
+            Came to wrong place ?
           </h1>
           <p className="text-gray-600 mb-6">
-            Return to the homepage to explore more amazing content and features.
+            I'm Available for freelancing work
           </p>
 
           {/* Back Button */}
