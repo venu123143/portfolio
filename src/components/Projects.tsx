@@ -15,7 +15,13 @@ import { LuExternalLink } from "react-icons/lu";
 
 const CarouselCard: React.FC = () => {
     const [loading, setLoading] = useState(true);
-
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        const updateIsMobile = () => setIsMobile(window.innerWidth < 640);
+        updateIsMobile(); // Set initial value
+        window.addEventListener("resize", updateIsMobile);
+        return () => window.removeEventListener("resize", updateIsMobile);
+    }, []);
     const carouselData = [
         {
             heading: "Title: WhatsApp Clone - Real Time Messaging App with Modern Features",
@@ -105,7 +111,6 @@ const CarouselCard: React.FC = () => {
         },
     ];
 
-
     const PrevArrow = (props: any) => {
         const { onClick } = props;
         return (
@@ -130,13 +135,14 @@ const CarouselCard: React.FC = () => {
         );
     };
 
+
     const settings = {
         dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: true,
+        arrows: !isMobile,
         autoplay: true,
         autoplaySpeed: 4000,
         prevArrow: <PrevArrow />,
@@ -150,14 +156,14 @@ const CarouselCard: React.FC = () => {
     }, []);
 
     return (
-        <div className="w-full bg-[#F8F7F3] flex flex-col justify-center items-center py-10 font-inter">
+        <div className="w-full bg-[#F8F7F3] flex flex-col justify-center items-center font-inter">
             <h2 className="page_title">My Projects</h2>
             {loading ? (
                 <div className="flex items-center justify-center">
                     <ClipLoader size={50} color="#4A90E2" />
                 </div>
             ) : (
-                <div className="w-11/12 border-t-2 border-l-2 shadow-retro rounded-lg">
+                <div className="w-11/12 border-t-2 sm:border-l-2 shadow-retro rounded-lg">
                     <Slider {...settings}>
                         {carouselData.map((item, index) => (
                             <ProjectCard
@@ -193,11 +199,10 @@ const ProjectCard: React.FC<CardProps> = ({ heading, description, link, image, u
     return (
         <motion.div
             id="projects"
-            className={"relative h-screen rounded-lg bg-[#F8F7F3] shadow-lg hover:shadow-2xl overflow-hidden transform transition duration-300"}
+            className={"relative sm:h-screen rounded-lg bg-[#F8F7F3] shadow-lg hover:shadow-2xl overflow-hidden transform transition duration-300"}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-        >
+            transition={{ duration: 0.5 }} >
             <div className="flex flex-col md:flex-row h-full">
                 {/* Left Side: Image */}
                 <div className="hidden md:flex md:w-2/5 flex-shrink-0 justify-center items-center">
@@ -231,10 +236,10 @@ const ProjectCard: React.FC<CardProps> = ({ heading, description, link, image, u
                                 to={link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="self-start ml-5 w-fit space-x-3 flex items-center justify-center bg-gray-900 text-white px-6 py-3 rounded-lg cursor-pointer font-ubuntu hover:bg-zinc-950"
+                                className="self-start ml-5 w-fit space-x-4 flex items-center justify-center bg-gray-900 text-white px-6 py-3 rounded-lg cursor-pointer font-ubuntu hover:bg-zinc-950"
                             >
                                 <FaGithub size={25} className="inline" />
-                                <span> GitHub Link</span>
+                                <span> GitHub</span>
                             </Link>
                         )}
                         {url && (
@@ -245,7 +250,7 @@ const ProjectCard: React.FC<CardProps> = ({ heading, description, link, image, u
                                 className="self-start ml-5 w-fit space-x-3 flex items-center justify-center bg-zinc-900 shadow-lg hover:bg-gray-900 text-white px-6 py-3 rounded-lg cursor-pointer font-ubuntu"
                             >
                                 <LuExternalLink size={22} className="inline" />
-                                <span> Live url </span>
+                                <span>Url </span>
                             </Link>
                         )}
                     </div>

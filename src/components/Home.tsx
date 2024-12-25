@@ -36,7 +36,7 @@ const Home: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeInOut" }}
                 >
-                    <h2 className="text-3xl font-sans font-bold text-textPrimary">
+                    <h2 className="text-xl sm:text-3xl font-sans font-bold text-textPrimary">
                         Hey There, <br /> I'm {" "}
                         <span className="text-accent">
                             <ReactTyped
@@ -56,7 +56,7 @@ const Home: React.FC = () => {
                     <a target="_blank" href="https://www.canva.com/design/DAFj-JlZs_I/lYKRtoro-a54diJcflWvuA/view?utm_content=DAFj-JlZs_I&utm_campaign=designshare&utm_medium=link&utm_source=editor"
                         className="px-8 py-3 block  font-edu w-fit bg-gradient-to-r from-[#4A90E2] to-[#007AFF] text-white font-medium text-lg rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300 mx-auto md:mx-0"
                     >
-                        Hire me
+                       Resume
                     </a>
 
                 </motion.div>
