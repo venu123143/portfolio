@@ -1,0 +1,52 @@
+name: CI/CD Pipeline-Frontend
+
+on:
+  push:
+    branches: [development]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Build the React application
+      - name: Build React App
+        run: npm run build
+
+      # Step 5: Deploy to the server
+      - name: Deploy to Server
+        if: success()
+        env:
+          HOST: ${{ secrets.HOST }}
+          USER: ${{ secrets.USER }}
+          KEY: ${{ secrets.SERVER_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
+
+          echo "Copying build directory to server..."
+          scp -r ./dist/* $USER@$HOST:/var/www/html/portfolio/dist/
+
+          echo "Restarting PM2 process..."
+          ssh $USER@$HOST << EOF
+            pm2 restart portfolio --update-env
+          EOF
+
+          # Optional: Cleanup SSH Key
+          rm -f ~/.ssh/id_rsa
