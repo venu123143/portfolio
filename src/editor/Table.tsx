@@ -13,12 +13,16 @@ export interface Column<T> {
 
 export interface TableProps<T> {
     data: T[];
+    totalItems: number;
     columns: Column<T>[];
-    itemsPerPage?: number;
+    itemsPerPage: number;
+    setItemsPerPage: (item: number) => void;
     className?: string;
     onRowClick?: (item: T) => void;
     enableSelection?: boolean;
     onSelectionChange?: (selectedItems: T[]) => void;
+    currentPage: number,
+    setCurrentPage: (item: number) => void;
 }
 
 interface PaginationProps {
@@ -34,9 +38,9 @@ interface PaginationProps {
 // EnhancedPagination.tsx
 import React, { useMemo, useState } from 'react';
 import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from 'lucide-react';
-import { Select, MenuItem, Button, IconButton } from '@mui/material';
+import { Select, MenuItem, IconButton } from '@mui/material';
+// import { MoveUp, MoveDown } from 'lucide-react';
 
-import { MoveUp, MoveDown } from 'lucide-react';
 const EnhancedPagination: React.FC<PaginationProps> = ({
     currentPage,
     totalPages,
@@ -113,7 +117,7 @@ const EnhancedPagination: React.FC<PaginationProps> = ({
                 </IconButton>
 
                 {pageNumbers.map((pageNum, index) => (
-                    <>
+                    <div key={index}>
                         {
                             pageNum === "..." ? <span className='font-bold '>...</span> :
                                 <button
@@ -133,7 +137,7 @@ const EnhancedPagination: React.FC<PaginationProps> = ({
                                     {pageNum}
                                 </button>
                         }
-                    </>
+                    </div>
                 ))}
 
                 <button
@@ -151,17 +155,19 @@ const EnhancedPagination: React.FC<PaginationProps> = ({
 
 export function Table<T extends object>({
     data,
+    totalItems,
     columns,
-    itemsPerPage: initialItemsPerPage = 10,
+    itemsPerPage, setItemsPerPage,
     className = '',
     onRowClick,
     enableSelection = false,
     onSelectionChange,
+    setCurrentPage,
+    currentPage = 1,
 }: TableProps<T>) {
-    const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage] = useState(initialItemsPerPage);
     const [sortConfig, setSortConfig] = useState<SortConfig | null>(null);
     const [selectedItems, setSelectedItems] = useState<T[]>([]);
+
 
     const handleSort = (key: string) => {
         setSortConfig((current) => {
@@ -176,7 +182,6 @@ export function Table<T extends object>({
 
     const handleItemsPerPageChange = (newItemsPerPage: number) => {
         setItemsPerPage(newItemsPerPage);
-        setCurrentPage(1);
     };
 
     const handleSelectItem = (item: T) => {
@@ -200,7 +205,7 @@ export function Table<T extends object>({
         });
     }, [data, sortConfig]);
 
-    const totalPages = Math.ceil(sortedData.length / itemsPerPage);
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const currentData = sortedData.slice(startIndex, endIndex);
