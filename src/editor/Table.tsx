@@ -159,7 +159,6 @@ export function Table<T extends object>({
     columns,
     itemsPerPage, setItemsPerPage,
     className = '',
-    onRowClick,
     enableSelection = false,
     onSelectionChange,
     setCurrentPage,
@@ -180,10 +179,6 @@ export function Table<T extends object>({
         });
     };
 
-    const handleItemsPerPageChange = (newItemsPerPage: number) => {
-        setItemsPerPage(newItemsPerPage);
-    };
-
     const handleSelectItem = (item: T) => {
         const newSelection = selectedItems.includes(item)
             ? selectedItems.filter((i) => i !== item)
@@ -192,23 +187,7 @@ export function Table<T extends object>({
         onSelectionChange?.(newSelection);
     };
 
-    const sortedData = useMemo(() => {
-        if (!sortConfig) return data;
-
-        return [...data].sort((a, b) => {
-            const aValue = a[sortConfig.key as keyof T];
-            const bValue = b[sortConfig.key as keyof T];
-
-            if (aValue < bValue) return sortConfig.direction === 'asc' ? -1 : 1;
-            if (aValue > bValue) return sortConfig.direction === 'asc' ? 1 : -1;
-            return 0;
-        });
-    }, [data, sortConfig]);
-
     const totalPages = Math.ceil(totalItems / itemsPerPage);
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const currentData = sortedData.slice(startIndex, endIndex);
 
     return (
         <div className={`bg-white rounded-lg shadow-md ${className}`}>
@@ -220,7 +199,7 @@ export function Table<T extends object>({
                                 <th className="px-4 py-2 text-left">
                                     <input
                                         type="checkbox"
-                                        checked={selectedItems.length === currentData.length}
+                                        checked={selectedItems.length === data.length}
                                         className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 cursor-pointer transition-transform duration-300 hover:scale-110"
                                     />
                                 </th>
@@ -256,7 +235,7 @@ export function Table<T extends object>({
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                        {currentData.map((item, rowIndex) => (
+                        {data.map((item, rowIndex) => (
                             <tr
                                 key={rowIndex}
                                 onClick={() => handleSelectItem(item)}
@@ -289,7 +268,7 @@ export function Table<T extends object>({
                 totalPages={totalPages}
                 onPageChange={setCurrentPage}
                 itemsPerPage={itemsPerPage}
-                onItemsPerPageChange={handleItemsPerPageChange}
+                onItemsPerPageChange={setItemsPerPage}
                 totalItems={data.length}
             />
         </div>
