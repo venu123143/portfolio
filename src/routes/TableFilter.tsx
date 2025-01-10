@@ -1,4 +1,4 @@
-import { Mail, UserCircle } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { Column, Table } from '../editor/Table';
 
 
@@ -49,7 +49,7 @@ const TableFilter = () => {
             )
         },
     ];
-    const usersData: User[] = Array.from({ length: 100 }, (_, index) => ({
+    const usersData: User[] = Array.from({ length: 500 }, (_, index) => ({
         id: index + 1,
         name: `user ${index + 1}`,
         email: `user${index + 1}@example.com`,
@@ -58,13 +58,13 @@ const TableFilter = () => {
     }));
 
     return (
-        <div className='max-w-[80%] max-h-[80'>
+        <div className=''>
             <Table<User>
                 data={usersData}
                 columns={columns}
                 itemsPerPage={10}
                 // fontFamily="font-poppins"
-                enableSelection={true}
+                enableSelection={false}
                 onSelectionChange={(selected) => console.log('Selected:', selected)}
                 onRowClick={(user) => console.log('clicked:', user)}
             />

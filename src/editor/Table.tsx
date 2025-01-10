@@ -1,9 +1,5 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { MoveUp, MoveDown } from 'lucide-react';
-
-// Types
-interface SortConfig {
+// types.ts
+export interface SortConfig {
     key: string;
     direction: 'asc' | 'desc';
 }
@@ -15,7 +11,7 @@ export interface Column<T> {
     sortable?: boolean;
 }
 
-interface TableProps<T> {
+export interface TableProps<T> {
     data: T[];
     columns: Column<T>[];
     itemsPerPage?: number;
@@ -29,64 +25,160 @@ interface PaginationProps {
     currentPage: number;
     totalPages: number;
     onPageChange: (page: number) => void;
+    itemsPerPage: number;
+    onItemsPerPageChange: (value: number) => void;
+    totalItems?: number;
 }
 
-// Pagination Component
-const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
-    const handlePageChange = (page: number) => {
-        if (page >= 1 && page <= totalPages) {
-            onPageChange(page);
+
+// EnhancedPagination.tsx
+import React, { useMemo, useState } from 'react';
+import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from 'lucide-react';
+import { Select, MenuItem, Button, IconButton } from '@mui/material';
+
+import { MoveUp, MoveDown } from 'lucide-react';
+const EnhancedPagination: React.FC<PaginationProps> = ({
+    currentPage,
+    totalPages,
+    onPageChange,
+    itemsPerPage,
+    onItemsPerPageChange,
+    totalItems
+}) => {
+    // Generate page numbers array with ellipsis
+    const getPageNumbers = (): Array<number | string> => {
+        const pages: Array<number | string> = [];
+        if (totalPages <= 7) {
+            for (let i = 1; i <= totalPages; i++) {
+                pages.push(i);
+            }
+        } else {
+            if (currentPage <= 4) {
+                for (let i = 1; i <= 5; i++) {
+                    pages.push(i);
+                }
+                pages.push('...');
+                pages.push(totalPages);
+            } else if (currentPage >= totalPages - 3) {
+                pages.push(1);
+                pages.push('...');
+                for (let i = totalPages - 4; i <= totalPages; i++) {
+                    pages.push(i);
+                }
+            } else {
+                pages.push(1);
+                pages.push('...');
+                for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+                    pages.push(i);
+                }
+                pages.push('...');
+                pages.push(totalPages);
+            }
         }
+        return pages;
     };
 
+
+    const pageNumbers = getPageNumbers();
+
     return (
-        <div className="flex items-center justify-between px-4 py-2 bg-gray-50 shadow-md">
-            <button
-                className={`px-3 py-1 text-sm font-semibold text-black bg-white border rounded-md shadow-sm hover:bg-gray-200 transition-all ${currentPage === 1 && 'opacity-50 cursor-not-allowed'}`}
-                onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-            >
-                Previous
-            </button>
-            <span className="text-sm font-medium text-black">
-                Page {currentPage} of {totalPages}
-            </span>
-            <button
-                className={`px-3 py-1 text-sm font-semibold text-black bg-white border rounded-md shadow-sm hover:bg-gray-200 transition-all ${currentPage === totalPages && 'opacity-50 cursor-not-allowed'}`}
-                onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
-            >
-                Next
-            </button>
+        <div className="flex items-center justify-between px-4 py-3 bg-white border rounded-lg shadow-sm">
+            <div className="flex items-center space-x-4">
+                <Select
+                    value={itemsPerPage}
+                    onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
+                    size="small"
+                    variant="outlined"
+                >
+                    {[5, 10, 20, 50, 100].map((value) => (
+                        <MenuItem key={value} value={value}>
+                            {value} per page
+                        </MenuItem>
+                    ))}
+                </Select>
+                {totalItems !== undefined && (
+                    <span className="text-sm text-gray-700">
+                        Total items: {totalItems}
+                    </span>
+                )}
+            </div>
+
+            <div className="flex items-center space-x-2">
+                <IconButton
+                    onClick={() => onPageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    aria-label="Previous page"
+                >
+                    <ChevronLeft />
+                </IconButton>
+
+                {pageNumbers.map((pageNum, index) => (
+                    <>
+                        {
+                            pageNum === "..." ? <span className='font-bold '>...</span> :
+                                <button
+                                    key={index}
+                                    onClick={() => typeof pageNum === 'number' ? onPageChange(pageNum) : undefined}
+                                    disabled={pageNum === '...'}
+                                    className={`
+                                    min-w-[32px] h-8 px-3 rounded-md text-sm font-medium
+                                    ${pageNum === currentPage
+                                            ? 'bg-blue-600 text-white'
+                                            : 'hover:bg-gray-100 text-gray-700'
+                                        }
+                                `}
+                                    aria-label={typeof pageNum === 'number' ? `Go to page ${pageNum}` : 'More pages'}
+                                    aria-current={pageNum === currentPage ? 'page' : undefined}
+                                >
+                                    {pageNum}
+                                </button>
+                        }
+                    </>
+                ))}
+
+                <button
+                    onClick={() => onPageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="p-1 rounded-md hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                    aria-label="Next page"
+                >
+                    <ChevronRight className="w-5 h-5" />
+                </button>
+            </div>
         </div>
     );
 };
 
-// Main Table Component
 export function Table<T extends object>({
     data,
     columns,
-    itemsPerPage = 10,
+    itemsPerPage: initialItemsPerPage = 10,
     className = '',
     onRowClick,
     enableSelection = false,
     onSelectionChange,
 }: TableProps<T>) {
     const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(initialItemsPerPage);
     const [sortConfig, setSortConfig] = useState<SortConfig | null>(null);
     const [selectedItems, setSelectedItems] = useState<T[]>([]);
 
-    // Sorting logic
     const handleSort = (key: string) => {
         setSortConfig((current) => {
             if (current?.key === key) {
-                return current.direction === 'asc' ? { key, direction: 'desc' } : { key, direction: 'asc' };
+                return current.direction === 'asc'
+                    ? { key, direction: 'desc' }
+                    : { key, direction: 'asc' };
             }
             return { key, direction: 'asc' };
         });
     };
 
-    // Selection logic
+    const handleItemsPerPageChange = (newItemsPerPage: number) => {
+        setItemsPerPage(newItemsPerPage);
+        setCurrentPage(1);
+    };
+
     const handleSelectItem = (item: T) => {
         const newSelection = selectedItems.includes(item)
             ? selectedItems.filter((i) => i !== item)
@@ -95,22 +187,13 @@ export function Table<T extends object>({
         onSelectionChange?.(newSelection);
     };
 
-    const handleSelectAll = () => {
-        const newSelection = selectedItems.length === currentData.length ? [] : currentData;
-        setSelectedItems(newSelection);
-        onSelectionChange?.(newSelection);
-    };
-
-    const handleRowClick = (item: T) => {
-        handleSelectItem(item);
-    };
-
-    // Sort data
-    const sortedData = React.useMemo(() => {
+    const sortedData = useMemo(() => {
         if (!sortConfig) return data;
+
         return [...data].sort((a, b) => {
             const aValue = a[sortConfig.key as keyof T];
             const bValue = b[sortConfig.key as keyof T];
+
             if (aValue < bValue) return sortConfig.direction === 'asc' ? -1 : 1;
             if (aValue > bValue) return sortConfig.direction === 'asc' ? 1 : -1;
             return 0;
@@ -124,16 +207,15 @@ export function Table<T extends object>({
 
     return (
         <div className={`bg-white rounded-lg shadow-md ${className}`}>
-            <div className="overflow-x-auto">
-                <table className="min-w-full font-inter divide-y divide-gray-200">
-                    <thead className="bg-gray-100">
+            <div className="overflow-x-auto max-h-[90%]">
+                <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-[#F8F8FA]">
                         <tr>
                             {enableSelection && (
                                 <th className="px-4 py-2 text-left">
-                                    <motion.input
+                                    <input
                                         type="checkbox"
                                         checked={selectedItems.length === currentData.length}
-                                        onChange={handleSelectAll}
                                         className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 cursor-pointer transition-transform duration-300 hover:scale-110"
                                     />
                                 </th>
@@ -142,20 +224,20 @@ export function Table<T extends object>({
                                 <th
                                     key={index}
                                     scope="col"
-                                    className="px-6 py-3 text-xs font-medium text-black uppercase tracking-wider cursor-pointer group"
+                                    className="px-6 py-3 text-md  text-black/80 tracking-wider cursor-pointer group"
                                     onClick={() => column.sortable && handleSort(column.accessor as string)}
                                 >
-                                    <div className="flex items-center">
-                                        <span>{column.header}</span>
+                                    <div className="flex items-center space-x-1">
+                                        <span className='font-rubik font-medium'>{column.header}</span>
                                         {column.sortable && (
-                                            <span className="flex gap-0">
-                                                <MoveUp
+                                            <span className="flex flex-col">
+                                                <ChevronUp
                                                     className={`w-3 h-3 transition-all ${sortConfig?.key === column.accessor && sortConfig.direction === 'asc'
                                                         ? 'text-blue-600'
                                                         : 'text-gray-400'
                                                         }`}
                                                 />
-                                                <MoveDown
+                                                <ChevronDown
                                                     className={`w-3 h-3 transition-all ${sortConfig?.key === column.accessor && sortConfig.direction === 'desc'
                                                         ? 'text-blue-600'
                                                         : 'text-gray-400'
@@ -170,21 +252,19 @@ export function Table<T extends object>({
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
                         {currentData.map((item, rowIndex) => (
-                            <motion.tr
+                            <tr
                                 key={rowIndex}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.3, delay: rowIndex * 0.05 }}
-                                onClick={() => handleRowClick(item)}
-                                className={`hover:bg-gray-100 cursor-pointer transition-all duration-300 ${selectedItems.includes(item) && enableSelection ? 'bg-blue-50' : ''}`}
+                                onClick={() => handleSelectItem(item)}
+                                className={`hover:bg-gray-100 cursor-pointer transition-all duration-300 ${selectedItems.includes(item) && enableSelection ? 'bg-blue-50' : ''
+                                    }`}
                             >
                                 {enableSelection && (
-                                    <td className="px-4 py-2">
-                                        <motion.input
+                                    <td className="px-6 py-4">
+                                        <input
                                             type="checkbox"
                                             checked={selectedItems.includes(item)}
-                                            onChange={() => handleSelectItem(item)}
-                                            className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 cursor-pointer transition-transform duration-300 hover:scale-110"
+                                            onChange={(e) => e.stopPropagation()} // Prevent event propagation
+                                            className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                                         />
                                     </td>
                                 )}
@@ -193,14 +273,20 @@ export function Table<T extends object>({
                                         {column.cell ? column.cell(item[column.accessor]) : String(item[column.accessor])}
                                     </td>
                                 ))}
-                            </motion.tr>
+                            </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
-            {totalPages > 1 && (
-                <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
-            )}
+
+            <EnhancedPagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+                itemsPerPage={itemsPerPage}
+                onItemsPerPageChange={handleItemsPerPageChange}
+                totalItems={data.length}
+            />
         </div>
     );
 }
