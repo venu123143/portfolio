@@ -269,7 +269,7 @@ export function Table<T extends object>({
                 onPageChange={setCurrentPage}
                 itemsPerPage={itemsPerPage}
                 onItemsPerPageChange={setItemsPerPage}
-                totalItems={data.length}
+                totalItems={totalItems}
             />
         </div>
     );
