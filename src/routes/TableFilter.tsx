@@ -1,10 +1,13 @@
-import { BsChevronDown, BsCurrencyDollar } from "react-icons/bs";
+import { BsCurrencyDollar } from "react-icons/bs";
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState, useCallback, useRef } from 'react';
 import axios from "axios";
 import { Column, Table } from '../editor/Table';
-import { BsSearch, BsFunnel, BsListOl, BsThreeDots } from 'react-icons/bs';
-
+import { BsSearch, BsThreeDots } from 'react-icons/bs';
+import FilterModal from "../editor/Filter"
+import { Button } from "@mui/material";
+import { Filter } from "lucide-react";
+import { FilterModalProps } from "../editor/Filter";
 interface TransactionHistory {
     transaction_id: number;
     transaction_items_id: number;
@@ -46,21 +49,19 @@ const useDebounce = (value: string, delay: number = 500) => {
 
 
 const TableFilter = () => {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+
     const [searchParams, setSearchParams] = useSearchParams();
     const [transactions, setTransactions] = useState<TransactionHistory[]>([]);
     const [totalItems, setTotalItems] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(true);
     const [searchQuery, setSearchQuery] = useState('');
-    const [selectedFilter, setSelectedFilter] = useState<string>('All Campaigns');
     const [isFilterDropdownOpen, setIsFilterDropdownOpen] = useState(false);
     const filterDropdownRef = useRef<HTMLDivElement>(null);
     const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchQuery(event.target.value);
-        // setSearchParams({
-        //     q: event.target.value
-        // });
     };
     useEffect(() => {
         const currentParams = new URLSearchParams(searchParams);
@@ -73,14 +74,6 @@ const TableFilter = () => {
         setSearchParams(currentParams);
     }, [debouncedSearchQuery]);
 
-    const handleFilterClick = () => {
-        setIsFilterDropdownOpen(!isFilterDropdownOpen);
-    };
-
-    const handleFilterSelect = (filter: string) => {
-        setSelectedFilter(filter);
-        setIsFilterDropdownOpen(false);
-    };
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -141,10 +134,6 @@ const TableFilter = () => {
 
     // Effect to handle URL params changes
     useEffect(() => {
-        const page = getPageFromUrl();
-        const limit = getLimitFromUrl();
-        console.log("limit", limit);
-
         fetchTransactions(searchParams);
     }, [searchParams, fetchTransactions]);
 
@@ -184,14 +173,28 @@ const TableFilter = () => {
             accessor: 'voucher_type',
         },
     ];
-
-    const filterOptions: FilterOption[] = [
-        { value: 'All Campaigns', label: 'All Campaigns' },
-        { value: 'Option 1', label: 'Option 1' },
-        { value: 'Option 2', label: 'Option 2' },
-        { value: 'Option 3', label: 'Option 3' },
-    ];
-
+    const onApply: FilterModalProps['onApply'] = (filters) => {
+        const { startDate, endDate, selectedVoucherType, selectedDealers } = filters;
+        const currentParams = new URLSearchParams(searchParams);
+        // Helper function to set or delete a query parameter
+        const updateQueryParam = (key: string, value: string | null | undefined) => {
+            if (value && value.trim() !== '') {
+                currentParams.set(key, value);
+            } else {
+                currentParams.delete(key);
+            }
+        };
+        updateQueryParam('start_date', startDate);
+        updateQueryParam('end_date', endDate);
+        updateQueryParam('voucher_types', selectedVoucherType);
+        updateQueryParam('dealer_ids', selectedDealers.length > 0 ? selectedDealers.join(',') : null);
+         
+        setSearchParams(currentParams)
+    };
+    const handleResetAll = () => {
+        setSearchParams({ limit: String(getLimitFromUrl()), page: "1", })
+        setIsOpen(false)
+    }
     return (
         <div>
             <div className="flex items-center bg-gray-100 p-4 rounded-md">
@@ -208,41 +211,15 @@ const TableFilter = () => {
                     </div>
                 </div>
 
-                <div className="relative inline-block">
-                    <button
-                        onClick={handleFilterClick}
-                        className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                        {selectedFilter} <BsChevronDown className="ml-1" />
-                    </button>
-                    {isFilterDropdownOpen && (
-                        <div
-                            className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10"
-                            ref={filterDropdownRef}
-                        >
-                            <ul className="p-2">
-                                {filterOptions.map((option) => (
-                                    <li
-                                        key={option.value}
-                                        className="cursor-pointer hover:bg-gray-100 p-2"
-                                        onClick={() => handleFilterSelect(option.value)}
-                                    >
-                                        {option.label}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
-                </div>
-
-                <button className="ml-4 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <BsFunnel className="mr-2" /> Filter
-                </button>
-
-                <button className="ml-4 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <BsListOl className="mr-2" /> Columns
-                </button>
-
+                <Button
+                    variant="outlined"
+                    className="flex items-center gap-2 px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50"
+                    onClick={() => setIsOpen(true)}
+                >
+                    <Filter className="w-4 h-4" />
+                    <span>Filters</span>
+                </Button>
+                <FilterModal setIsOpen={setIsOpen} isOpen={isOpen} onApply={onApply} handleReset={handleResetAll} />
                 <button className="ml-4 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <BsThreeDots className="mr-2" />
                 </button>
