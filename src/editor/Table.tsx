@@ -205,13 +205,13 @@ export function Table<T extends object>({
                                 <th
                                     key={index}
                                     scope="col"
-                                    className="px-6 py-3 text-md  text-black/80 tracking-wider cursor-pointer group"
+                                    className="px-6 py-3  text-center  text-black/80 tracking-wider cursor-pointer group"
                                     onClick={() => column.sortable && handleSort(column.accessor as string)}
                                 >
                                     <div className="flex items-center space-x-1">
                                         <span className='font-rubik font-medium'>{column.header}</span>
                                         {column.sortable && (
-                                            <span className="flex">
+                                            <span className="flex flex-col">
                                                 <ChevronUp
                                                     className={`w-3 h-3 transition-all ${sortConfig?.key === column.accessor && sortConfig.direction === 'asc'
                                                         ? 'text-blue-600'

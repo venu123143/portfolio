@@ -54,7 +54,7 @@ const TableFilter = () => {
     const [filterCount, setfilterCount] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(true);
     const [searchQuery, setSearchQuery] = useState('');
-  
+
     const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -120,6 +120,7 @@ const TableFilter = () => {
         {
             header: 'Transaction ID',
             accessor: 'transaction_id',
+            sortable: true
         },
         {
             header: 'Business Name',
@@ -136,11 +137,13 @@ const TableFilter = () => {
         {
             header: 'Transaction Date',
             accessor: 'transaction_date',
+            sortable: true,
             cell: (value) => new Date(value).toLocaleString(),
         },
         {
             header: 'Final Value',
             accessor: 'final_value',
+            sortable: true,
             cell: (value) => (
                 <span className='font-rubik font-medium flex items-center'>
                     {value}<BsCurrencyDollar className='inline' />
@@ -150,6 +153,12 @@ const TableFilter = () => {
         {
             header: 'Voucher Type',
             accessor: 'voucher_type',
+            sortable: true,
+            cell: (value) => (
+                <>
+                    {value.replace(/\d+/, (match: any) => `${match} `).replace('dinar', 'Dinar')},
+                </>
+            )
         },
     ];
     const onApply: FilterModalProps['onApply'] = (filters) => {
