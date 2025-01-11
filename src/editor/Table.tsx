@@ -50,7 +50,7 @@ const EnhancedPagination: React.FC<PaginationProps> = ({
     totalItems
 }) => {
     // Generate page numbers array with ellipsis
-    const getPageNumbers = (): Array<number | string> => {
+    const pageNumbers = useMemo((): Array<number | string> => {
         const pages: Array<number | string> = [];
         if (totalPages <= 7) {
             for (let i = 1; i <= totalPages; i++) {
@@ -61,29 +61,26 @@ const EnhancedPagination: React.FC<PaginationProps> = ({
                 for (let i = 1; i <= 5; i++) {
                     pages.push(i);
                 }
-                pages.push('...');
+                pages.push("...");
                 pages.push(totalPages);
             } else if (currentPage >= totalPages - 3) {
                 pages.push(1);
-                pages.push('...');
+                pages.push("...");
                 for (let i = totalPages - 4; i <= totalPages; i++) {
                     pages.push(i);
                 }
             } else {
                 pages.push(1);
-                pages.push('...');
+                pages.push("...");
                 for (let i = currentPage - 1; i <= currentPage + 1; i++) {
                     pages.push(i);
                 }
-                pages.push('...');
+                pages.push("...");
                 pages.push(totalPages);
             }
         }
         return pages;
-    };
-
-
-    const pageNumbers = getPageNumbers();
+    }, [currentPage, totalPages]);
 
     return (
         <div className="flex items-center justify-between px-4 py-3 bg-white border rounded-lg shadow-sm">
@@ -214,11 +211,11 @@ export function Table<T extends object>({
                                     <div className="flex items-center space-x-1">
                                         <span className='font-rubik font-medium'>{column.header}</span>
                                         {column.sortable && (
-                                            <span className="flex flex-col">
+                                            <span className="flex">
                                                 <ChevronUp
                                                     className={`w-3 h-3 transition-all ${sortConfig?.key === column.accessor && sortConfig.direction === 'asc'
                                                         ? 'text-blue-600'
-                                                        : 'text-gray-400'
+                                                        : 'text-black'
                                                         }`}
                                                 />
                                                 <ChevronDown

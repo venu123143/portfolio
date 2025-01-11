@@ -1,6 +1,6 @@
 import { BsCurrencyDollar } from "react-icons/bs";
 import { useSearchParams } from "react-router-dom";
-import { useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import axios from "axios";
 import { Column, Table } from '../editor/Table';
 import { BsSearch, BsThreeDots } from 'react-icons/bs';
@@ -26,10 +26,7 @@ interface TransactionHistory {
     denomination: string;
     voucher_type: string;
 }
-interface FilterOption {
-    value: string;
-    label: string;
-}
+
 // Custom hook for debouncing
 const useDebounce = (value: string, delay: number = 500) => {
     const [debouncedValue, setDebouncedValue] = useState(value);
@@ -57,8 +54,7 @@ const TableFilter = () => {
     const [filterCount, setfilterCount] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(true);
     const [searchQuery, setSearchQuery] = useState('');
-    // const [isFilterDropdownOpen, setIsFilterDropdownOpen] = useState(false);
-    // const filterDropdownRef = useRef<HTMLDivElement>(null);
+  
     const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,24 +70,6 @@ const TableFilter = () => {
         currentParams.set('page', '1'); // Reset to first page on search
         setSearchParams(currentParams);
     }, [debouncedSearchQuery]);
-
-
-    // useEffect(() => {
-    //     const handleClickOutside = (event: MouseEvent) => {
-    //         if (
-    //             filterDropdownRef.current &&
-    //             !filterDropdownRef.current.contains(event.target as Node)
-    //         ) {
-    //             setIsFilterDropdownOpen(false);
-    //         }
-    //     };
-
-    //     document.addEventListener('mousedown', handleClickOutside);
-
-    //     return () => {
-    //         document.removeEventListener('mousedown', handleClickOutside);
-    //     };
-    // }, []);
 
 
     // Get page and limit from URL params or use defaults
@@ -248,7 +226,7 @@ const TableFilter = () => {
                         columns={columns}
                         itemsPerPage={getLimitFromUrl()}
                         setItemsPerPage={handleLimitChange}
-                        enableSelection={false}
+                        enableSelection={true}
                         onSelectionChange={(selected) => console.log('Selected:', selected)}
                         onRowClick={(transaction) => console.log('Clicked:', transaction)}
                     />

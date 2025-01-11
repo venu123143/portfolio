@@ -139,10 +139,6 @@ const FilterModal: React.FC<FilterModalProps> = ({ onApply, isOpen, setIsOpen, h
         setSelectedDealers([]);
         handleReset()
     };
-    const getDealerLabel = (dealerId: number): string => {
-        const dealer = dealers.find(d => d.dealer_id === dealerId);
-        return dealer ? `${dealer.business_name} (${dealer.code})` : '';
-    };
     const handleDateChange = (dateType: 'startDate' | 'endDate', value: string) => {
         if (dateType === 'startDate') {
             setStartDate(value);
@@ -220,7 +216,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ onApply, isOpen, setIsOpen, h
                                     <CircularProgress size={24} />
                                 </div>
                             ) : error ? (
-                                <div className="text-red-500 text-sm p-2">{error}</div>
+                                <div className="text-red-500 flex justify-center p-4 text-sm">{error}</div>
                             ) : (
                                 <Select
                                     multiple
