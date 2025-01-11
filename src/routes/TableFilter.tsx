@@ -54,10 +54,11 @@ const TableFilter = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [transactions, setTransactions] = useState<TransactionHistory[]>([]);
     const [totalItems, setTotalItems] = useState<number>(0);
+    const [filterCount, setfilterCount] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(true);
     const [searchQuery, setSearchQuery] = useState('');
-    const [isFilterDropdownOpen, setIsFilterDropdownOpen] = useState(false);
-    const filterDropdownRef = useRef<HTMLDivElement>(null);
+    // const [isFilterDropdownOpen, setIsFilterDropdownOpen] = useState(false);
+    // const filterDropdownRef = useRef<HTMLDivElement>(null);
     const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,22 +76,22 @@ const TableFilter = () => {
     }, [debouncedSearchQuery]);
 
 
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (
-                filterDropdownRef.current &&
-                !filterDropdownRef.current.contains(event.target as Node)
-            ) {
-                setIsFilterDropdownOpen(false);
-            }
-        };
+    // useEffect(() => {
+    //     const handleClickOutside = (event: MouseEvent) => {
+    //         if (
+    //             filterDropdownRef.current &&
+    //             !filterDropdownRef.current.contains(event.target as Node)
+    //         ) {
+    //             setIsFilterDropdownOpen(false);
+    //         }
+    //     };
 
-        document.addEventListener('mousedown', handleClickOutside);
+    //     document.addEventListener('mousedown', handleClickOutside);
 
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
+    //     return () => {
+    //         document.removeEventListener('mousedown', handleClickOutside);
+    //     };
+    // }, []);
 
 
     // Get page and limit from URL params or use defaults
@@ -177,9 +178,11 @@ const TableFilter = () => {
         const { startDate, endDate, selectedVoucherType, selectedDealers } = filters;
         const currentParams = new URLSearchParams(searchParams);
         // Helper function to set or delete a query parameter
+        let count = 0;
         const updateQueryParam = (key: string, value: string | null | undefined) => {
             if (value && value.trim() !== '') {
                 currentParams.set(key, value);
+                count++;
             } else {
                 currentParams.delete(key);
             }
@@ -188,12 +191,14 @@ const TableFilter = () => {
         updateQueryParam('end_date', endDate);
         updateQueryParam('voucher_types', selectedVoucherType);
         updateQueryParam('dealer_ids', selectedDealers.length > 0 ? selectedDealers.join(',') : null);
-         
+
         setSearchParams(currentParams)
+        setfilterCount(count)
     };
     const handleResetAll = () => {
         setSearchParams({ limit: String(getLimitFromUrl()), page: "1", })
         setIsOpen(false)
+        setfilterCount(0)
     }
     return (
         <div>
@@ -213,12 +218,20 @@ const TableFilter = () => {
 
                 <Button
                     variant="outlined"
-                    className="flex items-center gap-2 px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50"
+                    className="relative flex items-center gap-2 px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50"
                     onClick={() => setIsOpen(true)}
                 >
                     <Filter className="w-4 h-4" />
                     <span>Filters</span>
+
+                    {/* Badge for filter count */}
+                    {filterCount > 0 && (
+                        <span className="absolute -top-2 -right-2 flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full">
+                            {filterCount}
+                        </span>
+                    )}
                 </Button>
+
                 <FilterModal setIsOpen={setIsOpen} isOpen={isOpen} onApply={onApply} handleReset={handleResetAll} />
                 <button className="ml-4 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <BsThreeDots className="mr-2" />
