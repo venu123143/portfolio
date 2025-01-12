@@ -71,6 +71,20 @@ const TableFilter = () => {
         setSearchParams(currentParams);
     }, [debouncedSearchQuery]);
 
+    const TransactionTypeBadge: React.FC<{ type: 'debit' | 'credit' }> = ({ type }) => {
+        const baseClasses = "px-3 py-1 rounded-full text-sm font-medium text-center";
+        const typeClasses = {
+            debit: "bg-red-100 text-red-700",
+            credit: "bg-green-100 text-green-700"
+        };
+
+        return (
+            <span className={`${baseClasses} ${typeClasses[type]}`}>
+                {type.charAt(0).toUpperCase() + type.slice(1)}
+            </span>
+        );
+    };
+
 
     // Get page and limit from URL params or use defaults
     const getPageFromUrl = () => parseInt(searchParams.get("page") || "1", 10);
@@ -133,20 +147,31 @@ const TableFilter = () => {
         {
             header: 'Transaction Type',
             accessor: 'transaction_type',
+            cell: (value) => (
+                <>
+                    <TransactionTypeBadge type={value as 'debit' | 'credit'} />
+                </>
+            )
         },
         {
             header: 'Transaction Date',
             accessor: 'transaction_date',
             sortable: true,
-            cell: (value) => new Date(value).toLocaleString(),
+            cell: (value) => new Date(value).toLocaleString(undefined, {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+            }),
         },
         {
             header: 'Final Value',
             accessor: 'final_value',
             sortable: true,
             cell: (value) => (
-                <span className='font-rubik font-medium flex items-center'>
-                    {value}<BsCurrencyDollar className='inline' />
+                <span className='font-rubik font-medium flex items-center '>
+                    {value}<BsCurrencyDollar className='inline text-green-600' />
                 </span>
             )
         },
@@ -156,7 +181,7 @@ const TableFilter = () => {
             sortable: true,
             cell: (value) => (
                 <>
-                    {value.replace(/\d+/, (match: any) => `${match} `).replace('dinar', 'Dinar')},
+                    {value.replace(/\d+/, (match: any) => `${match} `).replace('dinar', 'Dinar')}
                 </>
             )
         },

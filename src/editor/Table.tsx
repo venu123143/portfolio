@@ -39,6 +39,8 @@ interface PaginationProps {
 import React, { useMemo, useState } from 'react';
 import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from 'lucide-react';
 import { Select, MenuItem, IconButton } from '@mui/material';
+import { motion } from 'framer-motion';
+
 // import { MoveUp, MoveDown } from 'lucide-react';
 
 const EnhancedPagination: React.FC<PaginationProps> = ({
@@ -188,16 +190,17 @@ export function Table<T extends object>({
 
     return (
         <div className={`bg-white rounded-lg shadow-md ${className}`}>
-            <div className="overflow-x-auto max-h-[90%]">
-                <table className="min-w-full divide-y divide-gray-200">
+            <div className="overflow-x-auto">
+                <table className="min-w-full table-fixed divide-y divide-gray-200">
                     <thead className="bg-[#F8F8FA]">
-                        <tr>
+                        <tr className="">
                             {enableSelection && (
-                                <th className="px-4 py-2 text-left">
+                                <th className="w-12 px-4 py-3 border-r border-gray-200">
                                     <input
                                         type="checkbox"
                                         checked={selectedItems.length === data.length}
-                                        className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 cursor-pointer transition-transform duration-300 hover:scale-110"
+                                        // onChange={handleSelectAll}
+                                        className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 cursor-pointer transition-all hover:scale-110"
                                     />
                                 </th>
                             )}
@@ -205,56 +208,72 @@ export function Table<T extends object>({
                                 <th
                                     key={index}
                                     scope="col"
-                                    className="px-6 py-3  text-center  text-black/80 tracking-wider cursor-pointer group"
-                                    onClick={() => column.sortable && handleSort(column.accessor as string)}
+                                    className={`px-6 py-4 border-r border-gray-200 tracking-wider cursor-pointer group ${index === columns.length - 1 ? 'border-r-0' : ''
+                                        }`}
                                 >
-                                    <div className="flex items-center space-x-1">
-                                        <span className='font-rubik font-medium'>{column.header}</span>
+                                    <div className="flex items-center justify-center gap-2 group">
+                                        <span className="font-semibold text-gray-900 text-sm tracking-wider">
+                                            {column.header}
+                                        </span>
                                         {column.sortable && (
-                                            <span className="flex flex-col">
+                                            <div className="flex flex-col opacity-0 group-hover:opacity-100 transition-opacity">
                                                 <ChevronUp
-                                                    className={`w-3 h-3 transition-all ${sortConfig?.key === column.accessor && sortConfig.direction === 'asc'
-                                                        ? 'text-blue-600'
-                                                        : 'text-black'
-                                                        }`}
-                                                />
-                                                <ChevronDown
-                                                    className={`w-3 h-3 transition-all ${sortConfig?.key === column.accessor && sortConfig.direction === 'desc'
+                                                    className={`w-4 h-4 ${sortConfig?.key === column.accessor &&
+                                                        sortConfig?.direction === 'asc'
                                                         ? 'text-blue-600'
                                                         : 'text-gray-400'
                                                         }`}
+                                                // onClick={() => handleSort(column.accessor)}
                                                 />
-                                            </span>
+                                                <ChevronDown
+                                                    className={`w-4 h-4 -mt-1 ${sortConfig?.key === column.accessor &&
+                                                        sortConfig?.direction === 'desc'
+                                                        ? 'text-blue-600'
+                                                        : 'text-gray-400'
+                                                        }`}
+                                                // onClick={() => handleSort(column.accessor)}
+                                                />
+                                            </div>
                                         )}
                                     </div>
                                 </th>
                             ))}
                         </tr>
                     </thead>
-                    <tbody className="bg-white divide-y divide-gray-200">
+                    <tbody className="min-w-full table-fixed divide-y divide-gray-200 relative">
                         {data.map((item, rowIndex) => (
-                            <tr
+                            <motion.tr
                                 key={rowIndex}
                                 onClick={() => handleSelectItem(item)}
-                                className={`hover:bg-gray-100 cursor-pointer transition-all duration-300 ${selectedItems.includes(item) && enableSelection ? 'bg-blue-50' : ''
+                                whileHover={{
+                                    scale: 1.02,
+                                    zIndex: 10, 
+                                    transition: { duration: 0.2 },
+                                }}
+                                className={`hover:bg-gray-50 cursor-pointer hover:shadow-lg ${selectedItems.includes(item) ? 'bg-blue-50' : ''
                                     }`}
                             >
+
                                 {enableSelection && (
-                                    <td className="px-6 py-4">
+                                    <td className="w-12 px-4 py-4 border-r border-gray-200">
                                         <input
                                             type="checkbox"
                                             checked={selectedItems.includes(item)}
-                                            onChange={(e) => e.stopPropagation()} // Prevent event propagation
-                                            className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                                            onChange={(e) => e.stopPropagation()}
+                                            className="w-4 h-4 rounded text-blue-600 border-gray-300 focus:ring-blue-500"
                                         />
                                     </td>
                                 )}
                                 {columns.map((column, colIndex) => (
-                                    <td key={colIndex} className="px-6 py-4 text-sm text-black">
+                                    <td
+                                        key={colIndex}
+                                        className={`px-6 py-4 font-inter text-center text-sm text-gray-900 border-r border-gray-200 ${colIndex === columns.length - 1 ? 'border-r-0' : ''
+                                            }`}
+                                    >
                                         {column.cell ? column.cell(item[column.accessor]) : String(item[column.accessor])}
                                     </td>
                                 ))}
-                            </tr>
+                            </motion.tr>
                         ))}
                     </tbody>
                 </table>
