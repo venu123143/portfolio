@@ -2,6 +2,15 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { IoCallOutline, IoCopy, IoMenu, IoClose } from "react-icons/io5";
 
+const navLinks = [
+    { id: "home", label: "Home" },
+    { id: "projects", label: "Projects" },
+    { id: "skills", label: "Skills" },
+    { id: "experience", label: "Experience" },
+    { id: "contactme", label: "Contact me" },
+];
+
+
 const Header: React.FC = () => {
     const [hasShadow, setHasShadow] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
@@ -17,11 +26,7 @@ const Header: React.FC = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 20) {
-                setHasShadow(true);
-            } else {
-                setHasShadow(false);
-            }
+            setHasShadow(window.scrollY > 20);
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -32,18 +37,27 @@ const Header: React.FC = () => {
         };
     }, []);
 
+    useEffect(() => {
+        const sectionElements = navLinks.map(link => document.getElementById(link.id));
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) setActiveLink(entry.target.id);
+                });
+            },
+            { threshold: 0.6 }
+        );
+
+        sectionElements.forEach(section => section && observer.observe(section));
+        return () => sectionElements.forEach(section => section && observer.unobserve(section));
+    }, []);
+    console.log(activeLink);
+
     const handleSetActiveLink = (link: string) => {
         setActiveLink(link);
         setIsSidebarOpen(false); // Close sidebar when a link is clicked
     };
 
-    const navLinks = [
-        { id: "home", label: "Home" },
-        { id: "projects", label: "Projects" },
-        { id: "skills", label: "Skills" },
-        { id: "experience", label: "Experience" },
-        { id: "contactme", label: "Contact me" },
-    ];
 
     return (
         <header
@@ -60,7 +74,7 @@ const Header: React.FC = () => {
                             key={link.id}
                             href={`#${link.id}`}
                             onClick={() => handleSetActiveLink(link.id)}
-                            className={`relative group font-medium text-textPrimary transition duration-300 ease-in-out hover:text-accent ${activeLink === link.id ? "text-accent" : ""}`}
+                            className={`relative group font-medium text-textPrimary transition duration-300 ease-in-out hover:text-accent ${activeLink === link.id ? "text-accent" : "text-accent"}`}
                         >
                             {link.label}
                             <span

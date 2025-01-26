@@ -1,7 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaNode, FaReact, FaCubes } from 'react-icons/fa';
-import { SiMongodb, SiExpress, SiSocketdotio, SiMysql, SiWebrtc, SiPostgresql, SiTypescript, SiLinux, SiDocker } from 'react-icons/si';
+import { FaNode, FaReact } from 'react-icons/fa';
+import {
+  SiMongodb, SiExpress, SiSocketdotio, SiMysql, SiWebrtc,
+  SiPostgresql, SiTypescript, SiLinux, SiDocker, SiSequelize
+} from 'react-icons/si';
 
 interface ISkills {
   title: string;
@@ -47,7 +50,7 @@ const Skills: ISkills[] = [
   },
   {
     title: 'Sequelize',
-    icon: <FaCubes size={24} />,
+    icon: <SiSequelize size={24} />,
     color: 'bg-slate-500',
   },
   {

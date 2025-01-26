@@ -25,11 +25,8 @@ const Home: React.FC = () => {
     //     },
     // ];
     return (
-        <div id="home" className="bg-[#F8F7F3] rounded-xl p-8 flex flex-col items-center justify-between md:flex-row">
+        <div id="home" className="bg-[#F8F7F3] rounded-xl p-8 flex flex-col gap-6 items-center justify-between md:flex-row">
             {/* Left Section */}
-            {/* <div className="flex flex-col md:flex-row items-center w-full md:w-3/4"> */}
-
-            {/* Text Content */}
             <motion.div
                 className="md:ml-8 text-center space-y-4 md:text-left mt-6 md:mt-0"
                 initial={{ opacity: 0, y: 20 }}
@@ -70,8 +67,6 @@ const Home: React.FC = () => {
                 </div>
             </motion.div>
 
-
-
             {/* Animated Profile Image */}
             <motion.div
                 className="relative overflow-hidden w-full md:w-[500px] md:h-[500px] flex items-center justify-center"
@@ -104,34 +99,6 @@ const Home: React.FC = () => {
                 />
             </motion.div>
 
-
-            {/* </div> */}
-
-            {/* Right Section */}
-            {/* <motion.div
-                initial={{ x: "100vw" }}
-                animate={{ x: 0 }}
-                transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
-            >
-                <div className="mt-10 md:mt-0 md:ml-10 flex flex-col items-center md:items-end w-full">
-                    <div
-                        className="flex flex-col space-y-4"
-                    >
-                        {socialLinks.map((link, index) => (
-                            <a
-                                key={index}
-                                href={link.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow hover:shadow-lg transition duration-300 ease-in-out"
-                            >
-                                <img src={link.imgSrc} alt={link.alt} className="w-6 h-6" />
-                                <span className="text-[#286F6B] font-edu font-medium">{link.label}</span>
-                            </a>
-                        ))}
-                    </div>
-                </div>
-            </motion.div> */}
         </div >
     );
 };

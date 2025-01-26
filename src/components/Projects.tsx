@@ -156,7 +156,7 @@ const CarouselCard: React.FC = () => {
     }, []);
 
     return (
-        <div className="w-full bg-[#F8F7F3] flex flex-col justify-center items-center font-inter">
+        <div id="projects" className="w-full bg-[#F8F7F3] flex flex-col justify-center items-center font-inter">
             <h2 className="page_title">My Projects</h2>
             {loading ? (
                 <div className="flex items-center justify-center">
@@ -198,7 +198,6 @@ interface CardProps {
 const ProjectCard: React.FC<CardProps> = ({ heading, description, link, image, url, bulletPoints, className }) => {
     return (
         <motion.div
-            id="projects"
             className={"relative sm:h-screen rounded-lg bg-[#F8F7F3] shadow-lg hover:shadow-2xl overflow-hidden transform transition duration-300"}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
