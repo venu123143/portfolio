@@ -22,11 +22,14 @@ const Header: React.FC = () => {
         alert("Phone number copied to clipboard!");
     };
 
-    const [activeLink, setActiveLink] = useState<string>("services"); // State to track active link
+    const [activeLink, setActiveLink] = useState<string>("home"); // State to track active link
 
     useEffect(() => {
         const handleScroll = () => {
             setHasShadow(window.scrollY > 20);
+            if (window.scrollY === 0) {
+                setActiveLink("home")
+            }
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -42,16 +45,15 @@ const Header: React.FC = () => {
         const observer = new IntersectionObserver(
             entries => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) setActiveLink(entry.target.id);
+                    if (entry.isIntersecting && activeLink !== entry.target.id) setActiveLink(entry.target.id);
                 });
             },
-            { threshold: 0.6 }
+            { root: null, rootMargin: "0px", threshold: 0.6 }
         );
 
         sectionElements.forEach(section => section && observer.observe(section));
         return () => sectionElements.forEach(section => section && observer.unobserve(section));
     }, []);
-    console.log(activeLink);
 
     const handleSetActiveLink = (link: string) => {
         setActiveLink(link);
