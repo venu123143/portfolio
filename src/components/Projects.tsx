@@ -156,8 +156,8 @@ const CarouselCard: React.FC = () => {
     }, []);
 
     return (
-        <div id="projects" className="w-full bg-[#F8F7F3] flex flex-col justify-center items-center font-inter">
-            <h2 className="page_title">My Projects</h2>
+        <div style={{ backgroundColor: "var(--background-color)" }} id="projects" className="w-full flex flex-col justify-center items-center font-inter">
+            <h2 className="page_title" style={{ color: "var(--text-primary)" }}>My Projects</h2>
             {loading ? (
                 <div className="flex items-center justify-center">
                     <ClipLoader size={50} color="#4A90E2" />
@@ -198,7 +198,8 @@ interface CardProps {
 const ProjectCard: React.FC<CardProps> = ({ heading, description, link, image, url, bulletPoints, className }) => {
     return (
         <motion.div
-            className={"relative sm:h-screen rounded-lg bg-[#F8F7F3] shadow-lg hover:shadow-2xl overflow-hidden transform transition duration-300"}
+            style={{ backgroundColor: "var(--card-bg)" }}
+            className={"relative sm:h-screen rounded-lg  shadow-lg hover:shadow-2xl overflow-hidden transform transition duration-300"}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }} >
@@ -215,14 +216,14 @@ const ProjectCard: React.FC<CardProps> = ({ heading, description, link, image, u
                 {/* Right Side: Content */}
                 <div className="p-3">
                     <div className="h-[90%] overflow-y-auto no-scrollbar">
-                        <h2 className="text-xl font-bold text-gray-800 mb-3 font-rubik">
+                        <h2 style={{ color: "var(--accent-color)" }} className="text-xl font-bold mb-3 font-rubik">
                             {heading}
                         </h2>
-                        <p className="text-black mb-4 font-rubik text-justify">
+                        <p style={{ color: "var(--text-primary)" }} className=" mb-4 font-rubik text-justify">
                             {description}
                         </p>
                         {bulletPoints && bulletPoints.length > 0 && (
-                            <ul className="list-disc pl-6 mb-4 space-y-2 font-rubik text-black">
+                            <ul style={{ color: "var(--text-primary)" }} className="list-disc pl-6 mb-4 space-y-2 font-rubik">
                                 {bulletPoints.map((point, index) => (
                                     <li key={index}>{point}</li>
                                 ))}

@@ -108,13 +108,14 @@ const ContactSection: React.FC = () => {
     };
 
     return (
-        <div id="contactme" className="bg-[#F8F7F3] p-8 w-full relative">
+        <div id="contactme"
+            style={{
+                backgroundColor: 'var(--background-color)',
+            }} className="p-8 w-full relative">
             <div className="">
                 <div className="">
-                    <h1 className="page_title">Contact Information</h1>
-                    {/* <p className="text-gray-600">Here's how you can reach us.</p> */}
+                    <h2 className="page_title" style={{ color: "var(--text-primary)" }}>Contact Information</h2>
                 </div>
-
                 <div className="relative">
                     {showLeftArrow && (
                         <motion.div

@@ -36,7 +36,7 @@ const Skills: ISkills[] = [
   {
     title: 'MongoDB',
     icon: <SiMongodb size={24} />,
-    color: 'bg-black',
+    color: 'bg-purple-500',
   },
   {
     title: 'MySQL',
@@ -82,21 +82,27 @@ const SkillCard = ({ title, icon, color }: ISkills) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="bg-white relative rounded-lg shadow-lg p-4 flex flex-col items-center"
+      style={{
+        backgroundColor: 'var(--background-color)',
+        color: 'var(--text-primary)',
+      }}
+      className=" relative dark:shadow-white/40 dark:text-white rounded-lg shadow-lg p-4 flex flex-col items-center"
     >
       <div
         className={`absolute top-0 bottom-0 left-0 w-2 rounded-l-lg ${color}`}
       ></div>
-      <div className="bg-gray-100 rounded-full p-3 mb-2">{icon}</div>
+      <div className="bg-gray-100 dark:text-black rounded-full p-3 mb-2">{icon}</div>
       <h3 className="text-sm font-rubik font-bold text-center">{title}</h3>
     </motion.div>
   );
 };
 
-const Portfolio = () => {
+const SkillsComponent = () => {
   return (
-    <div id="skills" className="bg-[#F8F7F3] py-16">
-      <h2 className="page_title">My Skills</h2>
+    <div id="skills" style={{
+      backgroundColor: 'var(--background-color)',
+    }} className=" py-16">
+      <h2 className="page_title" style={{ color: "var(--text-primary)" }}>My Skills</h2>
       <div className="container mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {Skills.map((item, index) => (
           <SkillCard key={index} {...item} />
@@ -106,4 +112,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default SkillsComponent;

@@ -8,7 +8,7 @@ const Home: React.FC = () => {
         <div
             id="home"
             className=" p-8 flex flex-col gap-6 items-center justify-between md:flex-row"
-            style={{ backgroundColor: "var(--background-color)" }} // dynamic background color
+            style={{ backgroundColor: "var(--background-color)" }}
         >
             {/* Left Section */}
             <motion.div

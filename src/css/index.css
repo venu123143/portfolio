@@ -33,9 +33,11 @@
 :root {
   --background-color: #F8F7F3;
   --text-primary: #333333;
-  --accent-color: #4A90E2;
+  --accent-color: #286F6B;
+  /* --accent-color: #4A90E2; */
   --accent-color-alt: #007AFF;
   --button-bg: #333333;
+  --card-bg: #ffffff;
 }
 
 .dark {
@@ -44,4 +46,5 @@
   --accent-color: #ff4081;
   --accent-color-alt: #ff79c6;
   --button-bg: #444444;
+  --card-bg: #373c3f;
 }
