@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { IoCallOutline, IoCopy, IoMenu, IoClose } from "react-icons/io5";
+import { IoMenu, IoClose } from "react-icons/io5";
+import { useTheme } from "../contexts/ThemeContext";
+import { Moon, Sun } from "lucide-react";
 
 const navLinks = [
     { id: "home", label: "Home" },
@@ -12,15 +14,11 @@ const navLinks = [
 
 
 const Header: React.FC = () => {
+    const { state, dispatch } = useTheme();
+
     const [hasShadow, setHasShadow] = useState(false);
-    const [isHovered, setIsHovered] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const phoneNumber = "+91 80089 52100";
-
-    const handleCopy = () => {
-        navigator.clipboard.writeText(phoneNumber);
-        alert("Phone number copied to clipboard!");
-    };
 
     const [activeLink, setActiveLink] = useState<string>("home"); // State to track active link
 
@@ -62,21 +60,25 @@ const Header: React.FC = () => {
 
 
     return (
-        <header
-            className={`sticky top-0 z-50 transition-all duration-300 ${hasShadow ? "shadow-md bg-[#F8F7F3]" : "bg-[#FDC435]"}`}
+        <header style={{ backgroundColor: hasShadow ? "var(--background-color)" : "#FDC435" }}
+            className={`sticky top-0 z-50 transition-all duration-300`}
         >
             <div className="flex justify-between items-center max-w-7xl mx-auto px-4 py-3">
                 {/* Logo */}
-                <h1 className="text-2xl relative font-dancing font-[700] text-black">Venu Gopal</h1>
-
+                <h1 className="text-2xl font-dancing font-bold" style={{ color: hasShadow ? "var(--text-primary)" : 'black' }}>
+                    Venu Gopal
+                </h1>
                 {/* Navigation Links for Desktop */}
-                <nav className="hidden md:flex text-base font-edu space-x-8 text-textPrimary font-medium">
+                <nav className="hidden md:flex text-base font-edu space-x-6 font-medium">
                     {navLinks.map((link) => (
                         <a
                             key={link.id}
                             href={`#${link.id}`}
                             onClick={() => handleSetActiveLink(link.id)}
-                            className={`relative group font-medium text-textPrimary transition duration-300 ease-in-out hover:text-accent ${activeLink === link.id ? "text-accent" : "text-accent"}`}
+                            style={{
+                                color: !hasShadow ? "black" : "var(--accent-color)",
+                            }}
+                            className={`relative p-1 rounded-sm hover:shadow-sm hover:bg-purple-500/20 group font-medium  transition duration-300 ease-in-out hover:text-accent ${activeLink === link.id ? "text-accent" : "text-accent"}`}
                         >
                             {link.label}
                             <span
@@ -87,33 +89,27 @@ const Header: React.FC = () => {
                 </nav>
 
                 {/* Menu Icon for Mobile */}
-                <button
-                    className="md:hidden text-2xl p-3 hover:bg-yellow-200 rounded-full"
-                    onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                >
-                    {isSidebarOpen ? <IoClose /> : <IoMenu />}
-                </button>
-
-                {/* Contact Section */}
-                <div className="hidden md:flex items-center space-x-3">
-                    <p className="font-edu font-medium">{phoneNumber}</p>
-                    <motion.div
-                        className="relative"
-                        onHoverStart={() => setIsHovered(true)}
-                        onHoverEnd={() => setIsHovered(false)}
+                <div className="block md:flex items-center md:gap-3">
+                    <p style={{
+                        color: !hasShadow ? "black" : "var(--accent-color)",
+                    }} className="lg:block hidden font-edu font-medium">{phoneNumber}</p>
+                    <button
+                        onClick={() => dispatch({ type: "TOGGLE_THEME" })}
+                        className="p-2 md:cursor-pointer rounded-full hover:bg-white/40  hover:bg-muted transition-colors"
+                        aria-label="Toggle theme"
                     >
-                        <motion.button
-                            initial={{ rotateY: 0 }}
-                            onClick={handleCopy}
-                            animate={{ rotateY: isHovered ? 180 : 0 }}
-                            transition={{ duration: 0.5, ease: "easeInOut" }} // Slower flip
-                            className={`p-2 rounded-full flex justify-center items-center ${isHovered
-                                ? "bg-white text-black"
-                                : "bg-gradient-to-br from-orange-500 via-white/30 to-green-600"}`}
-                        >
-                            {!isHovered ? <IoCallOutline /> : <IoCopy />}
-                        </motion.button>
-                    </motion.div>
+                        {state.theme === "dark" ? (
+                            <Sun className="h-6 w-6" style={{ color: "var(--accent-color)" }} />
+                        ) : (
+                            <Moon className="h-6 w-6" style={{ color: "var(--text-primary)" }} />
+                        )}
+                    </button>
+                    <button
+                        className="md:hidden text-2xl p-3 hover:bg-yellow-200 rounded-full"
+                        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                    >
+                        {isSidebarOpen ? <IoClose /> : <IoMenu />}
+                    </button>
                 </div>
             </div>
 
@@ -129,7 +125,8 @@ const Header: React.FC = () => {
                     animate={{ x: 0 }}
                     exit={{ x: "100%" }}
                     transition={{ duration: 0.3 }}
-                    className="fixed top-0 right-0 h-full w-3/4 bg-[#F8F7F3] shadow-lg p-4 z-40 md:hidden"
+                    className="fixed top-0 right-0 h-full w-3/4 shadow-lg p-4 z-40 md:hidden"
+                    style={{ backgroundColor: "var(--background-color)" }}
                 >
                     <nav className="flex flex-col space-y-6">
                         {navLinks.map((link) => (
@@ -137,7 +134,10 @@ const Header: React.FC = () => {
                                 key={link.id}
                                 href={`#${link.id}`}
                                 onClick={() => handleSetActiveLink(link.id)}
-                                className={`text-lg font-edu font-medium transition duration-300 ease-in-out hover:text-accent ${activeLink === link.id ? "text-accent" : "text-textPrimary"}`}
+                                className="text-lg font-edu font-medium transition duration-300 ease-in-out"
+                                style={{
+                                    color: activeLink === link.id ? "var(--accent-color)" : "var(--text-primary)",
+                                }}
                             >
                                 {link.label}
                             </a>

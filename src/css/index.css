@@ -4,27 +4,44 @@
 
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    /* color-scheme: dark; */
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  /* color-scheme: dark; */
+}
 
-  @layer utilities {
-    @variants responsive {
-  
-      /* Hide scrollbar for Chrome, Safari and Opera */
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-  
-      /* Hide scrollbar for IE, Edge and Firefox */
-      .no-scrollbar {
-        -ms-overflow-style: none;
-        /* IE and Edge */
-        scrollbar-width: none;
-        /* Firefox */
-      }
+@layer utilities {
+  @variants responsive {
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
     }
   }
+}
+
+/* index.css */
+:root {
+  --background-color: #F8F7F3;
+  --text-primary: #333333;
+  --accent-color: #4A90E2;
+  --accent-color-alt: #007AFF;
+  --button-bg: #333333;
+}
+
+.dark {
+  --background-color: #111B21;
+  --text-primary: #d1d1d1;
+  --accent-color: #ff4081;
+  --accent-color-alt: #ff79c6;
+  --button-bg: #444444;
+}
