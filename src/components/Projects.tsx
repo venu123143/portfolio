@@ -115,7 +115,16 @@ const CarouselCard: React.FC = () => {
         const { onClick } = props;
         return (
             <div
-                className="absolute top-1/2 left-0 z-10 transform rounded-full p-1 -translate-y-1/2 text-slate-800 hover:text-black cursor-pointer"
+                style={{
+                    color: "var(--text-primary)",
+                }}
+                onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.color = "var(--accent-color)";
+                }}
+                onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.color = "var(--text-primary)";
+                }}
+                className="absolute top-1/2 left-0 z-10 transform rounded-full p-1 -translate-y-1/2 cursor-pointer"
                 onClick={onClick}
             >
                 <FaArrowLeft size={30} />
@@ -127,7 +136,16 @@ const CarouselCard: React.FC = () => {
         const { onClick } = props;
         return (
             <div
-                className="absolute top-1/2 right-0 z-10 p-1 transform -translate-y-1/2 text-gray-700 hover:text-black cursor-pointer"
+                style={{
+                    color: "var(--text-primary)",
+                }}
+                onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.color = "var(--accent-color)";
+                }}
+                onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.color = "var(--text-primary)";
+                }}
+                className="absolute top-1/2 right-0 z-10 p-1 transform -translate-y-1/2 cursor-pointer"
                 onClick={onClick}
             >
                 <FaArrowRight size={30} />

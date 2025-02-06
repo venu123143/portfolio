@@ -105,6 +105,9 @@ const Header: React.FC = () => {
                         )}
                     </button>
                     <button
+                        style={{
+                            color: !hasShadow ? "black" : "var(--accent-color)",
+                        }}
                         className="md:hidden text-2xl p-3 hover:bg-yellow-200 rounded-full"
                         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                     >

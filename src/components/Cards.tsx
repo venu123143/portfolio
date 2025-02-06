@@ -83,7 +83,7 @@ const SkillCard = ({ title, icon, color }: ISkills) => {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
       style={{
-        backgroundColor: 'var(--background-color)',
+        backgroundColor: 'var(--card-bg)',
         color: 'var(--text-primary)',
       }}
       className=" relative dark:shadow-white/40 dark:text-white rounded-lg shadow-lg p-4 flex flex-col items-center"

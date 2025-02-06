@@ -143,8 +143,12 @@ const ContactSection: React.FC = () => {
                                 key={index}
                                 className="flex-none w-80 snap-center"
                             >
-                                <div className="bg-white border border-gray-200 rounded-xl p-6 h-full hover:border-gray-300 transition-all duration-300">
-                                    <div className="p-3 bg-gray-50 rounded-full w-fit mb-6">
+                                <div style={{
+                                    backgroundColor: 'var(--card-bg)',
+                                    color: 'var(--text-primary)',
+                                    border: 'var(--button-bg)'
+                                }} className="bg-white border border-gray-200 rounded-xl p-6 h-full hover:border-gray-300 transition-all duration-300">
+                                    <div className="p-3 text-black bg-gray-100 rounded-full w-fit mb-6">
                                         {option.icon}
                                     </div>
 
@@ -152,7 +156,10 @@ const ContactSection: React.FC = () => {
                                         {option.title}
                                     </h3>
 
-                                    <p className="text-gray-600 mb-4">
+                                    <p style={{
+                                        backgroundColor: 'var(--card-bg)',
+                                        color: 'var(--text-primary)',
+                                    }} className="mb-4">
                                         {option.subtitle}
                                     </p>
 
