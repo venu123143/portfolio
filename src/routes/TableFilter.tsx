@@ -8,6 +8,7 @@ import FilterModal from "../editor/Filter"
 import { Button } from "@mui/material";
 import { Filter } from "lucide-react";
 import { FilterModalProps } from "../editor/Filter";
+import ClipLoader from "react-spinners/ClipLoader";
 interface TransactionHistory {
     transaction_id: number;
     transaction_items_id: number;
@@ -99,7 +100,7 @@ const TableFilter = () => {
                 {
                     params: queryParams,
                     headers: {
-                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWREYXRhIjoiLzhSOExnN3o2YU4raFNWd252aGRUdz09OlJDWXV4UnlRSDhIVUhOR1dVVUdzZ1ROUHlWRnhscWxVTTZVWWlaWGRhUFN5aWprdXYzd1prV1pkYVI3bm5wTmkvbWFzdzhFNHFCaCsvNmdidlhCdExzQW8yK1Fwa2JDL05LTHFWZHhkc2VvPSIsImlhdCI6MTczNjQwNDU1NSwiZXhwIjoxNzM4OTk2NTU1fQ.FahnoO5R-oxSQJT20yRoAwcqKf1cG_Ju3aFEaICX4fw',
+                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWREYXRhIjoiUFNWeFNGVUk3bDEwdk0wVnd6T3Y4QT09OkMzSGR0cVZqM2x1VEVSNkRXUENTdXR0dkY5WWdTZy9lUHJWTkpwWVVBT2RURjVwaG9ycHZJSGcvWCtMeTNTK2I1Vk5oc2N2LzVaN1c0OGM3bmU3NnlNZFNRZzRCa0Z4Qk9KZFN3d3dJejhzPSIsImlhdCI6MTczODkyNjI0NSwiZXhwIjoxNzQxNTE4MjQ1fQ.mQ4erF1i-fMuPF-BHNuPJI7K_LR717NV-KnOusDV_3o',
                     },
                 }
             );
@@ -122,12 +123,16 @@ const TableFilter = () => {
 
     // Handle limit change
     const handleLimitChange = (newLimit: number) => {
-        setSearchParams({ limit: String(newLimit), page: String(getPageFromUrl()), })
+        const currentParams = new URLSearchParams(searchParams);
+        currentParams.set('limit', String(newLimit));
+        currentParams.set('page', String(getPageFromUrl()));
+        setSearchParams(currentParams)
     };
 
     // Effect to handle URL params changes
     useEffect(() => {
         fetchTransactions(searchParams);
+        setfilterCount(searchParams.size - 2)
     }, [searchParams, fetchTransactions]);
 
     const columns: Column<TransactionHistory>[] = [
@@ -213,7 +218,7 @@ const TableFilter = () => {
         setfilterCount(0)
     }
     return (
-        <div>
+        <>
             <div className="flex items-center bg-gray-100 p-4 rounded-md">
                 <div className="flex-grow mr-4">
                     <div className="relative">
@@ -249,23 +254,22 @@ const TableFilter = () => {
                     <BsThreeDots className="mr-2" />
                 </button>
             </div>
-            {
-                loading ? <div>Loading...</div>
-                    :
-                    <Table<TransactionHistory>
-                        data={transactions}
-                        totalItems={totalItems}
-                        currentPage={getPageFromUrl()}
-                        setCurrentPage={handlePageChange}
-                        columns={columns}
-                        itemsPerPage={getLimitFromUrl()}
-                        setItemsPerPage={handleLimitChange}
-                        enableSelection={true}
-                        onSelectionChange={(selected) => console.log('Selected:', selected)}
-                        onRowClick={(transaction) => console.log('Clicked:', transaction)}
-                    />
-            }
-        </div>
+            <Table<TransactionHistory>
+                data={transactions}
+                totalItems={totalItems}
+                currentPage={getPageFromUrl()}
+                setCurrentPage={handlePageChange}
+                columns={columns}
+                itemsPerPage={getLimitFromUrl()}
+                setItemsPerPage={handleLimitChange}
+                enableSelection={true}
+                onSelectionChange={(selected) => console.log('Selected:', selected)}
+                onRowClick={(transaction) => console.log('Clicked:', transaction)}
+            />
+            {/* {!loading && <div className="absolute top-0 bottom-0 left-0 right-0 bg-black/20  flex justify-center items-center">
+                <ClipLoader color="#3B82F6" size={50} />
+            </div>} */}
+        </>
     );
 };
 
