@@ -37,7 +37,7 @@ interface PaginationProps {
 
 // EnhancedPagination.tsx
 import React, { useMemo, useState } from 'react';
-import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from 'lucide-react';
+import {  ChevronLeft, ChevronRight } from 'lucide-react';
 import { Select, MenuItem, IconButton } from '@mui/material';
 import { motion } from 'framer-motion';
 
@@ -163,21 +163,7 @@ export function Table<T extends object>({
     setCurrentPage,
     currentPage = 1,
 }: TableProps<T>) {
-    const [sortConfig, setSortConfig] = useState<SortConfig | null>(null);
     const [selectedItems, setSelectedItems] = useState<T[]>([]);
-
-
-    const handleSort = (key: string) => {
-        setSortConfig((current) => {
-            if (current?.key === key) {
-                return current.direction === 'asc'
-                    ? { key, direction: 'desc' }
-                    : { key, direction: 'asc' };
-            }
-            return { key, direction: 'asc' };
-        });
-    };
-
     const handleSelectItem = (item: T) => {
         const newSelection = selectedItems.includes(item)
             ? selectedItems.filter((i) => i !== item)
@@ -215,26 +201,6 @@ export function Table<T extends object>({
                                         <span className="font-semibold text-gray-900 text-sm tracking-wider">
                                             {column.header}
                                         </span>
-                                        {column.sortable && (
-                                            <div className="flex flex-col opacity-0 group-hover:opacity-100 transition-opacity">
-                                                <ChevronUp
-                                                    className={`w-4 h-4 ${sortConfig?.key === column.accessor &&
-                                                        sortConfig?.direction === 'asc'
-                                                        ? 'text-blue-600'
-                                                        : 'text-gray-400'
-                                                        }`}
-                                                // onClick={() => handleSort(column.accessor)}
-                                                />
-                                                <ChevronDown
-                                                    className={`w-4 h-4 -mt-1 ${sortConfig?.key === column.accessor &&
-                                                        sortConfig?.direction === 'desc'
-                                                        ? 'text-blue-600'
-                                                        : 'text-gray-400'
-                                                        }`}
-                                                // onClick={() => handleSort(column.accessor)}
-                                                />
-                                            </div>
-                                        )}
                                     </div>
                                 </th>
                             ))}

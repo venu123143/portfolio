@@ -8,7 +8,7 @@ import FilterModal from "../editor/Filter"
 import { Button } from "@mui/material";
 import { Filter } from "lucide-react";
 import { FilterModalProps } from "../editor/Filter";
-import ClipLoader from "react-spinners/ClipLoader";
+// import ClipLoader from "react-spinners/ClipLoader";
 interface TransactionHistory {
     transaction_id: number;
     transaction_items_id: number;
@@ -53,9 +53,7 @@ const TableFilter = () => {
     const [transactions, setTransactions] = useState<TransactionHistory[]>([]);
     const [totalItems, setTotalItems] = useState<number>(0);
     const [filterCount, setfilterCount] = useState<number>(0);
-    const [loading, setLoading] = useState<boolean>(true);
     const [searchQuery, setSearchQuery] = useState('');
-
     const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -92,7 +90,6 @@ const TableFilter = () => {
     const getLimitFromUrl = () => parseInt(searchParams.get("limit") || "10", 10);
 
     const fetchTransactions = useCallback(async (searchParams: any) => {
-        setLoading(true);
         try {
             const queryParams = Object.fromEntries(searchParams);
             const response = await axios.get(
@@ -100,7 +97,7 @@ const TableFilter = () => {
                 {
                     params: queryParams,
                     headers: {
-                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWREYXRhIjoiUFNWeFNGVUk3bDEwdk0wVnd6T3Y4QT09OkMzSGR0cVZqM2x1VEVSNkRXUENTdXR0dkY5WWdTZy9lUHJWTkpwWVVBT2RURjVwaG9ycHZJSGcvWCtMeTNTK2I1Vk5oc2N2LzVaN1c0OGM3bmU3NnlNZFNRZzRCa0Z4Qk9KZFN3d3dJejhzPSIsImlhdCI6MTczODkyNjI0NSwiZXhwIjoxNzQxNTE4MjQ1fQ.mQ4erF1i-fMuPF-BHNuPJI7K_LR717NV-KnOusDV_3o',
+                        Authorization: ''
                     },
                 }
             );
@@ -109,8 +106,6 @@ const TableFilter = () => {
             setTotalItems(count.total);
         } catch (error) {
             console.error('Error fetching transactions:', error);
-        } finally {
-            setLoading(false);
         }
     }, []);
 
