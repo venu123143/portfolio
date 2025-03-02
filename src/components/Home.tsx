@@ -67,7 +67,7 @@ const Home: React.FC = () => {
 
             {/* Animated Profile Image */}
             <motion.div
-                className="relative overflow-hidden w-full [500px] h-[500px] flex items-center justify-center"
+                className="relative overflow-hidden w-[500px] h-[500px] flex items-center justify-center"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
