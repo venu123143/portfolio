@@ -221,7 +221,7 @@ const ProjectCard: React.FC<CardProps> = ({ heading, description, link, image, u
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }} >
-            <div className="flex flex-col md:flex-row h-full">
+            <div className="flex flex-col md:flex-row md:h-full h-auto ">
                 {/* Left Side: Image */}
                 <div className="hidden md:flex md:w-2/5 flex-shrink-0 justify-center items-center">
                     <img
@@ -254,7 +254,7 @@ const ProjectCard: React.FC<CardProps> = ({ heading, description, link, image, u
                                 to={link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="self-start ml-5 w-fit space-x-4 flex items-center justify-center bg-gray-900 text-white px-6 py-3 rounded-lg cursor-pointer font-ubuntu hover:bg-zinc-950"
+                                className="self-start ml-5 mt-auto w-fit space-x-4 flex items-center justify-center bg-gray-900 text-white px-6 py-3 rounded-lg cursor-pointer font-ubuntu hover:bg-zinc-950"
                             >
                                 <FaGithub size={25} className="inline" />
                                 <span> GitHub</span>
@@ -265,7 +265,7 @@ const ProjectCard: React.FC<CardProps> = ({ heading, description, link, image, u
                                 to={url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="self-start ml-5 w-fit space-x-3 flex items-center justify-center bg-zinc-900 shadow-lg hover:bg-gray-900 text-white px-6 py-3 rounded-lg cursor-pointer font-ubuntu"
+                                className="self-start ml-5 mt-auto w-fit space-x-3 flex items-center justify-center bg-zinc-900 hover:bg-gray-900 text-white px-6 py-3 rounded-lg cursor-pointer font-ubuntu"
                             >
                                 <LuExternalLink size={22} className="inline" />
                                 <span>Url </span>

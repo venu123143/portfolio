@@ -7,9 +7,9 @@ import { motion } from "framer-motion";
 const ContactSection: React.FC = () => {
     const contactInfo = {
         email: "venugopalreddy9493@gmail.com",
-        website: "www.nerchuko.in",
+        website: "https://nerchuko.in/",
         twitter: "@venu_reddy_9493",
-        linkedin: "linkedin.com/in/venu-reddy-a226881b6/",
+        linkedin: "www.linkedin.com/in/venureddy9493/",
         address: "Kavali, Andhra Pradesh, India",
         phone: "+91 80089 52100",
         github: "https://github.com/venu123143" // Add the GitHub URL here
@@ -111,7 +111,7 @@ const ContactSection: React.FC = () => {
         <div id="contactme"
             style={{
                 backgroundColor: 'var(--background-color)',
-            }} className="p-8 w-full relative">
+            }} className="lg:p-8 p-2 w-full relative">
             <div className="">
                 <div className="">
                     <h2 className="page_title" style={{ color: "var(--text-primary)" }}>Contact Information</h2>
@@ -123,7 +123,7 @@ const ContactSection: React.FC = () => {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -100 }}
                             transition={{ duration: 0.3 }}
-                            className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10"
+                            className="lg:block hidden absolute top-1/2 left-0 transform -translate-y-1/2 z-10"
                         >
                             <button
                                 onClick={scrollLeft}
@@ -168,7 +168,7 @@ const ContactSection: React.FC = () => {
                                             href={option.link}
                                             target={option.link.startsWith('http') ? '_blank' : undefined}
                                             rel={option.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                                            className="text-blue-600 font-medium hover:underline"
+                                            className="text-blue-600 line-clamp-1 font-medium hover:underline"
                                         >
                                             {option.linkText}
                                         </a>
@@ -184,7 +184,7 @@ const ContactSection: React.FC = () => {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: 100 }}
                             transition={{ duration: 0.3 }}
-                            className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10"
+                            className="lg:block hidden absolute top-1/2 right-0 transform -translate-y-1/2 z-10"
                         >
                             <button
                                 onClick={scrollRight}
