@@ -6,13 +6,16 @@ import ModernFilter from "./routes/TableFilter"
 
 const App = () => {
   return (
-    <Router>
+    <Router future={{
+      v7_startTransition: true,
+      v7_relativeSplatPath: true,
+    }}>
       <Routes>
         <Route path="/" element={<Portfolio />} />
         <Route path="/filter" element={<ModernFilter />} />
         <Route path="*" element={<Default />} />
       </Routes>
-    </Router>
+    </Router >
   );
 }
 

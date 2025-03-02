@@ -5,6 +5,7 @@ import {
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import { CiLocationArrow1, CiGps } from "react-icons/ci";
+import { useTheme } from "../contexts/ThemeContext";
 
 // Define the type for an experience object
 interface Experience {
@@ -80,6 +81,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
 
 
 const Experience = () => {
+    const { state } = useTheme();
 
     const experiences = [
         {
@@ -112,10 +114,13 @@ const Experience = () => {
     return (
         <>
             <VerticalTimeline lineColor="green">
+
                 {experiences.map((experience, index) => (
                     <ExperienceCard
                         key={`experience-${index}`}
                         experience={experience}
+                        theme={state.theme}
+
                     />
                 ))}
             </VerticalTimeline>

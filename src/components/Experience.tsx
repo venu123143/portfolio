@@ -1,18 +1,19 @@
 
-import React, { useRef } from 'react';
+import React from 'react';
 import ExperienceCard from '../ui/ExperienceUi';
 
 
 
 const Experience: React.FC = () => {
-  const componentRef = useRef<HTMLDivElement>(null);
-
   return (
     <div
-      ref={componentRef} id="experience"
-      className=" bg-[#F8F7F3] relative overflow-hidden">
-      <h2 className="page_title">Experience</h2>
-
+      id="experience"
+      style={{
+        backgroundColor: 'var(--background-color)',
+      }}
+      className=" relative overflow-hidden"
+    >
+      <h2 className="page_title" style={{ color: "var(--text-primary)" }}>Experience</h2>
       <ExperienceCard />
     </div>
   );

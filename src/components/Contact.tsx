@@ -108,13 +108,14 @@ const ContactSection: React.FC = () => {
     };
 
     return (
-        <div id="contactme" className="bg-[#F8F7F3] lg:p-8 p-2 w-full relative">
+        <div id="contactme"
+            style={{
+                backgroundColor: 'var(--background-color)',
+            }} className="p-8 w-full relative">
             <div className="">
                 <div className="">
-                    <h1 className="page_title">Contact Information</h1>
-                    {/* <p className="text-gray-600">Here's how you can reach us.</p> */}
+                    <h2 className="page_title" style={{ color: "var(--text-primary)" }}>Contact Information</h2>
                 </div>
-
                 <div className="relative">
                     {showLeftArrow && (
                         <motion.div
@@ -142,8 +143,12 @@ const ContactSection: React.FC = () => {
                                 key={index}
                                 className="flex-none w-80 snap-center"
                             >
-                                <div className="bg-white border border-gray-200 rounded-xl p-6 h-full hover:border-gray-300 transition-all duration-300">
-                                    <div className="p-3 bg-gray-50 rounded-full w-fit mb-6">
+                                <div style={{
+                                    backgroundColor: 'var(--card-bg)',
+                                    color: 'var(--text-primary)',
+                                    border: 'var(--button-bg)'
+                                }} className="bg-white border border-gray-200 rounded-xl p-6 h-full hover:border-gray-300 transition-all duration-300">
+                                    <div className="p-3 text-black bg-gray-100 rounded-full w-fit mb-6">
                                         {option.icon}
                                     </div>
 
@@ -151,7 +156,10 @@ const ContactSection: React.FC = () => {
                                         {option.title}
                                     </h3>
 
-                                    <p className="text-gray-600 mb-4">
+                                    <p style={{
+                                        backgroundColor: 'var(--card-bg)',
+                                        color: 'var(--text-primary)',
+                                    }} className="mb-4">
                                         {option.subtitle}
                                     </p>
 
