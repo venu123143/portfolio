@@ -59,7 +59,7 @@ const ProfileImage: React.FC = () => {
           alt="Profile"
           className="w-full h-full object-cover"
           style={{
-            objectPosition: "center 20%", // Adjust to focus on the face
+            objectPosition: "center 30%", // Adjust to focus on the face
           }}
         />
       </motion.div>
