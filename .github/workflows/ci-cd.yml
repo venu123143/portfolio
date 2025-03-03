@@ -5,40 +5,14 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       # Step 1: Checkout the repository
       - uses: actions/checkout@v4
 
-      - name: Cache npm dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: node-cache-${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            node-cache-${{ runner.os }}-npm-
-
-      # Step 2: Set up Node.js
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: npm
-
-      # Step 3: Install dependencies
-      - name: Install dependencies
-        run: npm install
-
-      # Step 4: Build the React application
-      - name: Build React App
-        run: npm run build
-
-      - name: Check dist directory contents
-        run: ls -l dist
-        
-      # Step 5: Deploy to the server
+      # Step 2: Deploy and Build on the Server
       - name: Deploy to Server
         if: success()
         env:
@@ -51,13 +25,22 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
 
-          echo "Copying build directory to server..."
-          scp -r ./dist/* $USER@$HOST:/var/www/html/portfolio/dist/
+          echo "Connecting to the server..."
+          ssh $USER@$HOST << 'EOF'
+            cd /var/www/html/portfolio
 
-          echo "Restarting PM2 process..."
-          ssh $USER@$HOST << EOF
+            echo "Pulling latest changes..."
+            git pull origin main
+            
+            echo "Installing dependencies..."
+            npm install
+
+            echo "Building the project..."
+            npm run build
+
+            echo "Restarting PM2 process..."
             pm2 restart portfolio --update-env
           EOF
 
-          # Optional: Cleanup SSH Key
+          # Cleanup SSH Key
           rm -f ~/.ssh/id_rsa
