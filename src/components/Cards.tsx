@@ -2,8 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaNode, FaReact } from 'react-icons/fa';
 import {
-  SiMongodb, SiExpress, SiSocketdotio, SiMysql, SiWebrtc,
-  SiPostgresql, SiTypescript, SiLinux, SiDocker, SiSequelize
+  SiMongodb, SiExpress, SiSocketdotio, SiMysql, SiWebrtc, SiNestjs, SiRedis,
+  SiPostgresql, SiTypescript, SiLinux, SiDocker, SiSequelize, SiTypeorm, SiJavascript
 } from 'react-icons/si';
 
 interface ISkills {
@@ -13,6 +13,11 @@ interface ISkills {
 }
 
 const Skills: ISkills[] = [
+  {
+    title: 'Javascript',
+    icon: <SiJavascript size={24} />,
+    color: 'bg-yellow-500',
+  },
   {
     title: 'Node.js',
     icon: <FaNode size={24} />,
@@ -24,6 +29,11 @@ const Skills: ISkills[] = [
     color: 'bg-green-500',
   },
   {
+    title: 'Nest.js',
+    icon: <SiNestjs size={24} />,
+    color: 'bg-pink-500',
+  },
+  {
     title: 'React.js',
     icon: <FaReact size={24} />,
     color: 'bg-blue-500',
@@ -31,7 +41,7 @@ const Skills: ISkills[] = [
   {
     title: 'TypeScript',
     icon: <SiTypescript size={24} />,
-    color: 'bg-yellow-400',
+    color: 'bg-blue-600',
   },
   {
     title: 'MongoDB',
@@ -49,14 +59,24 @@ const Skills: ISkills[] = [
     color: 'bg-indigo-600',
   },
   {
+    title: 'Redis',
+    icon: <SiRedis size={24} />,
+    color: 'bg-red-600',
+  },
+  {
     title: 'Sequelize',
     icon: <SiSequelize size={24} />,
     color: 'bg-slate-500',
   },
   {
-    title: 'Sockets',
+    title: 'Typeorm',
+    icon: <SiTypeorm size={24} />,
+    color: 'bg-slate-500',
+  },
+  {
+    title: 'Socket.io',
     icon: <SiSocketdotio size={24} />,
-    color: 'bg-green-600',
+    color: 'bg-black',
   },
   {
     title: 'WebRTC',
@@ -66,7 +86,7 @@ const Skills: ISkills[] = [
   {
     title: 'Linux',
     icon: <SiLinux size={24} />,
-    color: 'bg-[#1a30f1]',
+    color: 'bg-black',
   },
   {
     title: 'Docker',

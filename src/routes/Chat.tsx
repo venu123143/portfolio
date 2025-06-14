@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FiSend, FiPaperclip, FiSmile, FiMic, FiImage, 
-  FiVideo, FiFile, FiX, FiLink, FiBold, FiItalic,
-  FiList, FiCode, FiMoreHorizontal, FiChevronDown,
+  FiVideo, FiFile,  FiLink, FiBold, FiItalic,
+  FiList, FiCode, FiMoreHorizontal, 
   FiCamera, FiUpload, FiMusic
 } from 'react-icons/fi';
 import TextareaAutosize from 'react-textarea-autosize';

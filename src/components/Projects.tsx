@@ -10,6 +10,9 @@ import whatsapp from "../assets/whatsapp.png";
 import amazon from "../assets/amazon.png";
 import thapala from "../assets/thapala.png";
 import taso from "../assets/taso.png";
+import achieversimg from "../assets/libraryimg.png";
+import meetspaceimg from "../assets/meetspaceimg.png";
+import couponsimg from "../assets/couponsimg.png";
 import { LuExternalLink } from "react-icons/lu";
 
 
@@ -24,6 +27,28 @@ const CarouselCard: React.FC = () => {
     }, []);
     const carouselData = [
         {
+            heading: "Title: E-Coupons - Libya's Premier Mobile Recharge Coupon Platform",
+            description: `E-Coupons is a comprehensive coupon management system designed for Libya's mobile recharge market. 
+            This platform enables bulk voucher distribution, dealer wallet management, and real-time inventory tracking. 
+            Built with a robust backend using Node.js, MySQL, and Sequelize ORM, it ensures secure transactions 
+            and efficient coupon distribution through an intuitive interface.`,
+            bulletPoints: [
+                "End-to-end coupon management system with bulk Excel upload functionality for voucher codes.",
+                "Dealer wallet system with admin-approved top-up requests for secure fund management.",
+                "Real-time inventory tracking of available and sold vouchers with Sequelize ORM transactions.",
+                "Dynamic Role-Based Access Control (RBAC) for granular permission management across user roles.",
+                "Automated email notifications for transactions and approvals using Nodemailer.",
+                "High-performance architecture with Redis caching for frequently accessed data.",
+                "Event-driven background processing with Bull Queue for asynchronous operations.",
+                "Optimized database schema with Sequelize hooks ensuring data integrity and security.",
+                "Bulk voucher processing capability handling thousands of records efficiently.",
+                "Responsive admin dashboard for monitoring transactions, approvals, and inventory."
+            ],
+            url: "https://vms.lahtha.ly/#/login",
+            image: couponsimg, // Make sure to import the image
+            className: "h-[80%] object-cover"
+        },
+        {
             heading: "Title: WhatsApp Clone - Real Time Messaging App with Modern Features",
             description: `This WhatsApp Clone is a feature-rich messaging application designed with 
             a modern technology stack. It mirrors WhatsApp's core functionalities, offering secure user
@@ -37,7 +62,7 @@ const CarouselCard: React.FC = () => {
                 "Chat functionalities including user profile, group chats, individual chats, media sharing (photos, voice recordings), message replies, editing, and deletion.",
             ],
             link: "https://github.com/venu123143/whatsapp/",
-            url: "https://whatsapp-mongo.onrender.com/",
+            url: "https://vchat.nerchuko.in/",
             image: whatsapp,
             className: "h-full object-cover"
         },
@@ -62,7 +87,7 @@ const CarouselCard: React.FC = () => {
                 "Engage with insightful blogs to stay updated on the latest trends and product information.",
             ],
             link: "https://github.com/venu123143/amazon_front",
-            url: "https://amazon-clone-wtj7.onrender.com/",
+            url: "https://onlinestore.nerchuko.in/",
             image: amazon,
             className: "h-full object-cover"
         },
@@ -109,8 +134,55 @@ const CarouselCard: React.FC = () => {
             image: taso,
             className: "h-full object-cover"
         },
-    ];
-
+        {
+            heading: "Title: MeetSpace - Real-Time Video Conferencing Platform",
+            description: `MeetSpace is a lightweight, privacy-focused video conferencing application built with cutting-edge WebRTC technology. 
+            Designed for seamless group communication, it supports high-quality video calls without requiring user authentication. 
+            The platform leverages Mediasoup for efficient media routing and WebRTC handling, ensuring smooth multi-participant interactions.`,
+            bulletPoints: [
+                "Group video calls supporting 6-8 participants simultaneously with Mediasoup WebRTC handling",
+                "No authentication required - join instantly with just a meeting ID",
+                "Complete media controls: Camera on/off, Microphone mute/unmute",
+                "Interactive screen sharing (single user at a time for optimal bandwidth)",
+                "In-call chat functionality using Socket.io for real-time messaging",
+                "Secure private call option with password protection",
+                "Meeting history tracking (last 6 meetings) with rejoin capability",
+                "Modern React-Vite frontend with TypeScript and ShadCN UI components",
+                "Node.js/Express backend with Mediasoup for efficient media routing",
+                "Optimized network usage with selective forwarding units (SFUs)",
+                "Responsive design that works across desktop and mobile browsers",
+                "Clean, intuitive interface with minimal latency"
+            ],
+            url: "https://meetspace.nerchuko.in/",
+            image: meetspaceimg,
+            className: "h-[80%]  object-fit"
+        },
+        {
+            heading: "Achievers Library - Study Space Management Platform",
+            description: `A complete admin dashboard and landing page for a study space business. 
+            The system manages student subscriptions, payments, queries and provides detailed analytics. 
+            Designed for competitive exam preparation centers with dark/light mode support.`,
+            bulletPoints: [
+                "Admin dashboard with active/expired student counts and payment analytics",
+                "Revenue and student growth graphs with time filters (monthly, yearly, custom)",
+                "Student management: add students, view details, manage subscriptions",
+                "Subscription tracking system with expiry dates",
+                "User query system with admin reply functionality",
+                "Admin profile and settings management",
+                "Landing page for JEE/NEET/CA/Competitive exam preparation",
+                "Lead capture form for prospective students",
+                "MySQL backend with Sequelize ORM",
+                "React + TypeScript frontend with ShadCN UI",
+                "API caching for performance optimization",
+                "Data pagination and search filters",
+                "Dark/light mode theming",
+                "Responsive Tailwind CSS design"
+            ],
+            url: "https://achieverslibraryy.in/",
+            image: achieversimg,
+            className: "object-cover h-[80%]"
+        }
+    ]
     const PrevArrow = (props: any) => {
         const { onClick } = props;
         return (
@@ -175,7 +247,7 @@ const CarouselCard: React.FC = () => {
 
     return (
         <div style={{ backgroundColor: "var(--background-color)" }} id="projects" className="w-full flex flex-col justify-center items-center font-inter">
-            <h2 className="page_title" style={{ color: "var(--text-primary)" }}>My Projects</h2>
+            <h2 className="page_title" style={{ color: "var(--text-primary)" }}>My Projects ({carouselData.length})</h2>
             {loading ? (
                 <div className="flex items-center justify-center">
                     <ClipLoader size={50} color="#4A90E2" />
