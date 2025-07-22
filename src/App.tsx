@@ -3,6 +3,7 @@ import { ThemeToggle } from '@/components/helpers/ThemeToggle';
 import './css/App.css';
 import { Routes, Route, Link } from 'react-router-dom';
 import Home from "@/routes/Home";
+import Portfolio from '@/routes/Portfolio';
 
 const Loading = () => (
   <div className="flex items-center justify-center h-screen">
@@ -15,7 +16,7 @@ function App() {
     <>
       <Suspense fallback={<Loading />}>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Portfolio />} />
         </Routes>
       </Suspense>
     </>
