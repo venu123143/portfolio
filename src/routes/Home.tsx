@@ -1,5 +1,6 @@
 "use client"
-
+import ProfileImg from "@/assets/MyImage.jpeg"
+import { Link } from "react-router-dom"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
@@ -306,7 +307,7 @@ export default function Portfolio() {
                             >
                                 Associate Software Engineer with <span className="font-semibold text-blue-600">2+ years</span> of
                                 experience building scalable web applications.
-                                <span className="block mt-2">🏆 Best Beginner Award winner at Ahex Technologies</span>
+                                <span className="block mt-2">🏆 Bright Beginner Award winner at Ahex Technologies</span>
                             </motion.p>
 
                             <motion.div
@@ -314,31 +315,31 @@ export default function Portfolio() {
                                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
                             >
                                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                    <Button
-                                        size="lg"
+                                    <Link
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        to="https://www.canva.com/design/DAFj-JlZs_I/lYKRtoro-a54diJcflWvuA/view?utm_content=DAFj-JlZs_I&utm_campaign=designshare&utm_medium=link&utm_source=editor"
                                         className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-poppins font-medium px-8 py-3 rounded-full shadow-lg"
                                     >
-                                        <Download className="mr-2 h-5 w-5" />
-                                        Download Resume
-                                    </Button>
+                                       Check My Resume
+                                    </Link>
+
                                 </motion.div>
                                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                    <Button
-                                        variant="outline"
-                                        size="lg"
-                                        onClick={() => scrollToSection("contact")}
-                                        className="font-poppins font-medium px-8 py-3 rounded-full border-2 hover:bg-blue-50 dark:hover:bg-slate-800"
-                                    >
-                                        <Mail className="mr-2 h-5 w-5" />
-                                        Get In Touch
-                                    </Button>
+                                    <a
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        href="https://github.com/venu123143"
+                                        className="font-poppins font-medium px-8 py-3 rounded-full border-2 hover:bg-blue-50 dark:hover:bg-slate-800" >
+                                        GitHub
+                                    </a>
                                 </motion.div>
                             </motion.div>
 
                             <motion.div variants={fadeInUp} className="flex justify-center lg:justify-start space-x-4">
                                 {[
                                     { icon: Linkedin, href: "https://www.linkedin.com/in/venureddy9493/", color: "hover:text-blue-600" },
-                                    { icon: Globe, href: "https://nerchuko.in/", color: "hover:text-green-600" },
+                                    { icon: Globe, href: "https://www.fiverr.com/sellers/venu_9090/", color: "hover:text-green-600" },
                                     { icon: Mail, href: "mailto:venugopalreddy9493@gmail.com", color: "hover:text-red-600" },
                                     { icon: Phone, href: "tel:+918008952100", color: "hover:text-purple-600" },
                                 ].map((social, index) => (
@@ -381,7 +382,7 @@ export default function Portfolio() {
                                 <div className="relative w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600 p-1 shadow-2xl">
                                     <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-slate-800">
                                         <img
-                                            src="/placeholder.svg?height=400&width=400&text=Your+Professional+Photo"
+                                            src={ProfileImg}
                                             alt="Venu Gopal Reddy V"
                                             className="w-full h-full object-cover"
                                         />
@@ -497,7 +498,7 @@ export default function Portfolio() {
                                                 <Award className="h-6 w-6 text-yellow-600" />
                                                 <div>
                                                     <p className="font-semibold text-yellow-800 dark:text-yellow-200 font-poppins">
-                                                        Best Beginner Award
+                                                        Bright Beginner Award
                                                     </p>
                                                     <p className="text-sm text-yellow-700 dark:text-yellow-300">
                                                         Ahex Technologies - First Year Achievement
@@ -713,7 +714,7 @@ export default function Portfolio() {
                                             title: "Key Achievements",
                                             color: "from-yellow-500 to-orange-500",
                                             items: [
-                                                "Best Beginner Award recipient",
+                                                "Bright Beginner Award recipient",
                                                 "6+ company projects completed",
                                                 "5+ personal full-stack projects",
                                                 "WhatsApp clone, Amazon clone, Video calling app",
