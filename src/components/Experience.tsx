@@ -68,7 +68,7 @@ export default function Experience() {
                   </div>
                   <div className="flex items-center text-green-600 dark:text-green-400">
                     <Clock className="h-4 w-4 mr-2" />
-                    <span className="text-sm font-medium">1.5+ Years</span>
+                    <span className="text-sm font-medium">2+ Years</span>
                   </div>
                 </motion.div>
               </div>
