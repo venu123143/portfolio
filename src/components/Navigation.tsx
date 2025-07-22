@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { ThemeToggle } from "@/components/helpers/ThemeToggle"
@@ -19,25 +19,6 @@ const fadeInUp = {
 
 export default function Navigation({ activeSection, setActiveSection, scrollToSection }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Update active section based on scroll position
-      const sections = ["home", "about", "experience", "projects", "skills", "education", "contact"]
-      const current = sections.find((section) => {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          return rect.top <= 100 && rect.bottom >= 100
-        }
-        return false
-      })
-      if (current) setActiveSection(current)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [setActiveSection])
 
   const handleScrollToSection = (sectionId: string) => {
     scrollToSection(sectionId)
