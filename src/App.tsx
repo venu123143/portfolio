@@ -19,15 +19,6 @@ function App() {
         </Routes>
       </Suspense>
     </>
-    // <div className="min-h-screen font-sans bg-background text-foreground">
-    //   <header className="p-4 flex justify-end">
-    //     <ThemeToggle />
-    //   </header>
-    //   <main className="p-8">
-    //     <h1 className="text-2xl font-bold">Venu Gopal Reddy V Portfolio</h1>
-    //     <p>Full Stack Developer | React.js | Node.js | TypeScript</p>
-    //   </main>
-    // </div>
   );
 }
 
