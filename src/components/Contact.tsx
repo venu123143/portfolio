@@ -6,16 +6,24 @@ import { motion } from "framer-motion";
 
 const ContactSection: React.FC = () => {
     const contactInfo = {
+        fiverr: "fiverr.com/venu_9090",
         email: "venugopalreddy9493@gmail.com",
         website: "https://nerchuko.in/",
         twitter: "@venu_reddy_9493",
-        linkedin: "www.linkedin.com/in/venureddy9493/",
+        linkedin: "linkedin.com/in/venureddy9493/",
         address: "Kavali, Andhra Pradesh, India",
         phone: "+91 80089 52100",
-        github: "https://github.com/venu123143" // Add the GitHub URL here
+        github: "https://github.com/venu123143"
     };
 
     const contactOptions = [
+        {
+            icon: <Globe className="w-8 h-8" />,
+            title: "Fiverr",
+            subtitle: "Contact me on fiverr",
+            linkText: contactInfo.fiverr,
+            link: `https://www.${contactInfo.fiverr}`,
+        },
         {
             icon: <Mail className="w-8 h-8" />,
             title: "Email",
@@ -42,7 +50,7 @@ const ContactSection: React.FC = () => {
             title: "LinkedIn",
             subtitle: "Connect with us on LinkedIn",
             linkText: contactInfo.linkedin,
-            link: `https://${contactInfo.linkedin}`,
+            link: `https://www.${contactInfo.linkedin}`,
         },
         {
             icon: <FaXTwitter className="w-8 h-8" />,
@@ -55,14 +63,7 @@ const ContactSection: React.FC = () => {
             icon: <MapPin className="w-8 h-8" />,
             title: "Address",
             subtitle: contactInfo.address,
-        },
-        {
-            icon: <Globe className="w-8 h-8" />,
-            title: "Website",
-            subtitle: "Visit our website",
-            linkText: contactInfo.website,
-            link: `https://${contactInfo.website}`,
-        },
+        }
     ];
 
     const scrollContainerRef = useRef<HTMLDivElement>(null);
