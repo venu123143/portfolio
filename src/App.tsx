@@ -1,8 +1,6 @@
-import React, { Suspense } from 'react';
-import { ThemeToggle } from '@/components/helpers/ThemeToggle';
+import  { Suspense } from 'react';
 import './css/App.css';
-import { Routes, Route, Link } from 'react-router-dom';
-import Home from "@/routes/Home";
+import { Routes, Route } from 'react-router-dom';
 import Portfolio from '@/routes/Portfolio';
 
 const Loading = () => (

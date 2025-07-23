@@ -2,10 +2,8 @@
 import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { Mail, Phone, Linkedin, Globe, ExternalLink } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
-import { fadeInUp } from "./animationVariants"
 
 const contacts = [
   {

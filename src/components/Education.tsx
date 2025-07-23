@@ -2,7 +2,6 @@
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { GraduationCap, Calendar } from "lucide-react"
-import { fadeInLeft } from "./animationVariants"
 
 const educationList = [
   {

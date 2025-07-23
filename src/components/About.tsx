@@ -1,9 +1,9 @@
 "use client"
 import { motion } from "framer-motion"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Users, Award, TrendingUp, Shield, Zap, Target } from "lucide-react"
-import { fadeInLeft, fadeInRight, staggerContainer, scaleIn } from "./animationVariants"
+import { fadeInLeft, fadeInRight, staggerContainer } from "./animationVariants"
 
 const achievements = [
   { icon: TrendingUp, title: "70% Faster Deployments", description: "CI/CD pipeline optimization" },

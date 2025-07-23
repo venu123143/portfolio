@@ -2,19 +2,13 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { ThemeToggle } from "@/components/helpers/ThemeToggle"
-import { Menu, X, ChevronDown } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 interface NavigationProps {
   activeSection: string
   setActiveSection: (section: string) => void
   scrollToSection: (sectionId: string) => void
 }
-
-// const fadeInUp = {
-//   initial: { opacity: 0, y: 60 },
-//   animate: { opacity: 1, y: 0 },
-//   transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] },
-// }
 
 export default function Navigation({ activeSection, scrollToSection }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

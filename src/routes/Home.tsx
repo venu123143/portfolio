@@ -1,7 +1,7 @@
 "use client"
 import ProfileImg from "@/assets/MyImage.jpeg"
 import { Link } from "react-router-dom"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -12,7 +12,6 @@ import {
     Linkedin,
     Mail,
     Phone,
-    Download,
     ExternalLink,
     Code,
     Database,
@@ -72,8 +71,8 @@ export default function Portfolio() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [activeSection, setActiveSection] = useState("home")
     const [showScrollTop, setShowScrollTop] = useState(false)
-    const { scrollYProgress } = useScroll()
-    const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
+    // const { scrollYProgress } = useScroll()
+    // const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
 
     useEffect(() => {
         const handleScroll = () => {
