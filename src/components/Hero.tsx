@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { Code, Server, Database, ChevronDown } from "lucide-react"
 import { fadeInUp, staggerContainer } from "./animationVariants"
+import { Linkedin, Briefcase, Mail, Phone } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -71,10 +72,10 @@ export default function Hero() {
 
             <motion.div variants={fadeInUp} className="flex justify-center lg:justify-start space-x-4">
               {[
-                { icon: Code, href: "https://www.linkedin.com/in/venureddy9493/", color: "hover:text-blue-600" },
-                { icon: Server, href: "https://www.fiverr.com/sellers/venu_9090/", color: "hover:text-green-600" },
-                { icon: Database, href: "mailto:venugopalreddy9493@gmail.com", color: "hover:text-red-600" },
-                { icon: Code, href: "tel:+918008952100", color: "hover:text-purple-600" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/venureddy9493/", color: "hover:text-blue-600" },
+                { icon: Briefcase, href: "https://www.fiverr.com/sellers/venu_9090/", color: "hover:text-green-600" },
+                { icon: Mail, href: "mailto:venugopalreddy9493@gmail.com", color: "hover:text-red-600" },
+                { icon: Phone, href: "tel:+918008952100", color: "hover:text-purple-600" },
               ].map((social, index) => (
                 <motion.a
                   key={index}
@@ -102,12 +103,12 @@ export default function Hero() {
               {/* Background decorations */}
               <motion.div
                 animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                transition={{ duration: 40, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
                 className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 opacity-20 blur-xl"
               />
               <motion.div
                 animate={{ rotate: -360 }}
-                transition={{ duration: 25, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                transition={{ duration: 50, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
                 className="absolute inset-4 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 opacity-20 blur-lg"
               />
 
@@ -120,24 +121,24 @@ export default function Hero() {
 
               {/* Floating elements */}
               <motion.div
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                animate={{ y: [-5, 5, -5] }}
+                transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
                 className="absolute -top-4 -right-4 bg-white dark:bg-slate-800 rounded-full p-3 shadow-lg border border-slate-200 dark:border-slate-700"
               >
                 <Code className="h-6 w-6 text-blue-600" />
               </motion.div>
 
               <motion.div
-                animate={{ y: [10, -10, 10] }}
-                transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 1 }}
+                animate={{ y: [5, -5, 5] }}
+                transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 1 }}
                 className="absolute -bottom-4 -left-4 bg-white dark:bg-slate-800 rounded-full p-3 shadow-lg border border-slate-200 dark:border-slate-700"
               >
                 <Server className="h-6 w-6 text-purple-600" />
               </motion.div>
 
               <motion.div
-                animate={{ y: [-5, 15, -5] }}
-                transition={{ duration: 3.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 0.5 }}
+                animate={{ y: [-3, 7, -3] }}
+                transition={{ duration: 4.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 0.5 }}
                 className="absolute top-1/2 -left-8 bg-white dark:bg-slate-800 rounded-full p-3 shadow-lg border border-slate-200 dark:border-slate-700"
               >
                 <Database className="h-6 w-6 text-green-600" />

@@ -1,63 +1,42 @@
-"use client"
 import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Server, Code, Database, Award, CheckCircle, Calendar, MapPin, Clock } from "lucide-react"
-import { fadeInRight, fadeInLeft, staggerContainer, scaleIn } from "./animationVariants"
+import {
+  Server, Code, Database, Award, CheckCircle, Calendar, MapPin, Clock,
+} from "lucide-react"
+import {
+  fadeInY, fadeInXLeft, fadeInXRight, staggerList, scaleIn
+} from "./animationVariants"
 
 export default function Experience() {
   return (
     <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mb-16">
+        <motion.div variants={fadeInY} initial="initial" whileInView="animate" viewport={{ once: true }} className="text-center mb-16">
           <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            variants={fadeInY}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold font-poppins text-slate-900 dark:text-white mb-4"
           >
             Professional Experience
           </motion.h2>
           <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: 80 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"
+            variants={fadeInY}
+            className="h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full w-20"
           />
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
+        <motion.div variants={fadeInY} initial="initial" whileInView="animate" viewport={{ once: true }}>
           <Card className="p-8 lg:p-12 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-0 shadow-2xl">
             <CardHeader className="pb-8">
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
-                <div className="mb-4 lg:mb-0">
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <CardTitle className="text-3xl lg:text-4xl font-bold font-poppins bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-                      Associate Software Engineer
-                    </CardTitle>
-                    <CardDescription className="text-xl font-semibold text-slate-700 dark:text-slate-300 font-poppins">
-                      Ahex Technologies
-                    </CardDescription>
-                  </motion.div>
-                </div>
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="flex flex-col items-start lg:items-end space-y-2"
-                >
+                <motion.div variants={fadeInXLeft} initial="initial" whileInView="animate" viewport={{ once: true }} className="mb-4 lg:mb-0">
+                  <CardTitle className="text-3xl lg:text-4xl font-bold font-poppins bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                    Associate Software Engineer
+                  </CardTitle>
+                  <CardDescription className="text-xl font-semibold text-slate-700 dark:text-slate-300 font-poppins">
+                    Ahex Technologies
+                  </CardDescription>
+                </motion.div>
+                <motion.div variants={fadeInXRight} initial="initial" whileInView="animate" viewport={{ once: true }} className="flex flex-col items-start lg:items-end space-y-2">
                   <div className="flex items-center text-slate-600 dark:text-slate-400 font-medium">
                     <Calendar className="h-5 w-5 mr-2" />
                     <span className="font-poppins">JUL 2023 - Present</span>
@@ -76,7 +55,7 @@ export default function Experience() {
 
             <CardContent className="space-y-8">
               <motion.div
-                variants={staggerContainer}
+                variants={staggerList}
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true }}
@@ -128,12 +107,7 @@ export default function Experience() {
                     ],
                   },
                 ].map((section, index) => (
-                  <motion.div
-                    key={index}
-                    variants={scaleIn}
-                    whileHover={{ y: -5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
+                  <motion.div key={index} variants={scaleIn} whileHover={{ y: -5 }}>
                     <Card className="h-full p-6 bg-white/60 dark:bg-slate-700/60 backdrop-blur-sm border border-slate-200/50 dark:border-slate-600/50 hover:shadow-xl transition-all duration-300">
                       <CardContent>
                         <div className="flex items-center mb-4">
@@ -146,10 +120,7 @@ export default function Experience() {
                           {section.items.map((item, itemIndex) => (
                             <motion.li
                               key={itemIndex}
-                              initial={{ opacity: 0, x: -10 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              viewport={{ once: true }}
-                              transition={{ duration: 0.4, delay: itemIndex * 0.1 }}
+                              variants={fadeInXLeft}
                               className="flex items-start text-slate-600 dark:text-slate-300 text-sm font-inter"
                             >
                               <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />

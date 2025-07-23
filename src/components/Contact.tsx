@@ -31,9 +31,9 @@ const contacts = [
   },
   {
     icon: Globe,
-    label: "Website",
-    value: "nerchuko.in",
-    href: "https://nerchuko.in/",
+    label: "Fiverr",
+    value: "fiverr.com/sellers/venu_9090",
+    href: "https://www.fiverr.com/sellers/venu_9090/",
     color: "orange",
   },
 ]

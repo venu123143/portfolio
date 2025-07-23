@@ -3,13 +3,13 @@ import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Code, Server, Database, Globe, Award } from "lucide-react"
-import { fadeInUp, staggerContainer, scaleIn } from "./animationVariants"
+import { staggerContainer, scaleIn } from "./animationVariants"
 
 const skills = {
   frontend: ["React.js", "TypeScript", "HTML", "CSS", "JavaScript", "Tailwind CSS"],
-  backend: ["Node.js", "Nest.js", "Express.js", "GraphQL", "REST APIs"],
-  database: ["MongoDB", "MySQL", "PostgreSQL", "Redis", "Sequelize ORM"],
-  devops: ["AWS", "S3", "EC2", "Jenkins", "CI/CD", "Linux", "Nginx", "Azure"],
+  backend: ["Node.js", "Nest.js", "Express.js", "GraphQL", "REST APIs", "Grpc"],
+  database: ["MongoDB", "MySQL", "PostgreSQL", "Redis", "Sequelize ORM", "Type ORM"],
+  devops: ["AWS", "S3", "EC2", "Docker", "CI/CD", "Linux", "Nginx", "Azure","VPC"],
   other: ["Socket.io", "WebRTC", "Git", "GitHub", "Communication Skills"],
 }
 

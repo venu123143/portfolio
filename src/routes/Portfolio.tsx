@@ -1,6 +1,6 @@
 "use client"
-import React, { useState, useEffect } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
 import Navigation from "@/components/Navigation"
 import Hero from "@/components/Hero"
 import About from "@/components/About"
@@ -14,8 +14,8 @@ import { ArrowUp } from "lucide-react"
 export default function Portfolio() {
     const [activeSection, setActiveSection] = useState("home")
     const [showScrollTop, setShowScrollTop] = useState(false)
-    const { scrollYProgress } = useScroll()
-    const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
+    // const { scrollYProgress } = useScroll()
+    // const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
 
     useEffect(() => {
         const handleScroll = () => {
