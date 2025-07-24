@@ -42,9 +42,10 @@ export default function Hero() {
             <motion.p
               variants={fadeInUp}
               className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 mb-8 leading-relaxed font-inter max-w-2xl mx-auto lg:mx-0"
-            >
-              Associate Software Engineer with <span className="font-semibold text-blue-600">2+ years</span> of experience building scalable web applications.
-              <span className="block mt-2">🏆 Bright Beginner Award winner at Ahex Technologies</span>
+            > 
+              Associate Software Engineer with <span className="font-semibold text-blue-600">2+ years </span>
+              of experience building scalable web applications.
+              <span className=""> Awarded with Bright Beginner and Star Performer at Ahex Technologies.</span>
             </motion.p>
 
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">

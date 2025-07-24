@@ -2,7 +2,7 @@ name: CI/CD Pipeline-Frontend
 
 on:
   push:
-    branches: [main]
+    branches: [portfolio_v2]
 
 jobs:
   deploy:
@@ -30,7 +30,7 @@ jobs:
             cd /var/www/html/portfolio
 
             echo "Pulling latest changes..."
-            git pull origin main
+            git pull origin portfolio_v2
             
             echo "Installing dependencies..."
             npm install
@@ -39,7 +39,7 @@ jobs:
             npm run build
 
             echo "Restarting PM2 process..."
-            pm2 restart portfolio --update-env
+            sudo systemctl restart nginx
           EOF
 
           # Cleanup SSH Key

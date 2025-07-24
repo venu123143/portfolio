@@ -5,6 +5,11 @@ import { Badge } from "@/components/ui/badge"
 import { Users, Award, TrendingUp, Shield, Zap, Target } from "lucide-react"
 import { fadeInLeft, fadeInRight, staggerContainer } from "./animationVariants"
 
+interface AwardCardProps {
+  title: string
+  description: string
+}
+
 const achievements = [
   { icon: TrendingUp, title: "70% Faster Deployments", description: "CI/CD pipeline optimization" },
   { icon: Shield, title: "40% Security Improvement", description: "Reduced unauthorized access" },
@@ -59,16 +64,14 @@ export default function About() {
                     <span className="font-semibold text-blue-600">Associate Software Engineer</span> with more than
                     <span className="font-semibold text-purple-600"> 2 years of experience</span> in the Fullstack field. I work closely with project teams to build innovative solutions for client business requirements.
                   </p>
-
-                  <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 p-4 rounded-xl border border-yellow-200 dark:border-yellow-800">
-                    <div className="flex items-center space-x-3">
-                      <Award className="h-6 w-6 text-yellow-600" />
-                      <div>
-                        <p className="font-semibold text-yellow-800 dark:text-yellow-200 font-poppins">Bright Beginner Award</p>
-                        <p className="text-sm text-yellow-700 dark:text-yellow-300">Ahex Technologies - First Year Achievement</p>
-                      </div>
-                    </div>
-                  </div>
+                  <AwardCard
+                    title="Bright Beginner Award"
+                    description="Ahex Technologies - First Year Achievement"
+                  />
+                  <AwardCard
+                    title="Star Performer Award."
+                    description="Ahex Technologies - Second Year Achievement"
+                  />
 
                   <div className="grid grid-cols-2 gap-4">
                     <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
@@ -142,5 +145,21 @@ export default function About() {
         </div>
       </div>
     </section>
+  )
+}
+
+
+
+function AwardCard({ title, description }: AwardCardProps) {
+  return (
+    <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 p-4 rounded-xl border border-yellow-200 dark:border-yellow-800">
+      <div className="flex items-center space-x-3">
+        <Award className="h-6 w-6 text-yellow-600" />
+        <div>
+          <p className="font-semibold text-yellow-800 dark:text-yellow-200 font-poppins">{title}</p>
+          <p className="text-sm text-yellow-700 dark:text-yellow-300">{description}</p>
+        </div>
+      </div>
+    </div>
   )
 }
