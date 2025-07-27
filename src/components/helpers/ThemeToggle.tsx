@@ -11,7 +11,7 @@ export const ThemeToggle = () => {
             variant="ghost"
             size="sm"
             onClick={toggleTheme}
-            className="relative h-9 w-9 rounded-full"
+            className="relative lg:cursor-pointer h-9 w-9 rounded-full"
         >
             <motion.div
                 initial={false}

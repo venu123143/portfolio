@@ -49,9 +49,20 @@ const projects = [
     impact: "Supported 1000+ concurrent users",
   },
   {
+    title: "Dosen (Its An mentoring platform )",
+    description:
+      "An intelligent platform that aligns employees personal goals with organizational objectives.",
+    tech: [
+      "React.js", "Node.js", "Azure Serverless", "Azure Functions", "MongoDB"
+    ],
+    type: "Professional",
+    url: "https://beta.dosen.io/",
+    impact: "Enhanced team productivity With Ai.",
+  },
+  {
     title: "Amazon Clone (E-commerce)",
     description: "Full-stack e-commerce app with Razorpay payments, product search/filters, and admin dashboard.",
-    tech: ["React", "Node.js", "MongoDB", "Razorpay", "Google Auth"],
+    tech: ["React", "Tailwind", "Node.js", "MongoDB", "Razorpay", "Google Auth"],
     type: "Personal",
     url: "https://onlinestore.nerchuko.in/",
     impact: "Complete e-commerce solution",
@@ -59,7 +70,7 @@ const projects = [
   {
     title: "MeetSpace (Video Conferencing)",
     description: "Privacy-focused video calling app supporting 6-8 participants with WebRTC/Mediasoup architecture.",
-    tech: ["React-Vite", "Socket.io", "Node.js", "WebRTC", "Mediasoup"],
+    tech: ["React-Vite","Tailwind css", "Socket.io", "Node.js", "WebRTC", "Mediasoup"],
     type: "Personal",
     url: "https://meetspace.nerchuko.in/",
     impact: "Zero authentication barriers",
@@ -67,8 +78,7 @@ const projects = [
   {
     title: "Achievers Library - Study Space Management Platform",
     description: `A complete admin dashboard and landing page for a study space business. 
-          The system manages student subscriptions, payments, queries and provides detailed analytics. 
-          Designed for competitive exam preparation centers with dark/light mode support.`,
+          The system manages student subscriptions, payments, queries and provides detailed analytics.`,
     tech: [
       "React", "TypeScript", "ShadCN UI", "MySQL", "Sequelize",
       "API Caching", "Tailwind CSS", "Node.js"

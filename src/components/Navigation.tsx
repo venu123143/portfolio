@@ -43,7 +43,7 @@ export default function Navigation({ activeSection, scrollToSection }: Navigatio
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 0 }}
                 onClick={() => handleScrollToSection(item.toLowerCase())}
-                className={`text-sm font-medium font-poppins transition-all duration-300 hover:text-blue-600 relative ${
+                className={`text-sm lg:cursor-pointer font-medium font-poppins transition-all duration-300 hover:text-blue-600 relative ${
                   activeSection === item.toLowerCase() ? "text-blue-600" : "text-slate-700 dark:text-slate-300"
                 }`}
               >

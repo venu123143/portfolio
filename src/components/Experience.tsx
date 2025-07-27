@@ -67,10 +67,10 @@ export default function Experience() {
                     title: "DevOps & Infrastructure",
                     color: "from-blue-500 to-cyan-500",
                     items: [
-                      "Orchestrated CI/CD pipelines using Jenkins",
+                      "Orchestrated CI/CD using Github and Bitbucket pipelines",
+                      "Containerized each microservice using Docker for consistency",
                       "Automated server updates on Linux VMs with Nginx",
                       "Achieved 70% faster deployment cycle",
-                      "Improved system uptime significantly",
                     ],
                   },
                   {
@@ -78,10 +78,9 @@ export default function Experience() {
                     title: "Full Stack Development",
                     color: "from-green-500 to-emerald-500",
                     items: [
-                      "Backend development with Node.js",
-                      "Frontend development with React.js",
-                      "Created REST APIs and GraphQL queries",
-                      "Complex SQL queries with MySQL/PostgreSQL",
+                      "Backend development with Node.js & Nest.js.",
+                      "Created REST APIs, GraphQL Queries and Grpc Proto Buffers.",
+                      "Frontend development with React.js.",
                     ],
                   },
                   {
@@ -89,10 +88,10 @@ export default function Experience() {
                     title: "Database & Security",
                     color: "from-purple-500 to-violet-500",
                     items: [
-                      "Sequelize ORM implementation",
-                      "MongoDB database management",
-                      "RBAC (Role Based Access Control)",
-                      "Session management and API security",
+                      "Used Sequelize ORM And Type ORM for implementation.",
+                      "Written SQL queries with MySQL/PostgreSQL.",
+                      "Used NoSql db like MongoDB.",
+                      "Implemented the Authentication, Authorization and RBAC.",
                     ],
                   },
                   {
@@ -100,10 +99,10 @@ export default function Experience() {
                     title: "Key Achievements",
                     color: "from-yellow-500 to-orange-500",
                     items: [
-                      "Bright Beginner Award recipient",
-                      "6+ company projects completed",
-                      "5+ personal full-stack projects",
-                      "WhatsApp clone, Amazon clone, Video calling app",
+                      "Bright Beginner & Star Performer Award recipient.",
+                      "6+ company projects completed.",
+                      "5+ personal full-stack projects.",
+                      "WhatsApp clone, Amazon clone, Video calling app.",
                     ],
                   },
                 ].map((section, index) => (

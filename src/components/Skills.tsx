@@ -9,8 +9,8 @@ const skills = {
   frontend: ["React.js", "TypeScript", "HTML", "CSS", "JavaScript", "Tailwind CSS"],
   backend: ["Node.js", "Nest.js", "Express.js", "GraphQL", "REST APIs", "Grpc"],
   database: ["MongoDB", "MySQL", "PostgreSQL", "Redis", "Sequelize ORM", "Type ORM"],
-  devops: ["AWS", "S3", "EC2", "Docker", "CI/CD", "Linux", "Nginx", "Azure","VPC"],
-  other: ["Socket.io", "WebRTC", "Git", "GitHub", "Communication Skills"],
+  devops: ["AWS", "S3", "EC2", "Docker", "CI/CD", "Linux", "Nginx", "Azure", "VPC"],
+  other: ["Socket.io", "WebRTC", "Mediasoup", "Git", "jira", "GitHub", "Communication Skills"],
 }
 
 export default function Skills() {
