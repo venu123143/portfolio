@@ -8,8 +8,8 @@ import { Linkedin, Briefcase, Mail, Phone } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section id="home" className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
-      <div className="max-w-7xl mx-auto w-full">
+    <section id="home" className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center relative">
+      <div className="max-w-7xl mx-auto w-full ">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div variants={staggerContainer} initial="initial" animate="animate" className="text-center lg:text-left">
@@ -42,7 +42,7 @@ export default function Hero() {
             <motion.p
               variants={fadeInUp}
               className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 mb-8 leading-relaxed font-inter max-w-2xl mx-auto lg:mx-0"
-            > 
+            >
               Associate Software Engineer with <span className="font-semibold text-blue-600">2+ years </span>
               of experience building scalable web applications.
               <span className=""> Awarded with Bright Beginner and Star Performer at Ahex Technologies.</span>
@@ -147,13 +147,18 @@ export default function Hero() {
             </div>
           </motion.div>
         </div>
-
         {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute left-1/2 transform -translate-x-1/2 cursor-pointer"
+          onClick={() => {
+            const aboutSection = document.getElementById('about');
+            if (aboutSection) {
+              aboutSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
