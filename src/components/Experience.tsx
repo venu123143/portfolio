@@ -79,8 +79,9 @@ export default function Experience() {
                     color: "from-green-500 to-emerald-500",
                     items: [
                       "Backend development with Node.js & Nest.js.",
-                      "Created REST APIs, GraphQL Queries and Grpc Proto Buffers.",
                       "Frontend development with React.js.",
+                      "Created REST APIs, GraphQL Queries and Grpc Proto Buffers.",
+                      "Used libraries like Socket.io, WebRTC and Mediasoup.",
                     ],
                   },
                   {

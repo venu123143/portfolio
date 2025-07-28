@@ -69,7 +69,7 @@ const projects = [
   },
   {
     title: "MeetSpace (Video Conferencing)",
-    description: "Privacy-focused video calling app supporting 6-8 participants with WebRTC/Mediasoup architecture.",
+    description: "Privacy-focused video calling app supporting 10-12 participants with WebRTC/Mediasoup architecture.",
     tech: ["React-Vite","Tailwind css", "Socket.io", "Node.js", "WebRTC", "Mediasoup"],
     type: "Personal",
     url: "https://meetspace.nerchuko.in/",
@@ -151,7 +151,7 @@ const Projects = () => {
                   <div className="flex items-start justify-between mb-3">
                     <CardTitle
                       onClick={() => handleProjectClick(project.url)}
-                      className="lg:cursor-pointer text-lg font-bold font-poppins leading-tight text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors duration-300"
+                      className="lg:cursor-pointer text-lg font-bold font-poppins leading-tight text-slate-900 dark:text-white dark:group-hover:text-blue-300 group-hover:text-blue-600 transition-colors duration-300"
                     >
                       {project.title}
                     </CardTitle>

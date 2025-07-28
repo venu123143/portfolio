@@ -1,5 +1,6 @@
 "use client"
 import ProfileImg from "@/assets/MyImage.jpeg"
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { Code, Server, Database, ChevronDown } from "lucide-react"
@@ -7,6 +8,16 @@ import { fadeInUp, staggerContainer } from "./animationVariants"
 import { Linkedin, Briefcase, Mail, Phone } from 'lucide-react';
 
 export default function Hero() {
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollIndicator(window.scrollY <= 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section id="home" className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center relative">
       <div className="max-w-7xl mx-auto w-full ">
@@ -148,27 +159,29 @@ export default function Hero() {
           </motion.div>
         </div>
         {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1 }}
-          className="absolute left-1/2 transform -translate-x-1/2 cursor-pointer"
-          onClick={() => {
-            const aboutSection = document.getElementById('about');
-            if (aboutSection) {
-              aboutSection.scrollIntoView({ behavior: 'smooth' });
-            }
-          }}
-        >
+        {showScrollIndicator && (
           <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Number.POSITIVE_INFINITY, duration: 2 }}
-            className="flex flex-col items-center space-y-2 text-slate-400 dark:text-slate-500"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="absolute left-1/2 transform -translate-x-1/2 cursor-pointer"
+            onClick={() => {
+              const aboutSection = document.getElementById('about');
+              if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
           >
-            <span className="text-sm font-poppins">Scroll to explore</span>
-            <ChevronDown className="h-5 w-5" />
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ repeat: Number.POSITIVE_INFINITY, duration: 2 }}
+              className="flex flex-col items-center space-y-2 text-slate-400 dark:text-slate-500"
+            >
+              <span className="text-sm font-poppins">Scroll to explore</span>
+              <ChevronDown className="h-5 w-5" />
+            </motion.div>
           </motion.div>
-        </motion.div>
+        )}
       </div>
     </section>
   )
