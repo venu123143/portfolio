@@ -14,6 +14,7 @@ jobs:
 
       # Step 2: Deploy and Build on the Server
       - name: Deploy to Server
+
         if: success()
         env:
           HOST: ${{ secrets.HOST }}
@@ -44,3 +45,16 @@ jobs:
 
           # Cleanup SSH Key
           rm -f ~/.ssh/id_rsa
+      # Step 3: Purge Cloudflare Cache
+      - name: Purge Cloudflare Cache (Everything)
+        if: success()
+        env:
+          CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
+          CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
+          ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
+            -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+            -H "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}'
