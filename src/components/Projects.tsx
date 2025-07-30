@@ -45,7 +45,7 @@ const projects = [
     description: "Real-time chat and 1:1 video calls platform with Socket.IO and WebRTC for trading community.",
     tech: ["Socket.IO", "WebRTC", "PostgreSQL", "Sequelize", "Authentication"],
     type: "Professional",
-    url: "https://tasosolutions.in",
+    url: "https://play.google.com/store/apps/details?id=com.taso.main&hl=en",
     impact: "Supported 1000+ concurrent users",
   },
   {
@@ -70,7 +70,7 @@ const projects = [
   {
     title: "MeetSpace (Video Conferencing)",
     description: "Privacy-focused video calling app supporting 10-12 participants with WebRTC/Mediasoup architecture.",
-    tech: ["React-Vite","Tailwind css", "Socket.io", "Node.js", "WebRTC", "Mediasoup"],
+    tech: ["React-Vite", "Tailwind css", "Socket.io", "Node.js", "WebRTC", "Mediasoup"],
     type: "Personal",
     url: "https://meetspace.nerchuko.in/",
     impact: "Zero authentication barriers",
