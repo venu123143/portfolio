@@ -110,13 +110,6 @@ export default function Contact() {
                 </p>
 
                 <div className="space-y-4">
-                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                    <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 font-poppins font-medium" size="lg">
-                      <Mail className="mr-2 h-4 w-4" />
-                      Send Email
-                    </Button>
-                  </motion.div>
-
                   <div className="flex space-x-4">
                     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="flex-1">
                       <Button variant="outline" className="w-full bg-transparent font-poppins" asChild>
@@ -129,9 +122,9 @@ export default function Contact() {
 
                     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="flex-1">
                       <Button variant="outline" className="w-full bg-transparent font-poppins" asChild>
-                        <a href="https://nerchuko.in/" target="_blank" rel="noopener noreferrer">
+                        <a href="https://github.com/venu123143/" target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="mr-2 h-4 w-4" />
-                          Portfolio
+                          Github
                         </a>
                       </Button>
                     </motion.div>
