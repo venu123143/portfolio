@@ -99,13 +99,23 @@ const projects = [
     url: "https://vchat.nerchuko.in/",
     impact: "Feature-rich real-time messaging",
   },
+  {
+    title: "FileFlow - Cloud Storage & File Management Platform",
+    description: "A comprehensive file management system similar to Google Drive, secure file sharing, and advanced storage management features.",
+    tech: [
+      "Bun", "React", "Hono", "PostgreSQL", "AWS S3", "Socket.io", "Redis", "BullMQ", "Shadn Cn UI", "TanStack Query", "Zustand"
+    ],
+    type: "Personal",
+    url: "https://fileflow.nerchuko.in/",
+    impact: "Complete cloud storage solution",
+  },
 ]
 
 const Projects = () => {
   const handleProjectClick = (url: string) => window.open(url, "_blank")
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <motion.div
@@ -137,7 +147,7 @@ const Projects = () => {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
         >
           {projects.map((project, index) => (
             <motion.div
@@ -147,33 +157,33 @@ const Projects = () => {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <Card className="h-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden group">
-                <CardHeader className="pb-4">
-                  <div className="flex items-start justify-between mb-3">
+                <CardHeader className="pb-3 sm:pb-4">
+                  <div className="block space-y-2 sm:flex items-start justify-between">
                     <CardTitle
                       onClick={() => handleProjectClick(project.url)}
-                      className="lg:cursor-pointer text-lg font-bold font-poppins leading-tight text-slate-900 dark:text-white dark:group-hover:text-blue-300 group-hover:text-blue-600 transition-colors duration-300"
+                      className="lg:cursor-pointer text-base sm:text-lg font-bold font-poppins leading-tight text-slate-900 dark:text-white dark:group-hover:text-blue-300 group-hover:text-blue-600 transition-colors duration-300"
                     >
                       {project.title}
                     </CardTitle>
 
                     <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                      <Badge variant={project.type === "Professional" ? "default" : "secondary"} className="font-medium">
+                      <Badge variant={project.type === "Professional" ? "default" : "secondary"} className=" font-medium text-xs sm:text-sm">
                         {project.type}
                       </Badge>
                     </motion.div>
                   </div>
 
-                  <div className="text-sm text-green-600 dark:text-green-400 font-medium font-poppins">
+                  <div className="text-xs sm:text-sm text-green-600 dark:text-green-400 font-medium font-poppins">
                     {project.impact}
                   </div>
                 </CardHeader>
 
-                <CardContent className="space-y-4">
-                  <CardDescription className="text-sm leading-relaxed font-inter text-slate-600 dark:text-slate-300">
+                <CardContent className="space-y-3 sm:space-y-4">
+                  <CardDescription className="text-xs sm:text-sm leading-relaxed font-inter text-slate-600 dark:text-slate-300">
                     {project.description}
                   </CardDescription>
 
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {project.tech.map((tech, techIndex) => (
                       <motion.div
                         key={techIndex}

@@ -19,9 +19,9 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center relative">
+    <section id="home" className="pt-16 sm:pt-20 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center relative">
       <div className="max-w-7xl mx-auto w-full ">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* Left Content */}
           <motion.div variants={staggerContainer} initial="initial" animate="animate" className="text-center lg:text-left">
             <motion.div variants={fadeInUp} className="mb-6">
@@ -37,14 +37,14 @@ export default function Hero() {
 
             <motion.h1
               variants={fadeInUp}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold font-poppins text-slate-900 dark:text-white mb-4 leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-slate-900 dark:text-white mb-4 leading-tight"
             >
               Venu Gopal Reddy
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 0.8 }}
-                className="block text-3xl sm:text-4xl lg:text-5xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mt-2"
+                className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mt-2"
               >
                 Full Stack Developer
               </motion.span>
@@ -52,37 +52,37 @@ export default function Hero() {
 
             <motion.p
               variants={fadeInUp}
-              className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 mb-8 leading-relaxed font-inter max-w-2xl mx-auto lg:mx-0"
+              className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-6 sm:mb-8 leading-relaxed font-inter max-w-2xl mx-auto lg:mx-0"
             >
               Associate Software Engineer with <span className="font-semibold text-blue-600">2+ years </span>
               of experience building scalable web applications.
-              <span className=""> Awarded with Bright Beginner and Star Performer at Ahex Technologies.</span>
+              <span className="hidden sm:inline"> Awarded with Bright Beginner and Star Performer at Ahex Technologies.</span>
             </motion.p>
 
-            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-6 sm:mb-8">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
                 <Link
                   target="_blank"
                   rel="noopener noreferrer"
                   to="https://www.canva.com/design/DAFj-JlZs_I/lYKRtoro-a54diJcflWvuA/view?utm_content=DAFj-JlZs_I&utm_campaign=designshare&utm_medium=link&utm_source=editor"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-poppins font-medium px-8 py-3 rounded-full shadow-lg"
+                  className="block w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-poppins font-medium px-6 sm:px-8 py-2.5 sm:py-3 rounded-full shadow-lg text-sm sm:text-base text-center"
                 >
                   Check My Resume
                 </Link>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
                   href="https://github.com/venu123143"
-                  className="font-poppins font-medium px-8 py-3 rounded-full border-2 hover:bg-blue-50 dark:hover:bg-slate-800"
+                  className="block w-full sm:w-auto font-poppins font-medium px-6 sm:px-8 py-2.5 sm:py-3 rounded-full border-2 hover:bg-blue-50 dark:hover:bg-slate-800 text-sm sm:text-base text-center"
                 >
                   GitHub
                 </a>
               </motion.div>
             </motion.div>
 
-            <motion.div variants={fadeInUp} className="flex justify-center lg:justify-start space-x-4">
+            <motion.div variants={fadeInUp} className="flex justify-center lg:justify-start space-x-3 sm:space-x-4">
               {[
                 { icon: Linkedin, href: "https://www.linkedin.com/in/venureddy9493/", color: "hover:text-blue-600" },
                 { icon: Briefcase, href: "https://www.fiverr.com/sellers/venu_9090/", color: "hover:text-green-600" },
@@ -96,7 +96,7 @@ export default function Hero() {
                   rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   whileHover={{ scale: 1.2, y: -2 }}
                   whileTap={{ scale: 0.9 }}
-                  className={`p-3 rounded-full bg-white dark:bg-slate-800 shadow-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 ${social.color} transition-all duration-300`}
+                  className={`p-2.5 sm:p-3 rounded-full bg-white dark:bg-slate-800 shadow-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 ${social.color} transition-all duration-300`}
                 >
                   <social.icon className="h-5 w-5" />
                 </motion.a>
@@ -111,7 +111,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.3, ease: [0.6, -0.05, 0.01, 0.99] }}
             className="relative"
           >
-            <div className="relative mx-auto w-80 h-80 lg:w-96 lg:h-96">
+            <div className="relative mx-auto w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
               {/* Background decorations */}
               <motion.div
                 animate={{ rotate: 360 }}
@@ -135,25 +135,25 @@ export default function Hero() {
               <motion.div
                 animate={{ y: [-5, 5, -5] }}
                 transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-                className="absolute -top-4 -right-4 bg-white dark:bg-slate-800 rounded-full p-3 shadow-lg border border-slate-200 dark:border-slate-700"
+                className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 bg-white dark:bg-slate-800 rounded-full p-2 sm:p-3 shadow-lg border border-slate-200 dark:border-slate-700"
               >
-                <Code className="h-6 w-6 text-blue-600" />
+                <Code className="h-4 w-4 sm:h-6 sm:w-6 text-blue-600" />
               </motion.div>
 
               <motion.div
                 animate={{ y: [5, -5, 5] }}
                 transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 1 }}
-                className="absolute -bottom-4 -left-4 bg-white dark:bg-slate-800 rounded-full p-3 shadow-lg border border-slate-200 dark:border-slate-700"
+                className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 bg-white dark:bg-slate-800 rounded-full p-2 sm:p-3 shadow-lg border border-slate-200 dark:border-slate-700"
               >
-                <Server className="h-6 w-6 text-purple-600" />
+                <Server className="h-4 w-4 sm:h-6 sm:w-6 text-purple-600" />
               </motion.div>
 
               <motion.div
                 animate={{ y: [-3, 7, -3] }}
                 transition={{ duration: 4.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 0.5 }}
-                className="absolute top-1/2 -left-8 bg-white dark:bg-slate-800 rounded-full p-3 shadow-lg border border-slate-200 dark:border-slate-700"
+                className="absolute top-1/2 -left-4 sm:-left-8 bg-white dark:bg-slate-800 rounded-full p-2 sm:p-3 shadow-lg border border-slate-200 dark:border-slate-700"
               >
-                <Database className="h-6 w-6 text-green-600" />
+                <Database className="h-4 w-4 sm:h-6 sm:w-6 text-green-600" />
               </motion.div>
             </div>
           </motion.div>
@@ -175,10 +175,10 @@ export default function Hero() {
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ repeat: Number.POSITIVE_INFINITY, duration: 2 }}
-              className="flex flex-col items-center space-y-2 text-slate-400 dark:text-slate-500"
+              className="flex flex-col items-center space-y-1 sm:space-y-2 text-slate-400 dark:text-slate-500"
             >
-              <span className="text-sm font-poppins">Scroll to explore</span>
-              <ChevronDown className="h-5 w-5" />
+              <span className="text-xs sm:text-sm font-poppins">Scroll to explore</span>
+              <ChevronDown className="h-4 w-4 sm:h-5 sm:w-5" />
             </motion.div>
           </motion.div>
         )}

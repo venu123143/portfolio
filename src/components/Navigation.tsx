@@ -29,10 +29,11 @@ export default function Navigation({ activeSection, scrollToSection }: Navigatio
         <div className="flex justify-between items-center py-4">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold font-poppins bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent cursor-pointer"
+            className="text-lg sm:text-xl md:text-2xl font-bold font-poppins bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent cursor-pointer"
             onClick={() => handleScrollToSection("home")}
           >
-            Venu Gopal Reddy
+            <span className="hidden sm:inline">Venu Gopal Reddy</span>
+            <span className="sm:hidden">VGR</span>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -43,9 +44,8 @@ export default function Navigation({ activeSection, scrollToSection }: Navigatio
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 0 }}
                 onClick={() => handleScrollToSection(item.toLowerCase())}
-                className={`text-sm lg:cursor-pointer font-medium font-poppins transition-all duration-300 hover:text-blue-600 relative ${
-                  activeSection === item.toLowerCase() ? "text-blue-600" : "text-slate-700 dark:text-slate-300"
-                }`}
+                className={`text-sm lg:cursor-pointer font-medium font-poppins transition-all duration-300 hover:text-blue-600 relative ${activeSection === item.toLowerCase() ? "text-blue-600" : "text-slate-700 dark:text-slate-300"
+                  }`}
               >
                 {item}
                 {activeSection === item.toLowerCase() && (

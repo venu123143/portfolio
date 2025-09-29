@@ -22,7 +22,7 @@ const educationList = [
 
 export default function Education() {
   return (
-    <section id="education" className="py-20 px-4 sm:px-6 lg:px-8 overflow-x-hidden">
+    <section id="education" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 overflow-x-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
@@ -48,7 +48,7 @@ export default function Education() {
           />
         </motion.div>
 
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {educationList.map((education, index) => (
             <motion.div
               key={index}
@@ -58,23 +58,23 @@ export default function Education() {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               whileHover={{ scale: 1.02 }}
             >
-              <Card className="p-8 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300">
-                <CardContent className="flex items-start space-x-6">
-                  <div className="flex-shrink-0">
-                    <div className={`w-16 h-16 bg-gradient-to-r ${education.color} rounded-2xl flex items-center justify-center`}>
-                      <GraduationCap className="h-8 w-8 text-white" />
+              <Card className=" py-4 sm:p-6 lg:p-8 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <CardContent className="flex items-start space-x-4 sm:space-x-6">
+                  <div className="flex-shrink-0 hidden sm:block">
+                    <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r ${education.color} rounded-2xl flex items-center justify-center`}>
+                      <GraduationCap className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-poppins mb-2">{education.degree}</h3>
-                    <p className="text-lg text-slate-600 dark:text-slate-300 font-inter mb-3">{education.institution}</p>
-                    <div className="flex flex-wrap items-center gap-4">
+                    <h3 className="text-base sm:text-xl lg:text-2xl font-bold text-slate-900 dark:text-white font-poppins mb-2">{education.degree}</h3>
+                    <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-inter mb-3">{education.institution}</p>
+                    <div className="flex flex-wrap items-center gap-3 sm:gap-4">
                       <div className="flex items-center text-slate-500 dark:text-slate-400">
-                        <Calendar className="h-4 w-4 mr-2" />
-                        <span className="font-medium">{education.year}</span>
+                        <Calendar className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
+                        <span className="font-medium text-sm sm:text-base">{education.year}</span>
                       </div>
                       <div>
-                        <span className="inline-block rounded border border-slate-400 px-2 py-1 text-sm font-medium text-slate-700 dark:text-slate-300">
+                        <span className="inline-block rounded border border-slate-400 px-2 py-1 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">
                           {education.percentage} Percentage
                         </span>
                       </div>
