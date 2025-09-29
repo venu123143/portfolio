@@ -34,7 +34,7 @@ jobs:
             git pull origin portfolio_v2
             
             echo "Installing dependencies..."
-            npm install
+            npm install --force
 
             echo "Building the project..."
             npm run build
