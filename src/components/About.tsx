@@ -117,7 +117,7 @@ export default function About() {
                 whileHover={{ scale: 1.02, x: 10 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Card className="p-2 sm:p-6 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <Card className="p-4 sm:p-6 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-0 shadow-md hover:shadow-lg lg:shadow-xl lg:hover:shadow-2xl transition-all duration-300">
                   <CardContent className="flex items-center space-x-3 sm:space-x-4">
                     <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center flex-shrink-0">
                       <achievement.icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />

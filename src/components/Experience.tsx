@@ -176,7 +176,7 @@ export default function Experience() {
                     initial="initial"
                     whileInView="animate"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 sm:grid-cols-2 gap-1 sm:gap-4 md:gap-6 lg:gap-8"
+                    className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6 lg:gap-8"
                   >
                     {job.highlights.map((section, index) => (
                       <motion.div
@@ -184,7 +184,7 @@ export default function Experience() {
                         variants={scaleIn}
                         whileHover={{ y: -5 }}
                       >
-                        <Card className="h-full p-1 sm:p-4 md:p-6 dark:bg-slate-700/60 backdrop-blur-sm border border-slate-200/50 dark:border-slate-600/50 hover:shadow-xl transition-all duration-300">
+                        <Card className=" h-full p-1 sm:p-4 md:p-6 dark:bg-slate-700/60 backdrop-blur-sm border border-slate-200/50 dark:border-slate-600/50 hover:shadow-xl transition-all duration-300">
                           <CardContent>
                             <div className="flex items-center mb-2 sm:mb-3 md:mb-4">
                               <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-gradient-to-r ${section.color} rounded-xl flex items-center justify-center mr-2 sm:mr-3 md:mr-4`}>

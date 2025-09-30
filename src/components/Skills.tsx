@@ -51,8 +51,8 @@ export default function Skills() {
               transition={{ type: "spring", stiffness: 300 }}
               className={index === 4 ? "md:col-span-2 lg:col-span-1" : ""}
             >
-              <Card className="h-full p-4 sm:p-6 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300">
-                <CardHeader className="pb-3 sm:pb-4">
+              <Card className="h-full p-4 sm:p-6  gap-3 dark:bg-slate-800/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <CardHeader className="sm:pb-4 py-0 ">
                   <CardTitle className="flex items-center text-lg sm:text-xl font-bold font-poppins">
                     <div className={`w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r ${category.color} rounded-lg flex items-center justify-center mr-2 sm:mr-3`}>
                       <category.icon className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
