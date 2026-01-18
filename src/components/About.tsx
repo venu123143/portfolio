@@ -2,20 +2,14 @@
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Users, Award, TrendingUp, Shield, Zap, Target } from "lucide-react"
+import { Users, Award } from "lucide-react"
 import { fadeInLeft, fadeInRight, staggerContainer } from "./animationVariants"
+import { aboutData } from "@/data/data"
 
 interface AwardCardProps {
   title: string
   description: string
 }
-
-const achievements = [
-  { icon: TrendingUp, title: "70% Faster Deployments", description: "CI/CD pipeline optimization" },
-  { icon: Shield, title: "40% Security Improvement", description: "Reduced unauthorized access" },
-  { icon: Zap, title: "35% Performance Boost", description: "Data-fetching speed enhancement" },
-  { icon: Target, title: "30% Less Downtime", description: "Server reliability improvement" },
-]
 
 export default function About() {
   return (
@@ -61,26 +55,25 @@ export default function About() {
 
                   <p className="text-slate-600 dark:text-slate-300 leading-relaxed font-inter text-base sm:text-lg">
                     I am working as an{" "}
-                    <span className="font-semibold text-blue-600">Associate Software Engineer</span> with more than
-                    <span className="font-semibold text-purple-600"> 2 years of experience</span> in the Fullstack field. I work closely with project teams to build innovative solutions for client business requirements.
+                    <span className="font-semibold text-blue-600">{aboutData.professionalJourney.role}</span> with more than
+                    <span className="font-semibold text-purple-600"> {aboutData.professionalJourney.experience}</span> in the Fullstack field. I work closely with project teams to build innovative solutions for client business requirements.
                   </p>
-                  <AwardCard
-                    title="Bright Beginner Award"
-                    description="Ahex Technologies - First Year Achievement"
-                  />
-                  <AwardCard
-                    title="Star Performer Award."
-                    description="Ahex Technologies - Second Year Achievement"
-                  />
+                  {aboutData.awards.map((award, index) => (
+                    <AwardCard
+                      key={index}
+                      title={award.title}
+                      description={award.description}
+                    />
+                  ))}
 
-                  <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                    <div className="text-center p-3 sm:p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
-                      <div className="text-xl sm:text-2xl font-bold text-blue-600 font-poppins">6+</div>
-                      <div className="text-xs sm:text-sm text-blue-700 dark:text-blue-300 font-medium">Company Projects</div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                      <div className="text-2xl font-bold text-blue-600 font-poppins">{aboutData.stats.companyProjects}</div>
+                      <div className="text-sm text-blue-700 dark:text-blue-300 font-medium">Company Projects</div>
                     </div>
-                    <div className="text-center p-3 sm:p-4 bg-purple-50 dark:bg-purple-900/20 rounded-xl">
-                      <div className="text-xl sm:text-2xl font-bold text-purple-600 font-poppins">5+</div>
-                      <div className="text-xs sm:text-sm text-purple-700 dark:text-purple-300 font-medium">Personal Projects</div>
+                    <div className="text-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                      <div className="text-2xl font-bold text-purple-600 font-poppins">{aboutData.stats.personalProjects}</div>
+                      <div className="text-sm text-purple-700 dark:text-purple-300 font-medium">Personal Projects</div>
                     </div>
                   </div>
                 </CardContent>
@@ -94,8 +87,8 @@ export default function About() {
                     <Users className="h-4 w-4 sm:h-5 sm:w-5 text-green-600 mr-2" />
                     Interests & Activities
                   </h3>
-                  <div className="flex flex-wrap gap-2 sm:gap-3">
-                    {["Cricket", "Yoga", "RSS Events", "Continuous Learning", "Personal Projects"].map((interest, index) => (
+                  <div className="flex flex-wrap gap-3">
+                    {aboutData.interests.map((interest, index) => (
                       <motion.div key={index} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                         <Badge variant="secondary" className="px-2 sm:px-3 py-1 font-medium text-xs sm:text-sm">
                           {interest}
@@ -109,8 +102,8 @@ export default function About() {
           </motion.div>
 
           {/* Right Content - Achievements */}
-          <motion.div variants={staggerContainer} initial="initial" whileInView="animate" viewport={{ once: true }} className="space-y-4 sm:space-y-6">
-            {achievements.map((achievement, index) => (
+          <motion.div variants={staggerContainer} initial="initial" whileInView="animate" viewport={{ once: true }} className="space-y-6">
+            {aboutData.achievements.map((achievement, index) => (
               <motion.div
                 key={index}
                 variants={fadeInRight}
@@ -134,9 +127,9 @@ export default function About() {
             <motion.div variants={fadeInRight}>
               <Card className="p-4 sm:p-6 bg-gradient-to-r from-blue-500 to-purple-600 text-white border-0 shadow-xl">
                 <CardContent>
-                  <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 font-poppins">Core Philosophy</h3>
-                  <p className="font-inter leading-relaxed text-sm sm:text-base">
-                    "Always aiming to give the best output on time with 100% effort. Passionate about creating efficient, scalable solutions that make a real impact."
+                  <h3 className="text-xl font-bold mb-3 font-poppins">Core Philosophy</h3>
+                  <p className="font-inter leading-relaxed">
+                    "{aboutData.corePhilosophy}"
                   </p>
                 </CardContent>
               </Card>

@@ -3,7 +3,7 @@ import {
   Card, CardContent, CardHeader, CardTitle, CardDescription
 } from "@/components/ui/card"
 import {
-  Server, Code, Database, Award, CheckCircle, Calendar, MapPin, Clock
+  CheckCircle, Calendar, MapPin, Clock
 } from "lucide-react"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
@@ -11,91 +11,7 @@ import "slick-carousel/slick/slick-theme.css"
 import {
   fadeInY, fadeInXLeft, fadeInXRight, staggerList, scaleIn
 } from "./animationVariants"
-
-// Sample data (unchanged)
-const experienceData = [
-  {
-    role: "Associate Software Engineer",
-    company: "Ahex Technologies",
-    duration: "JUL 2023 - Present",
-    location: "On Site",
-    totalExp: "2+ Years",
-    highlights: [
-      {
-        icon: Server,
-        title: "DevOps & Infrastructure",
-        color: "from-blue-500 to-cyan-500",
-        items: [
-          "Orchestrated CI/CD using Github and Bitbucket pipelines",
-          "Containerized each microservice using Docker for consistency",
-          "Automated server updates on Linux VMs with Nginx",
-          "Achieved 70% faster deployment cycle",
-        ],
-      },
-      {
-        icon: Code,
-        title: "Full Stack Development",
-        color: "from-green-500 to-emerald-500",
-        items: [
-          "Backend development with Node.js & Nest.js.",
-          "Frontend development with React.js.",
-          "Created REST APIs, GraphQL Queries and Grpc Proto Buffers.",
-          "Used libraries like Socket.io, WebRTC and Mediasoup.",
-        ],
-      },
-      {
-        icon: Database,
-        title: "Database & Security",
-        color: "from-purple-500 to-violet-500",
-        items: [
-          "Used Sequelize ORM And Type ORM for implementation.",
-          "Written SQL queries with MySQL/PostgreSQL.",
-          "Used NoSql db like MongoDB.",
-          "Implemented the Authentication, Authorization and RBAC.",
-        ],
-      },
-      {
-        icon: Award,
-        title: "Key Achievements",
-        color: "from-yellow-500 to-orange-500",
-        items: [
-          "Bright Beginner & Star Performer Award recipient.",
-          "6+ company projects completed.",
-          "5+ personal full-stack projects.",
-          "WhatsApp clone, Amazon clone, Video calling app.",
-        ],
-      },
-    ],
-  },
-]
-
-// Carousel settings
-const sliderSettings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  arrows: false, // Disable side navigation buttons
-  autoplay: false,
-  adaptiveHeight: true,
-  className: "experience-slider",
-  responsive: [
-    {
-      breakpoint: 640,
-      settings: {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        autoplay: false,
-        adaptiveHeight: true,
-      }
-    }
-  ]
-}
+import { experienceData, sliderSettings } from "@/data/data"
 
 export default function Experience() {
   return (

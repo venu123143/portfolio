@@ -2,39 +2,9 @@
 import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Mail, Phone, Linkedin, Globe, ExternalLink } from "lucide-react"
+import { Linkedin, ExternalLink } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
-
-const contacts = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "venugopalreddy9493@gmail.com",
-    href: "mailto:venugopalreddy9493@gmail.com",
-    color: "blue",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "+91 8008952100",
-    href: "tel:+918008952100",
-    color: "green",
-  },
-  {
-    icon: Linkedin,
-    label: "LinkedIn",
-    value: "linkedin.com/in/venureddy9493",
-    href: "https://www.linkedin.com/in/venureddy9493/",
-    color: "purple",
-  },
-  {
-    icon: Globe,
-    label: "Fiverr",
-    value: "fiverr.com/sellers/venu_9090",
-    href: "https://www.fiverr.com/sellers/venu_9090/",
-    color: "orange",
-  },
-]
+import { contactData } from "@/data/data"
 
 export default function Contact() {
   return (
@@ -64,7 +34,7 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto font-inter"
           >
-            I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.
+            {contactData.description}
           </motion.p>
         </motion.div>
 
@@ -74,8 +44,8 @@ export default function Contact() {
               <CardHeader>
                 <CardTitle className="text-xl sm:text-2xl mb-4 sm:mb-6 font-poppins">Contact Information</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4 sm:space-y-6">
-                {contacts.map((contact, index) => (
+              <CardContent className="space-y-6">
+                {contactData.contacts.map((contact, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
@@ -113,7 +83,7 @@ export default function Contact() {
                   <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
                     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="flex-1">
                       <Button variant="outline" className="w-full bg-transparent font-poppins text-sm sm:text-base" asChild>
-                        <a href="https://www.linkedin.com/in/venureddy9493/" target="_blank" rel="noopener noreferrer">
+                        <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer">
                           <Linkedin className="mr-2 h-4 w-4" />
                           LinkedIn
                         </a>
@@ -122,7 +92,7 @@ export default function Contact() {
 
                     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="flex-1">
                       <Button variant="outline" className="w-full bg-transparent font-poppins text-sm sm:text-base" asChild>
-                        <a href="https://github.com/venu123143/" target="_blank" rel="noopener noreferrer">
+                        <a href={contactData.githubUrl} target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="mr-2 h-4 w-4" />
                           Github
                         </a>
@@ -141,7 +111,7 @@ export default function Contact() {
                     transition={{ duration: 0.6, delay: 0.5 }}
                     className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-inter"
                   >
-                    Available for freelance projects and full-time opportunities
+                    {contactData.availability}
                   </motion.p>
                 </div>
               </CardContent>

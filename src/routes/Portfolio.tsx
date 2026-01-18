@@ -14,14 +14,10 @@ import { ArrowUp } from "lucide-react"
 export default function Portfolio() {
     const [activeSection, setActiveSection] = useState("home")
     const [showScrollTop, setShowScrollTop] = useState(false)
-    // const { scrollYProgress } = useScroll()
-    // const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
 
     useEffect(() => {
         const handleScroll = () => {
             setShowScrollTop(window.scrollY > 400)
-
-            // Update active section based on scroll position
             const sections = ["home", "about", "experience", "projects", "skills", "education", "contact"]
             const current = sections.find((section) => {
                 const element = document.getElementById(section)

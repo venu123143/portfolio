@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { Code, Server, Database, ChevronDown } from "lucide-react"
 import { fadeInUp, staggerContainer } from "./animationVariants"
-import { Linkedin, Briefcase, Mail, Phone } from 'lucide-react';
+import { heroData } from "@/data/data"
 
 export default function Hero() {
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
@@ -31,7 +31,7 @@ export default function Hero() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium font-poppins mb-4"
               >
-                👋 Hello, I'm
+                {heroData.greeting}
               </motion.span>
             </motion.div>
 
@@ -39,14 +39,14 @@ export default function Hero() {
               variants={fadeInUp}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-slate-900 dark:text-white mb-4 leading-tight"
             >
-              Venu Gopal Reddy
+              {heroData.name}
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 0.8 }}
                 className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mt-2"
               >
-                Full Stack Developer
+                {heroData.title}
               </motion.span>
             </motion.h1>
 
@@ -54,9 +54,7 @@ export default function Hero() {
               variants={fadeInUp}
               className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-6 sm:mb-8 leading-relaxed font-inter max-w-2xl mx-auto lg:mx-0"
             >
-              Associate Software Engineer with <span className="font-semibold text-blue-600">2+ years </span>
-              of experience building scalable web applications.
-              <span className="hidden sm:inline"> Awarded with Bright Beginner and Star Performer at Ahex Technologies.</span>
+              {heroData.description}
             </motion.p>
 
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-6 sm:mb-8">
@@ -64,7 +62,7 @@ export default function Hero() {
                 <Link
                   target="_blank"
                   rel="noopener noreferrer"
-                  to="https://www.canva.com/design/DAFj-JlZs_I/lYKRtoro-a54diJcflWvuA/view?utm_content=DAFj-JlZs_I&utm_campaign=designshare&utm_medium=link&utm_source=editor"
+                  to={heroData.resumeUrl}
                   className="block w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-poppins font-medium px-6 sm:px-8 py-2.5 sm:py-3 rounded-full shadow-lg text-sm sm:text-base text-center"
                 >
                   Check My Resume
@@ -74,7 +72,7 @@ export default function Hero() {
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://github.com/venu123143"
+                  href={heroData.githubUrl}
                   className="block w-full sm:w-auto font-poppins font-medium px-6 sm:px-8 py-2.5 sm:py-3 rounded-full border-2 hover:bg-blue-50 dark:hover:bg-slate-800 text-sm sm:text-base text-center"
                 >
                   GitHub
@@ -83,12 +81,7 @@ export default function Hero() {
             </motion.div>
 
             <motion.div variants={fadeInUp} className="flex justify-center lg:justify-start space-x-3 sm:space-x-4">
-              {[
-                { icon: Linkedin, href: "https://www.linkedin.com/in/venureddy9493/", color: "hover:text-blue-600" },
-                { icon: Briefcase, href: "https://www.fiverr.com/sellers/venu_9090/", color: "hover:text-green-600" },
-                { icon: Mail, href: "mailto:venugopalreddy9493@gmail.com", color: "hover:text-red-600" },
-                { icon: Phone, href: "tel:+918008952100", color: "hover:text-purple-600" },
-              ].map((social, index) => (
+              {heroData.socialLinks.map((social, index) => (
                 <motion.a
                   key={index}
                   href={social.href}

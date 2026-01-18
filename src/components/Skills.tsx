@@ -4,14 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Code, Server, Database, Globe, Award } from "lucide-react"
 import { staggerContainer, scaleIn } from "./animationVariants"
-
-const skills = {
-  frontend: ["React.js", "TypeScript", "HTML", "CSS", "JavaScript", "Tailwind CSS"],
-  backend: ["Node.js", "Nest.js", "Express.js", "GraphQL", "REST APIs", "Grpc"],
-  database: ["MongoDB", "MySQL", "PostgreSQL", "Redis", "Sequelize ORM", "Type ORM"],
-  devops: ["AWS", "S3", "EC2", "Docker", "CI/CD", "Linux", "Nginx", "Azure", "VPC"],
-  other: ["Socket.io", "WebRTC", "Mediasoup", "Git", "jira", "GitHub", "Kafka"],
-}
+import { skillsData } from "@/data/data"
 
 export default function Skills() {
   return (
@@ -38,11 +31,11 @@ export default function Skills() {
 
         <motion.div variants={staggerContainer} initial="initial" whileInView="animate" viewport={{ once: true }} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {[
-            { title: "Frontend", icon: Code, color: "from-blue-500 to-cyan-500", skills: skills.frontend },
-            { title: "Backend", icon: Server, color: "from-green-500 to-emerald-500", skills: skills.backend },
-            { title: "Database", icon: Database, color: "from-purple-500 to-violet-500", skills: skills.database },
-            { title: "DevOps & Cloud", icon: Globe, color: "from-orange-500 to-red-500", skills: skills.devops },
-            { title: "Other Skills", icon: Award, color: "from-yellow-500 to-amber-500", skills: skills.other },
+            { title: "Frontend", icon: Code, color: "from-blue-500 to-cyan-500", skills: skillsData.frontend },
+            { title: "Backend", icon: Server, color: "from-green-500 to-emerald-500", skills: skillsData.backend },
+            { title: "Database", icon: Database, color: "from-purple-500 to-violet-500", skills: skillsData.database },
+            { title: "DevOps & Cloud", icon: Globe, color: "from-orange-500 to-red-500", skills: skillsData.devops },
+            { title: "Other Skills", icon: Award, color: "from-yellow-500 to-amber-500", skills: skillsData.other },
           ].map((category, index) => (
             <motion.div
               key={index}

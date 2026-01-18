@@ -2,23 +2,7 @@
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { GraduationCap, Calendar } from "lucide-react"
-
-const educationList = [
-  {
-    degree: "Bachelor of Engineering - Electronics and Communication",
-    institution: "Saveetha School of Engineering, Chennai",
-    year: "March 2022",
-    percentage: "70%",
-    color: "from-blue-500 to-purple-600",
-  },
-  {
-    degree: "Class 12th - Intermediate",
-    institution: "Sree Chaitanya Jr College, Kavali",
-    year: "March 2017",
-    percentage: "88.1%",
-    color: "from-green-500 to-emerald-600",
-  },
-]
+import { educationData } from "@/data/data"
 
 export default function Education() {
   return (
@@ -48,8 +32,8 @@ export default function Education() {
           />
         </motion.div>
 
-        <div className="space-y-6 sm:space-y-8">
-          {educationList.map((education, index) => (
+        <div className="space-y-8">
+          {educationData.map((education, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}

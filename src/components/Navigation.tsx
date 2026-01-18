@@ -3,6 +3,7 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import { ThemeToggle } from "@/components/helpers/ThemeToggle"
 import { Menu, X } from "lucide-react"
+import { navigationData } from "@/data/data"
 
 interface NavigationProps {
   activeSection: string
@@ -32,13 +33,12 @@ export default function Navigation({ activeSection, scrollToSection }: Navigatio
             className="text-lg sm:text-xl md:text-2xl font-bold font-poppins bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent cursor-pointer"
             onClick={() => handleScrollToSection("home")}
           >
-            <span className="hidden sm:inline">Venu Gopal Reddy</span>
-            <span className="sm:hidden">VGR</span>
+            {navigationData.name}
           </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {["Home", "About", "Experience", "Projects", "Skills", "Education", "Contact"].map((item) => (
+            {navigationData.items.map((item) => (
               <motion.button
                 key={item}
                 whileHover={{ y: -2 }}
@@ -82,7 +82,7 @@ export default function Navigation({ activeSection, scrollToSection }: Navigatio
           className="md:hidden overflow-hidden border-t border-white/20 dark:border-slate-700/50"
         >
           <div className="py-4 space-y-2">
-            {["Home", "About", "Experience", "Projects", "Skills", "Education", "Contact"].map((item) => (
+            {navigationData.items.map((item) => (
               <motion.button
                 key={item}
                 whileHover={{ x: 10 }}
