@@ -42,9 +42,9 @@ export const heroData = {
 // About Data
 export const aboutData = {
     professionalJourney: {
-        role: "Associate Software Engineer",
+        role: "Software Engineer",
         experience: `${experience} years of experience`,
-        description: `I am working as an Associate Software Engineer with more than ${experience} years of experience in the Fullstack field. I work closely with project teams to build innovative solutions for client business requirements.`,
+        description: `I am working as an Software Engineer with more than ${experience} years of experience in the Fullstack field. I work closely with project teams to build innovative solutions for client business requirements.`,
     },
     awards: [
         {
