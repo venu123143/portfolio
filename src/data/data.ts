@@ -14,7 +14,7 @@ import {
     Globe,
 } from "lucide-react"
 
-export const experience = 9;
+export const experience = 4.8;
 
 // Helper function to format experience
 const formatExperience = (value: number, format: 'plus' | 'plain' | 'capitalized' = 'plus') => {
@@ -73,11 +73,64 @@ export const aboutData = {
 // Experience Data
 export const experienceData = [
     {
+        role: "Software Engineer",
+        company: "Ahex Technologies",
+        duration: "SEP 2025 - Present",
+        location: "On Site",
+        totalExp: "Present",
+        highlights: [
+            {
+                icon: Server,
+                title: "DevOps & Infrastructure",
+                color: "from-blue-500 to-cyan-500",
+                items: [
+                    "Orchestrated CI/CD using Github and Bitbucket pipelines",
+                    "Containerized each microservice using Docker for consistency",
+                    "Automated server updates on Linux VMs with Nginx",
+                    "Achieved 70% faster deployment cycle",
+                ],
+            },
+            {
+                icon: Code,
+                title: "Full Stack Development",
+                color: "from-green-500 to-emerald-500",
+                items: [
+                    "Backend development with Node.js & Nest.js.",
+                    "Frontend development with React.js.",
+                    "Created REST APIs, GraphQL Queries and Grpc Proto Buffers.",
+                    "Used libraries like Socket.io, WebRTC and Mediasoup.",
+                ],
+            },
+            {
+                icon: Database,
+                title: "Database & Security",
+                color: "from-purple-500 to-violet-500",
+                items: [
+                    "Used Sequelize ORM And Type ORM for implementation.",
+                    "Written SQL queries with MySQL/PostgreSQL.",
+                    "Used NoSql db like MongoDB.",
+                    "Implemented the Authentication, Authorization and RBAC.",
+                ],
+            },
+            {
+                icon: Award,
+                title: "Key Achievements",
+                color: "from-yellow-500 to-orange-500",
+                items: [
+                    "Promoted to Software Engineer role.",
+                    "6+ company projects completed.",
+                    "5+ personal full-stack projects.",
+                    "WhatsApp clone, Amazon clone, Video calling app.",
+                ],
+            },
+        ],
+    },
+    {
         role: "Associate Software Engineer",
         company: "Ahex Technologies",
-        duration: "JUL 2023 - Present",
+        duration: "JUL 2021 - SEP 2025",
         location: "On Site",
-        totalExp: `${formatExperience(experience, 'capitalized')}`,
+        totalExp: "4+ Years",
         highlights: [
             {
                 icon: Server,
@@ -143,12 +196,21 @@ export const sliderSettings = {
 // Projects Data
 export const projectsData = [
     {
+        title: "Bald Eagle Barns – Sales & Operations Platform (US)",
+        description:
+            "Built a microservice-based backend using Node.js, TypeScript, gRPC, MongoDB, and Redis, implementing authentication, sales quotes/orders, work orders, inventory, and task management for end-to-end business operations.",
+        tech: ["Node.js", "TypeScript", "MongoDB", "Redis", "gRPC", "Linux/Nginx", "Authorize.net"],
+        type: "Professional",
+        url: "https://www.baldeaglebarns.com/",
+        impact: "End-to-end business operations",
+    },
+    {
         title: "Thapala (Mailing Platform)",
         description:
             "Secure email platform with TypeScript, SQL/Sequelize ORM, automated deployments, and Azure Blob Storage integration.",
         tech: ["Node.js", "TypeScript", "SQL", "Sequelize", "Azure", "GitHub Actions"],
         type: "Professional",
-        url: "https://tapp.ahexlab.com/#/",
+        url: "https://thapala.com/home",
         impact: "Enhanced email security by 60%",
     },
     {
@@ -255,6 +317,7 @@ export const skillsData = {
     backend: ["Node.js", "Nest.js", "Express.js", "GraphQL", "REST APIs", "Grpc"],
     database: ["MongoDB", "MySQL", "PostgreSQL", "Redis", "Sequelize ORM", "Type ORM"],
     devops: ["AWS", "S3", "EC2", "Docker", "CI/CD", "Linux", "Nginx", "Azure", "VPC"],
+    payment: ["Authorize.net", "Stripe", "Webhooks"],
     other: ["Socket.io", "WebRTC", "Mediasoup", "Git", "jira", "GitHub", "Kafka"],
 }
 

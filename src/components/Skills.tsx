@@ -2,7 +2,7 @@
 import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Code, Server, Database, Globe, Award } from "lucide-react"
+import { Code, Server, Database, Globe, Award, CreditCard } from "lucide-react"
 import { staggerContainer, scaleIn } from "./animationVariants"
 import { skillsData } from "@/data/data"
 
@@ -36,6 +36,7 @@ export default function Skills() {
             { title: "Database", icon: Database, color: "from-purple-500 to-violet-500", skills: skillsData.database },
             { title: "DevOps & Cloud", icon: Globe, color: "from-orange-500 to-red-500", skills: skillsData.devops },
             { title: "Other Skills", icon: Award, color: "from-yellow-500 to-amber-500", skills: skillsData.other },
+            { title: "Payment", icon: CreditCard, color: "from-blue-500 to-green-500", skills: skillsData.payment },
           ].map((category, index) => (
             <motion.div
               key={index}
