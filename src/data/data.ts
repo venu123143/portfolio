@@ -14,7 +14,7 @@ import {
     Globe,
 } from "lucide-react"
 
-export const experience = 4.8;
+export const experience = 2.9;
 
 // Helper function to format experience
 const formatExperience = (value: number, format: 'plus' | 'plain' | 'capitalized' = 'plus') => {
@@ -128,9 +128,9 @@ export const experienceData = [
     {
         role: "Associate Software Engineer",
         company: "Ahex Technologies",
-        duration: "JUL 2021 - SEP 2025",
+        duration: "JUL 2023 - SEP 2025",
         location: "On Site",
-        totalExp: "4+ Years",
+        totalExp: "2.5+ Years",
         highlights: [
             {
                 icon: Server,
