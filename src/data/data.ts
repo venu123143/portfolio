@@ -28,7 +28,7 @@ export const heroData = {
     greeting: "👋 Hello, I'm",
     name: "Venu Gopal Reddy",
     title: "Full Stack Developer",
-    description: `Associate Software Engineer with ${formatExperience(experience)} years of experience building scalable web applications. Awarded with Bright Beginner and Star Performer at Ahex Technologies.`,
+    description: `Software Engineer with ${formatExperience(experience)} years of experience building scalable web applications. Awarded with Bright Beginner and Star Performer at Ahex Technologies.`,
     resumeUrl: "https://www.canva.com/design/DAFj-JlZs_I/lYKRtoro-a54diJcflWvuA/view?utm_content=DAFj-JlZs_I&utm_campaign=designshare&utm_medium=link&utm_source=editor",
     githubUrl: "https://github.com/venu123143",
     socialLinks: [

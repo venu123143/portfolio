@@ -12,7 +12,7 @@ createRoot(document.getElementById('root')!).render(
     <ThemeProvider>
       <HelmetProvider>
         <Layout>
-          <App />
+          <App /> 
         </Layout>
       </HelmetProvider>
     </ThemeProvider>
