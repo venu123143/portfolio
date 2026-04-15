@@ -14,7 +14,7 @@ import {
     Globe,
 } from "lucide-react"
 
-export const experience = 2.9;
+export const experience = 4;
 
 // Helper function to format experience
 const formatExperience = (value: number, format: 'plus' | 'plain' | 'capitalized' = 'plus') => {
@@ -28,7 +28,7 @@ export const heroData = {
     greeting: "👋 Hello, I'm",
     name: "Venu Gopal Reddy",
     title: "Full Stack Developer",
-    description: `Software Engineer with ${formatExperience(experience)} years of experience building scalable web applications. Awarded with Bright Beginner and Star Performer at Ahex Technologies.`,
+    description: `Software Engineer around ${formatExperience(experience, 'plain')} years of experience building scalable web applications. Awarded with Bright Beginner and Star Performer at Ahex Technologies.`,
     resumeUrl: "https://www.canva.com/design/DAFj-JlZs_I/lYKRtoro-a54diJcflWvuA/view?utm_content=DAFj-JlZs_I&utm_campaign=designshare&utm_medium=link&utm_source=editor",
     githubUrl: "https://github.com/venu123143",
     socialLinks: [
@@ -43,8 +43,8 @@ export const heroData = {
 export const aboutData = {
     professionalJourney: {
         role: "Software Engineer",
-        experience: `${experience} years of experience`,
-        description: `I am working as an Software Engineer with more than ${experience} years of experience in the Fullstack field. I work closely with project teams to build innovative solutions for client business requirements.`,
+        experience: `${formatExperience(experience, 'plain')} years of experience`,
+        description: `I am working as an Software Engineer around ${formatExperience(experience, 'plain')} years of experience in the Fullstack field. I work closely with project teams to build innovative solutions for client business requirements.`,
     },
     awards: [
         {
@@ -174,6 +174,50 @@ export const experienceData = [
                     "6+ company projects completed.",
                     "5+ personal full-stack projects.",
                     "WhatsApp clone, Amazon clone, Video calling app.",
+                ],
+            },
+        ],
+    },
+    {
+        role: "Freelance Full Stack Developer",
+        company: "Navika Technologies",
+        duration: "APR 2022 - JUN 2023",
+        location: "Remote",
+        totalExp: "~1 Year",
+        highlights: [
+            {
+                icon: Code,
+                title: "Full Stack Development",
+                color: "from-green-500 to-emerald-500",
+                items: [
+                    "Built a debt management platform with React, Node.js, TypeScript, Sequelize, and MySQL.",
+                    "Delivered authentication, debt tracking, repayment workflows, and invoice PDF generation.",
+                    "Owned full-stack feature delivery across the admin, debtor and collectors facing experience.",
+                ],
+            },
+            {
+                icon: Shield,
+                title: "Payments & Security",
+                color: "from-blue-500 to-cyan-500",
+                items: [
+                    "Integrated Authorize.Net for secure payment processing.",
+                ],
+            },
+            {
+                icon: Database,
+                title: "Data & Administration",
+                color: "from-purple-500 to-violet-500",
+                items: [
+                    "Developed an Excel bulk upload system for admin data ingestion.",
+                ],
+            },
+            {
+                icon: Award,
+                title: "Key Achievements",
+                color: "from-yellow-500 to-orange-500",
+                items: [
+                    "Shipped a production-ready debt management platform for the client.",
+                    "Streamlined repayments and reporting with reliable backend services and exports.",
                 ],
             },
         ],
@@ -308,6 +352,15 @@ export const projectsData = [
         type: "Personal",
         url: "https://fileflow.nerchuko.in/",
         impact: "Complete cloud storage solution",
+    },
+    {
+        title: "URS-CRM (Navika Technologies)",
+        description:
+            "Debt management platform with React, Node.js, TypeScript, Sequelize, and MySQL. Integrated Authorize.Net for payments, an Excel bulk upload path for admin data ingestion, and full-stack features spanning authentication, debt tracking, repayment workflows, and invoice PDF generation.",
+        tech: ["React", "Node.js", "TypeScript", "Sequelize", "MySQL", "Authorize.net", "Excel"],
+        type: "Personal",
+        url: "",
+        impact: "Client-ready debt and repayment operations",
     },
 ]
 
